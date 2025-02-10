@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('tara')->nullable();
             $table->string('adresa')->nullable();
             $table->string('oras')->nullable();
-            $table->string('cod_postal')->nullable();
             $table->string('gen')->nullable();
             $table->string('data_nastere')->nullable();
             $table->tinyInteger('status');

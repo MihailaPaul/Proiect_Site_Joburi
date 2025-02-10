@@ -1,30 +1,30 @@
 <ul class="list-group list-group-flush">
     <li class="list-group-item {{ Request::is('companie/meniu') ? 'active' : '' }}">
-        <a href="{{ route('meniu_companie') }}">Meniu</a>
+        <a href="{{ route('meniu_companie') }}">Statistici</a>
     </li>
     <li class="list-group-item {{ Request::is('companie/plata-pachet') ? 'active' : '' }}">
-        <a href="{{ route('plata_pachet_companie') }}">Cumpara Pachet</a >
+        <a href="{{ route('plata_pachet_companie') }}">Cumparare Pachet</a >
     </li>
     <li class="list-group-item {{ Request::is('companie/plati') ? 'active' : '' }}">
-        <a href="{{ route('plati_companie') }}">Plati</a>
+        <a href="{{ route('plati_companie') }}">Istoric Plati</a>
     </li>
-    <li class="list-group-item">
-        <a href="company-job-add.html">Create Job</a>
+    <li class="list-group-item {{ Request::is('companie/creare-job') ? 'active' : '' }}">
+        <a href="{{ route('creare_joburi_companie') }}">Creeare Anunt Job</a>
     </li>
-    <li class="list-group-item">
-        <a href="company-jobs.html">All Jobs</a>
+    <li class="list-group-item {{ Request::is('companie/jobuuri-postate') ? 'active' : '' }}">
+        <a href="{{ route('joburi_postate_companie') }}">Toate Anunturile Postate</a>
     </li>
     <li class="list-group-item {{ Request::is('companie/poze') ? 'active' : '' }}">
-        <a href="{{ route('poze_companie') }}">Photos</a>
-    </li>
-    <li class="list-group-item">
-        <a href="company-videos.html">Videos</a>
+        <a href="{{ route('poze_companie') }}">Poze Prezentare Companie Incarcate</a>
     </li>
     <li class="list-group-item">
         <a href="company-applications.html">Candidate Applications</a>
     </li>
     <li class="list-group-item {{ Request::is('companie/editare-profil') ? 'active' : '' }}">
-        <a href="{{route('editare_profil_companie')}}">Editare Profil</a>
+        <a href="{{route('editare_profil_companie')}}">Modificare Profil</a>
+    </li>
+    <li class="list-group-item {{ Request::is('companie/editare-parola') ? 'active' : '' }}">
+        <a href="{{route('editare_parola_companie')}}">Modificare Parola</a>
     </li>
     <li class="list-group-item">
         <a href="{{route('logout_companie')}}">Logout</a>

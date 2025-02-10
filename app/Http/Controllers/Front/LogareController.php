@@ -54,10 +54,6 @@ class LogareController extends Controller
        return redirect()->route('login');
      }
 
-
-
-
-
      public function trimitere_logare_candidat(Request $request)
     {
       $request->validate([

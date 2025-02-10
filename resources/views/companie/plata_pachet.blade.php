@@ -46,7 +46,7 @@
                         <form action="{{ route('companie_paypal') }}" method="post">
                             @csrf
                         <tr>
-                            <td class="w-200">
+                            <td class="w-300">
                                 <select name="package_id" class="form-control select2">
 
                                     @foreach ($pachete as $element)

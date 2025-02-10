@@ -1,6 +1,6 @@
 <ul class="list-group list-group-flush">
-    <li class="list-group-item active">
-        <a href="{{ route('meniu_candidat') }}" >Dashboard</a>
+    <li class="list-group-item {{ Request::is('candidat/meniu') ? 'active' : '' }}">
+        <a href="{{ route('meniu_candidat') }}" > Statistici </a>
     </li>
     
     <li class="list-group-item">
@@ -27,8 +27,8 @@
         <a href="candidate-award.html">Awards</a>
     </li>
 
-    <li class="list-group-item">
-        <a href="candidate-edit-profile.html">Edit Profile</a >
+    <li class="list-group-item {{ Request::is('candidat/editare-profil') ? 'active' : '' }}">
+        <a href="{{route('editare_profil_candidat')}}">Editare Profil</a >
     </li>
 
     <li class="list-group-item">

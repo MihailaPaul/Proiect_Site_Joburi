@@ -93,27 +93,6 @@
                                     <span class="fa-li"><i class="{{ $cod_simbol }}"></i></span>
                                     {{ $text }} Poze De Prezentare
                                     </li>
-
-                                    <li>
-                                        @php
-                                        if($element->numar_permis_videoclipuri == -1) {
-
-                                            $text="Fara Limitare De";
-                                            $cod_simbol = "fas fa-check";
-
-                                        } elseif ($element->numar_permis_videoclipuri == 0){
-
-                                            $text="Fara Acces La";
-                                            $cod_simbol = "fas fa-times";
-
-                                        } else {
-                                            $text=$element->numar_permis_videoclipuri;
-                                            $cod_simbol = "fas fa-check";
-                                        }
-                                    @endphp
-                                    <span class="fa-li"><i class="{{ $cod_simbol }}"></i></span>
-                                    {{ $text }} Videoclipuri de Prezentare
-                                    </li>
                                 </ul>
 
 

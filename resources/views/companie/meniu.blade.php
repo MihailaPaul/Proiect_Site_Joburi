@@ -27,25 +27,27 @@
             </div>
             <div class="col-lg-9 col-md-12">
                 <h3>Salut, {{ Auth::guard('companie')->user()->nume_reprezentant }} ({{ Auth::guard('companie')->user()->nume_companie }})</h3>
-                <p>See all the statistics at a glance:</p>
+                <p>Vezi toate statisticile companiei tale</p>
 
                 <div class="row box-items">
                     <div class="col-md-4">
                         <div class="box1">
-                            <h4>12</h4>
-                            <p>Open Jobs</p>
+                            <h4>{{ $joburi_postate }}</h4>
+                            <p>Anunturi Postate</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="box2">
-                            <h4>3</h4>
-                            <p>Pending Jobs</p>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-4">
                         <div class="box3">
-                            <h4>5</h4>
-                            <p>Featured Jobs</p>
+                            <h4>{{ $joburi_promovate }}</h4>
+                            <p>Anunturi Promovate</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box2">
+                            <h4>{{ $pachet_activ->rPackage->nume_pachet }}</h4>
+                            <p>Pachetul Activ</p>
                         </div>
                     </div>
                 </div>
@@ -56,57 +58,27 @@
                         <tbody>
                             <tr>
                                 <th>SL</th>
-                                <th>Job Title</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Titlu Job</th>
+                                <th>Categorie</th>
+                                <th>Locatie</th>
+                                <th>Promovat</th>
                             </tr>
+                            @foreach($joburi as $element )
                             <tr>
-                                <td>1</td>
-                                <td>Senior Laravel Developer</td>
-                                <td>Web Development</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $element->titlu }}</td>
+                                <td>{{ $element->rJobCategory->nume_categorie }}</td>
+                                <td>{{ $element->rJobLocation->nume_locatie
+                                 }}</td>
                                 <td>
-                                    <span class="badge bg-success"
-                                        >Active</span
-                                    >
-                                </td>
-                                <td>
-                                    <a
-                                        href=""
-                                        class="btn btn-warning btn-sm text-white"
-                                        ><i class="fas fa-edit"></i
-                                    ></a>
-                                    <a
-                                        href=""
-                                        class="btn btn-danger btn-sm"
-                                        onClick="return confirm('Are you sure?');"
-                                        ><i class="fas fa-trash-alt"></i
-                                    ></a>
+                                    @if($element->este_promovat == 1)
+                                    <span class="badge bg-success">Promovat</span>
+                                    @else
+                                    <span class="badge bg-danger">Nepromovat</span>
+                                    @endif
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>UI/UX Designer</td>
-                                <td>Web Design</td>
-                                <td>
-                                    <span class="badge bg-danger"
-                                        >Pending</span
-                                    >
-                                </td>
-                                <td>
-                                    <a
-                                        href=""
-                                        class="btn btn-warning btn-sm text-white"
-                                        ><i class="fas fa-edit"></i
-                                    ></a>
-                                    <a
-                                        href=""
-                                        class="btn btn-danger btn-sm"
-                                        onClick="return confirm('Are you sure?');"
-                                        ><i class="fas fa-trash-alt"></i
-                                    ></a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

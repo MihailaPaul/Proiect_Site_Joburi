@@ -94,12 +94,23 @@ Route::middleware(['companie:companie'])->group(function()
     Route::get('/companie/editare-profil',[CompanieController::class,'editare_profil_companie'])->name('editare_profil_companie');
     Route::post('/companie/editare-profil/modifica',[CompanieController::class,'salvare_editare_profil_companie'])->name('salvare_editare_profil_companie');
 
+    Route::get('/companie/editare-parola',[CompanieController::class,'editare_parola_companie'])->name('editare_parola_companie');
+    Route::post('/companie/editare-parola/modifica',[CompanieController::class,'salvare_editare_parola_companie'])->name('salvare_editare_parola_companie');
 
     Route::get('/companie/poze',[CompanieController::class,'poze_companie'])->name('poze_companie');
     Route::post('/companie/poze/salvare',[CompanieController::class,'poze_companie_salvare'])->name('poze_companie_salvare');
     Route::get('/companie/poze/stergere/{id}',[CompanieController::class,'poze_companie_stergere'])->name('poze_companie_stergere');
 
+    Route::get('/companie/creare-job',[CompanieController::class,'creare_joburi'])->name('creare_joburi_companie');
+    Route::post('/companie/salvare-joburi-create',[CompanieController::class,'salvare_joburi_create'])->name('salvare_joburi_create');
+    Route::get('/companie/joburi-postate',[CompanieController::class,'joburi_postate'])->name('joburi_postate_companie');
+    Route::get('/companie/editare-joburi-postate/{id}',[CompanieController::class,'editare_joburi_postate'])->name('editare_joburi_postate_companie');
+    Route::post('/companie/actualizare-joburi-postate/{id}',[CompanieController::class,'actualizare_joburi_postate'])->name('actualizare_joburi_postate_companie');
+    Route::get('/companie/stergere-joburi-postate/{id}',[CompanieController::class,'stergere_joburi_postate'])->name('stergere_joburi_postate_companie');
     });
+
+
+
 
 
 
@@ -117,7 +128,16 @@ Route::middleware(['candidat:candidat'])->group(function()
     {
     Route::get('/candidat/meniu',[CandidatController::class,'meniu_candidat'])->name('meniu_candidat');
     Route::get('/candidat/logout',[LogareController::class,'logout_candidat'])->name('logout_candidat');
+
+    Route::get('/candidat/editare-profil',[CandidatController::class,'editare_profil_candidat'])->name('editare_profil_candidat');
+    Route::post('/candidat/editare-profil/modifica',[CandidatController::class,'actualizare_profil_candidat'])->name('actualizare_profil_candidat');
+
     });
+ 
+
+
+
+
 
 
 // Rute TablouAdmin
@@ -326,7 +346,12 @@ Route::middleware(['admin:admin'])->group(function()
     Route::post('/admin/locatie-companie/modifica/{id}',[AdminLocatieCompanieController::class,'modifica'])->name('admin_locatie_companie_modifica');
 
     Route::get('/admin/locatie-companie/stergere/{id}',[AdminLocatieCompanieController::class,'stergere'])->name('admin_locatie_companie_stergere');
-Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
+
+
+
+
+
+    Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
 
     Route::get('/admin/categorie-job/creare',[AdminCategorieJobController::class,'creeaza'])->name('admin_categorie_job_creeaza');
 

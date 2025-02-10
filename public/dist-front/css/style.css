@@ -100,10 +100,10 @@ select {
 
 /* Top */
 .top {
-    min-height: 40px;
-    color: #333;
+    min-height: 0px;
+    color:white;
     font-size: 14px;
-    border-bottom: 1px solid #d7d7d7;
+    border-bottom: 0px solid #d7d7d7;
 }
 .top ul {
     margin-bottom: 0;
@@ -1038,7 +1038,7 @@ select {
         margin-bottom: 30px !important;
     }
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
     .footer-bottom .copyright {
         text-align: center !important;
         margin-bottom: 10px !important;

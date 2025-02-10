@@ -4,10 +4,7 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
         <meta name="description" content="@yield('seo_meta_description')" />
         <title>@yield('seo_title')</title>
@@ -26,6 +23,8 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
         />
     </head>
     <body>
+        <div class="top">
+        </div>
 
        @include('front.layout.navigatie')
 

@@ -11,8 +11,16 @@ use App\Models\CompanieLocation;
 use App\Models\CompanieDomain;
 use App\Models\CompanieSize;
 use App\Models\CompaniePhoto;
+use App\Models\Job;
+use App\Models\JobCategory;
+use App\Models\JobLocation;
+use App\Models\JobType;
+use App\Models\Jobexperience;
+use App\Models\JobSalaryRange;
 use Illuminate\Validation\Rule;
 use Auth;
+use Hash;
+
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
@@ -21,7 +29,11 @@ class CompanieController extends Controller
     public function meniu_companie()
 
     { 
-        return view('companie.meniu');
+        $joburi_postate = Job::where('company_id',Auth::guard('companie')->user()->id)->count();
+        $joburi_promovate = Job::where('company_id',Auth::guard('companie')->user()->id)->where('este_promovat',1)->count();
+        $pachet_activ = Order::with('rPackage')->where('company_id', Auth::guard('companie')->user()->id)->where('status',1)->first();
+        $joburi = Job::with('rJobCategory')->where('company_id',Auth::guard('companie')->user()->id)->orderBy('id','desc')->take(2)->get();
+        return view('companie.meniu',compact('joburi','joburi_postate','joburi_promovate','pachet_activ'));
     }
 
  
@@ -87,6 +99,22 @@ class CompanieController extends Controller
 
     }
 
+    public function editare_parola_companie()
+    {
+        return view('companie.editare_parola');
+    }
+
+    public function salvare_editare_parola_companie(Request $request)
+    {
+        $request->validate([
+            'parola' => 'required',
+            'reintroducere_parola' => 'required|same:parola'
+        ]);
+        $date_profil_companie = Company::where('id', Auth::guard('companie')->user()->id)->first();
+        $date_profil_companie->password = Hash::make($request->parola);
+        $date_profil_companie->update();
+        return redirect()->back()->with('success','Parola a fost modificata cu succes! ');
+    }
 
     public function poze_companie()
     { //Verifica daca compania a cumparat un pachet
@@ -249,6 +277,135 @@ class CompanieController extends Controller
     {
         return redirect()->route('plata_pachet_companie')->with('error', 'Plata a fost anulata!');
     }
-   
 
+    public function creare_joburi()
+    {
+        $date_comenzi = Order::where('company_id',Auth::guard('companie')->user()->id)->where('status',1)->first();
+        if(!$date_comenzi){
+            return redirect()->back()->with('error','Trebuie sa cumperi un pachet pentru a accesa aceasta sectiune');
+        }
+
+
+        // Verrifica daca pachetul cumparat are nivelul necesar sa acceseze pagina 
+        $date_pachet = Package::where('id',$date_comenzi->package_id)->first();
+        if($date_pachet->numar_permis_joburi == 0)
+        {
+            return redirect()->back()->with('error','Pachetul actual nu are posibilitatea sa acceseze aceasta sectiune! ');
+        }
+
+
+        // Verifica cate joburi a postat compania
+        $joburi_postate = Job::where('company_id',Auth::guard('companie')->user()->id)->count();
+        if($date_pachet->numar_permis_joburi == $joburi_postate) 
+        {
+            return redirect()->back()->with('error',' Numarul maxim de joburi postate a fost atins! Cumparati un pachet mai bun sau stergeti un job postat!');
+        }
+
+        $categorii_job = JobCategory::orderBy('nume_categorie','asc')->get();
+        $locatii_job = JobLocation::orderBy('nume_locatie','asc')->get();
+        $tipuri_job = JobType::orderBy('nume_tip','asc')->get();
+        $experienta_job = JobExperience::orderBy('id','asc')->get();
+        $salarii_job = JobSalaryRange::orderBy('id','asc')->get();
+
+        return view('companie.creare_joburi', compact('categorii_job','locatii_job','tipuri_job','experienta_job','salarii_job'));
+    }
+
+   public function salvare_joburi_create(Request $request)
+   {
+    $request->validate([
+        'titlu' => 'required',
+        'descriere' => 'required',
+        'locuri => required'
+    ]);
+
+    $date_comenzi = Order::where('company_id',Auth::guard('companie')->user()->id)->where('status',1)->first();
+    $date_pachet = Package::where('id',$date_comenzi->package_id)->first();
+
+    $joburi_promovate = Job::where('company_id', Auth::guard('companie')->user()->id)->where('este_promovat',1)->count();
+    if($joburi_promovate == $date_pachet->numar_permis_joburi_promovate)
+    { 
+        if($request->este_promovat == 1)
+        {
+        return redirect()->back()->with('error','Ai promovat deja numarul maxim de joburi permis de acest pachet!');
+        }
+    }
+
+
+    $obiect = new Job();
+    $obiect->company_id = Auth::guard('companie')->user()->id;
+    $obiect->titlu = $request->titlu;
+    $obiect->descriere = $request->descriere;
+    $obiect->responsabilitati = $request->responsabilitati;
+    $obiect->cerinte = $request->cerinte;
+    $obiect->educatie = $request->educatie;
+    $obiect->beneficii = $request->beneficii;
+    $obiect->locuri = $request->locuri;
+    $obiect->job_category_id = $request->job_category_id;
+    $obiect->job_location_id = $request->job_location_id;
+    $obiect->job_type_id = $request->job_type_id;
+    $obiect->job_experience_id = $request->job_experience_id;
+    $obiect->job_salary_range_id = $request->job_salary_range_id;
+    $obiect->map_code = $request->map_code;
+    $obiect->este_promovat = $request->este_promovat;
+    $obiect->save();
+
+    return redirect()->route('joburi_postate_companie')->with('success','Jobul a fost postat cu succes!');
+
+   }
+
+   public function joburi_postate()
+   {
+    $joburi = Job::with('rJobCategory')->where('company_id',Auth::guard('companie')->user()->id)->get();
+    return view('companie.joburi_postate', compact('joburi'));
+   }
+
+   public function editare_joburi_postate($id)
+   {
+    $job_individual = Job::where('id',$id)->first();
+    $categorii_job = JobCategory::orderBy('nume_categorie','asc')->get();
+    $locatii_job = JobLocation::orderBy('nume_locatie','asc')->get();
+    $tipuri_job = JobType::orderBy('nume_tip','asc')->get();
+    $experienta_job = JobExperience::orderBy('id','asc')->get();
+    $salarii_job = JobSalaryRange::orderBy('id','asc')->get();
+
+    return view('companie.editare_joburi_postate', compact('categorii_job','locatii_job','tipuri_job','experienta_job','salarii_job','job_individual'));
+   }
+
+   public function actualizare_joburi_postate(Request $request,$id)
+   { 
+    $obiect = Job::where('id',$id)->first();
+
+    $request->validate([
+        'titlu' => 'required',
+        'descriere' => 'required',
+        'locuri => required'
+    ]);
+
+
+    $obiect->titlu = $request->titlu;
+    $obiect->descriere = $request->descriere;
+    $obiect->responsabilitati = $request->responsabilitati;
+    $obiect->cerinte = $request->cerinte;
+    $obiect->educatie = $request->educatie;
+    $obiect->beneficii = $request->beneficii;
+    $obiect->locuri = $request->locuri;
+    $obiect->job_category_id = $request->job_category_id;
+    $obiect->job_location_id = $request->job_location_id;
+    $obiect->job_type_id = $request->job_type_id;
+    $obiect->job_experience_id = $request->job_experience_id;
+    $obiect->job_salary_range_id = $request->job_salary_range_id;
+    $obiect->map_code = $request->map_code;
+    $obiect->este_promovat = $request->este_promovat;
+    $obiect->update();
+
+    return redirect()->back()->with('success','Jobul a fost actualizat cu succes!');
+
+   }
+
+   public function stergere_joburi_postate($id)
+   {
+    
+    Job::where('id',$id)->delete();
+    return redirect()->route('joburi_postate_companie')->with('success',' Anuntul a fost sters cu succes! ');
+   }
 }
