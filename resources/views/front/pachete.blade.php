@@ -97,7 +97,7 @@
 
 
                         <div class="buy">
-                            <a href="" class="btn btn-primary">
+                            <a href="{{ route('plata_pachet_companie') }}" class="btn btn-primary">
                                 Alege Plan
                             </a>
                         </div>

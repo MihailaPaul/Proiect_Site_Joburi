@@ -171,29 +171,34 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
+                    {{-- Titlu si text pentru sectiunea de promovare joburi --}}
                     <h2>{{ $date_pagina_acasa->sectiune_recomandari_titlu }}</h2>
                     <p>{{ $date_pagina_acasa->sectiune_recomandari_text }}</p>
                 </div>
             </div>
         </div>
         <div class="row">
+            {{-- Setam i=0 inainte de intrare in loop ca sa afisam doar 6 anunturi de joburi  --}}
             @php $i=0; @endphp
             @foreach($joburi_promovate as $element)
+            {{-- Verificare ca toate anunturile sunt postate de companii care nu au pachetul expirat --}}
             @php 
             $id_companie = $element->rCompany->id;
             $date_comanda = \App\Models\Order::where('company_id',$id_companie)->where('status',1)->first();
-
+            // Daca data de expirare e mai mica decat cea actuala programul sare peste afisarea anuntului respectiv
             if(date('Y-m-d') > date('Y-m-d',strtotime($date_comanda->data_expirare))){
                 continue;
             }
             @endphp
             @php
+            // Cand i ajunge la 6 se iese din bucla ca sa nu afisam mai mult de sase
                 $i++;
                 if($i>6){
                     break; 
                 }
 
             @endphp
+            {{-- Structura cardurilor de anunturi --}}
             <div class="col-lg-6 col-md-12">
                 <div class="item d-flex justify-content-start">
                     <div class="logo">
@@ -227,6 +232,8 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                                 {{$element->rJobType->nume_tip}}
                             </div>
                         </div>
+                        {{-- Sistemul de adaugare la favorite  --}}
+                        {{-- Daca utilizatorul e companie nu paote vedea butonul --}}
                         @if(!Auth::guard('companie')->check())
                         <div class="bookmark">
                            @if(Auth::guard('candidat')->check())

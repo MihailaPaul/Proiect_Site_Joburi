@@ -27,6 +27,7 @@
                         <input type="text" name="titlu" class="form-control" placeholder="Cuvinte Cheie" value="{{ $titlu_formular }}"/>
                     </div>
 
+                    {{-- Afisarea selectorului pentru categorii --}}
                     <div class="widget">
                         <h2>Categorie Job</h2>
                         <select name="nume_categorie" class="form-control select2">
@@ -36,7 +37,7 @@
                             @endforeach
                         </select>
                     </div>
-
+                   {{-- Afisarea selectorului pentru locatii --}}
                     <div class="widget">
                         <h2>Locatie Job</h2>
                         <select name="nume_locatie" class="form-control select2">
@@ -46,7 +47,7 @@
                             @endforeach
                         </select>
                     </div>
-
+                    {{-- Afisarea selectorului pentru tipurile jobului --}}    
                     <div class="widget">
                         <h2>Tipul Jobului</h2>
                         <select name="nume_tip" class="form-control select2">
@@ -56,7 +57,7 @@
                             @endforeach
                         </select>
                     </div>
-
+                    {{-- Afisarea selectorului pentru experienta --}}
                     <div class="widget">
                         <h2>Experienta Necesara</h2>
                         <select name="nume_experienta" class="form-control select2">
@@ -66,7 +67,7 @@
                             @endforeach
                         </select>
                     </div>
-
+                    {{-- Afisarea selectorului pentru intervalul salarial --}}
                     <div class="widget">
                         <h2>Intervalul Salarial</h2>
                         <select name="sume" class="form-control select2">
@@ -77,7 +78,7 @@
                         </select>
                     </div>
 
-
+                    {{-- Butonul de filtrare --}}
                     <div class="filter-button">
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-search"></i> Filtreaza</a>
@@ -96,6 +97,7 @@
                                     <i class="fas fa-search"></i> Rezultatele Cautarii
                                 </div>
                             </div>
+                            Verificarea 
                             @if(!$joburi->count())
                                 <div class="text-danger">Nu au fost gasite anunturi cu aceste cerinte</div>
                             @else

@@ -95,7 +95,7 @@ class InregistrareController extends Controller
         $request->validate([
             'nume_candidat' => 'required',
             'nume_utilizator' => 'required|unique:candidates',
-            'email' => 'required|email|unique:companies',
+            'email' => 'required|email|unique:candidates',
             'parola' => 'required',
             'confirma_parola' => 'required|same:parola'
         ]);

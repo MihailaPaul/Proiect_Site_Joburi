@@ -32,7 +32,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="">Nivel Educatie(Ex. Liceu/Facultate/Master/Doctorat)</label>
+                            <label for="">Nivel Educatie(Ex. Liceu/Facultate/Master/Doctorat/Certificare)</label>
                             <div class="form-group">
                                 <input type="text" name="nivel_invatamant" class="form-control"/>
                             </div>

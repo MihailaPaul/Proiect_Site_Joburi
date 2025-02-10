@@ -9,7 +9,7 @@
         <a href="{{ route('plati_companie') }}">Istoric Plati</a>
     </li>
     <li class="list-group-item {{ Request::is('companie/creare-job') ? 'active' : '' }}">
-        <a href="{{ route('creare_joburi_companie') }}">Creeare Anunt Job</a>
+        <a href="{{ route('creare_joburi_companie') }}">Creare Anunt Job</a>
     </li>
     <li class="list-group-item {{ Request::is('companie/jobuuri-postate') ? 'active' : '' }}">
         <a href="{{ route('joburi_postate_companie') }}">Toate Anunturile Postate</a>

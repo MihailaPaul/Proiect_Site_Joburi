@@ -1692,7 +1692,7 @@ select {
 
 /* User Panel */
 .user-panel {
-    padding-bottom: 50px;
+    padding-bottom: 150px;
 }
 .user-panel h3 {
     font-size: 18px;
@@ -1788,12 +1788,12 @@ h4.resume {
 
 /* Pagination */
 ul.pagination .active>.page-link, ul.pagination .page-link.active {
-background-color: #e34236;
-border-color: #e34236;
+background-color: #46bc29;
+border-color: #46bc29;
 }
 
 ul.pagination .page-link{
-    color: #e34236 ;
+    color: #46bc29 ;
 }
 
 ul.pagination .active>.page-link{

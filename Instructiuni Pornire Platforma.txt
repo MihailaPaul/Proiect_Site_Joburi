@@ -1,0 +1,18 @@
+Pentru Rularea Programului au fost urmati urmatorii pasi:
+
+1. Instalare Xampp pentru server local (versiunea de PHP necesara este 8+) 
+2. Instalare Visual Studio Cod pentru editare cod
+3. Instalare Composer (https://getcomposer.org/)
+
+- In xampp se da drumul la apache si mysql si de deschide phpmyadmin in browser
+- Se creeaza o noua baza de date cu titlu la alegere
+- Se dezarhiveaza proiectul laravel 
+- Se deschide in editor de cod si se modifica datele bazei de date din fisierul .env. Se trec datele bazei create in pasii anteriori 
+- Se ruleaza comenzile : - composer install
+				 - php artisan key:generate
+				 - php artisan migrate
+- Se ruleaza comanda php artisan serve pentru deschiderea serverului 
+- Se incarca baza de date inclusa in folderul database\baza de date
+Acum se poate accesa poriectul la adresa locala din .env
+
+Pentru mai multe detalii se poate vizita si https://phpcoder.tech/how-to-run-laravel-project-on-localhost/

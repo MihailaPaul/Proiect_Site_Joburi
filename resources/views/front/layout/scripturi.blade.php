@@ -1,4 +1,4 @@
-    <!-- All Javascripts -->
+    <!-- Toate Javascripts -->
     <script src="{{ asset('dist-front/js/jquery-3.6.1.min.js')}}"></script>
     <script src="{{ asset('dist-front/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('dist-front/js/bootstrap-datepicker.min.js')}}"></script>

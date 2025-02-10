@@ -1,21 +1,24 @@
 <div class="navbar-area" id="stickymenu">
-    <!-- Menu For Mobile Device -->
+    <!-- Meniu pentru Mobil  -->
     <div class="mobile-nav">
         <a href="index.html" class="logo">
+            {{-- Titlul site-ului --}}
             <h1>
-                <span style="color: black; font-family: Helvetica; font-weight: bold; text-transform: none;">Job<span style="color: #46bc29; font-family: Helvetica; font-weight: bold; text-transform: none;">Wise</span></span>
+                <span style="color: black; font-family: Helvetica; font-weight: bold; text-transform: none;">
+                Job<span style="color: #46bc29; font-family: Helvetica; font-weight: bold; text-transform: none;">Wise</span></span>
             </h1>
             {{-- <img src="{{ asset('uploads/logo.png')}}" alt="" /> --}}
         </a>
     </div>
 
-    <!-- Menu For Desktop Device -->
+    <!-- Meniu pentru  Desktop -->
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="{{ route('acasa') }}">
                     <h1>
-                        <span style="color: black; font-family: Helvetica; font-weight: bold; text-transform: none;">Job<span style="color: #46bc29; font-family: Helvetica; font-weight: bold; text-transform: none;">Wise</span></span>
+                        <span style="color: black; font-family: Helvetica; font-weight: bold; text-transform: none;">
+                        Job<span style="color: #46bc29; font-family: Helvetica; font-weight: bold; text-transform: none;">Wise</span></span>
                     </h1>
                     {{-- <img src="{{ asset('uploads/logo.png')}}" alt="" /> --}}
                 </a>
@@ -42,7 +45,7 @@
                         <li class="nav-item {{ Request::is('blog')||Request::is('articol/*') ? 'active' : '' }}">
                             <a href="{{ route('blog') }}" class="nav-link"> Cariera </a >
                         </li>
-
+                        {{-- Sistemul de schimbare a link-urilor din baza de navigatie din log in si sign up in butoanele pentru meniul candidat si companie --}}
                         @if(Auth::guard('companie')->check())
                         <li class="nav-item">
                             <a href="{{ route('meniu_companie') }}"><i class="fas fa-house-user"></i> Meniu Companie </a>
@@ -54,11 +57,11 @@
                         </li>
 
                         @else
-                        <li class="nav-item">
+                        <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
                             <a href="{{ route('login') }}" ><i class="fas fa-sign-in-alt"></i> Login </a >
                          </li>
                          
-                         <li class="nav-item">
+                         <li class="nav-item {{ Request::is('inregistrare') ? 'active' : '' }}">
                             <a href="{{ route('inregistrare') }}"><i class="fas fa-user"></i> Sign Up </a>
                         </li>
                         @endif

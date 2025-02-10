@@ -556,7 +556,6 @@ Route::middleware(['admin:admin'])->group(function()
     Route::get('/admin/candidati',[AdminCandidatController::class,'candidati'])->name('admin_candidati');
     Route::get('/admin/candidati-detalii/{id}',[AdminCandidatController::class,'candidati_detalii'])->name('admin_candidati_detalii');
     Route::get('/admin/candidati-aplicatii/{id}',[AdminCandidatController::class,'candidati_aplicatii'])->name('admin_candidati_aplicatii');
-    
     Route::get('/admin/candidati-stergere/{id}',[AdminCandidatController::class,'stergere'])->name('admin_candidati_stergere');
     
 });

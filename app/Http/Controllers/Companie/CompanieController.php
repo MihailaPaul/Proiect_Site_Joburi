@@ -195,13 +195,8 @@ class CompanieController extends Controller
 
     public function plata_pachet()
     {
-        
        $pachetul_activ = Order::with('rPackage')->where('company_id', Auth::guard('companie')->user()->id)->where('status',1)->first();
-
        $pachete = Package::get();
-
-    //    dd($pachetul_activ);
-
         return view('companie.plata_pachet', compact('pachetul_activ','pachete'));
     }
 
@@ -209,9 +204,6 @@ class CompanieController extends Controller
     {
         // $request->package_id;
         $date_pachet_individual = Package::where('id',$request->package_id)->first();
-
-
-
         $serviciu = new PayPalClient;
         $serviciu->setApiCredentials(config('paypal'));
         $paypalToken = $serviciu->getAccessToken();

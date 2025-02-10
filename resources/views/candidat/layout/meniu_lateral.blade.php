@@ -11,15 +11,15 @@
         <a href="{{ route('candidat_joburi_favorite') }}">Anunturi Favorite</a>
     </li>
 
-    <li class="list-group-item  {{ Request::is('candidat/educatie/vizualizare') ? 'active' : '' }}">
+    <li class="list-group-item  {{ Request::is('candidat/educatie/vizualizare')||Request::is('candidat/educatie/creare') ? 'active' : '' }}">
         <a href="{{route('educatie_candidat')}}" > Educatie si Certificari </a>
     </li>
 
-    <li class="list-group-item  {{ Request::is('candidat/competente/vizualizare') ? 'active' : '' }}">
+    <li class="list-group-item  {{ Request::is('candidat/competente/vizualizare')||Request::is('candidat/competente/creare') ? 'active' : '' }}">
         <a href="{{route('competente_candidat')}}" > Competente si abilitati </a>
     </li>
 
-    <li class="list-group-item {{ Request::is('candidat/experienta/vizualizare') ? 'active' : '' }}">
+    <li class="list-group-item {{ Request::is('candidat/experienta/vizualizare')||Request::is('candidat/experienta/creare') ? 'active' : '' }}">
         <a href="{{route('experienta_candidat')}}" >Experinta Job</a>
     </li>
 
