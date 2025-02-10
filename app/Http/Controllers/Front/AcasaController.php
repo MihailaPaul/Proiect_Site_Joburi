@@ -23,7 +23,7 @@ class AcasaController extends Controller
         $recomandari_element = Testimonial::get();
         $date_articole= Article::orderBy('id','desc')->take(3)->get();
 
-        $joburi_promovate = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->orderBy('id','desc')->where('este_promovat',1)->take(6)->get();
+        $joburi_promovate = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->orderBy('id','desc')->where('este_promovat',1)->get();
 
         return view('front.acasa',compact('date_pagina_acasa','categorie_job','categorie_job_extins','locatie_job','alegere_elemente',
         'recomandari_element','date_articole','joburi_promovate',));

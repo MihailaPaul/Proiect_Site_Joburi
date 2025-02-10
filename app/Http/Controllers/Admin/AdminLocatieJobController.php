@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobLocation;
-
+use App\Models\Job;
 class AdminLocatieJobController extends Controller
 {
     public function index()
@@ -54,8 +54,13 @@ class AdminLocatieJobController extends Controller
 
     public function stergere($id){
         
-        $locatie_job = JobLocation::where('id',$id)->delete();
+        $verificare = Job::where('job_location_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceasta locatie este folosita de anunturi active deci nu poate fi stearsa!');
+        }
 
+        $locatie_job = JobLocation::where('id',$id)->delete();
         return redirect()->route('admin_locatie_job')->with('success','Locatia a fost stearsa cu succes ! ');
     }
 }

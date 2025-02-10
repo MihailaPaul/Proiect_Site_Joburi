@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobExperience;
+use App\Models\Job;
 
 class AdminExperientaJobController extends Controller
 {
@@ -53,6 +54,12 @@ class AdminExperientaJobController extends Controller
     }
 
     public function stergere($id){
+
+        $verificare = Job::where('job_experience_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceasta experienta este folosita de anunturi active deci nu poate fi stearsa!');
+        }
         
         $experienta_job = JobExperience::where('id',$id)->delete();
 

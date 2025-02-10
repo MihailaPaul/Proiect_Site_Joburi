@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Package;
+use App\Models\Order;
 
 class AdminPachetController extends Controller
 {
@@ -80,6 +81,12 @@ class AdminPachetController extends Controller
 
     public function stergere($id)
     {
+        $verificare = Order::where('package_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceast pachet este folosit deci nu poate fi sters!');
+        }
+        
         Package::where('id',$id)->delete();
         return redirect()->route('admin_pachet')->with('success', 'Pachetul a fost sters cu succes !');
     }

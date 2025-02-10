@@ -100,6 +100,14 @@
                                 <div class="text-danger">Nu au fost gasite anunturi cu aceste cerinte</div>
                             @else
                             @foreach($joburi as $element)
+                            @php 
+                                $id_companie = $element->rCompany->id;
+                                $date_comanda = \App\Models\Order::where('company_id',$id_companie)->where('status',1)->first();
+    
+                                if(date('Y-m-d') > date('Y-m-d',strtotime($date_comanda->data_expirare))){
+                                    continue;
+                                }
+                            @endphp
                             <div class="col-md-12">
                                 <div class="item d-flex justify-content-start">
                                     <div class="logo">

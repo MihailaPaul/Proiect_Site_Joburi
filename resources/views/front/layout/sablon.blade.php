@@ -36,10 +36,11 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
                         <div class="item">
                             <h2 class="heading">Pentru Candidati</h2>
                             <ul class="useful-links">
-                                <li><a href="">Cauta Joburi</a></li>
-                                <li><a href="">Cauta Companii</a></li>
-                                <li><a href="">Meniu Candidat</a></li>
-                                <li><a href="">Joburi Favorite</a></li>
+                                <li><a href="{{route('pagina_joburi')}}"> Cauta Joburi</a></li>
+                                <li><a href="{{route('meniu_candidat')}}"> Meniu Candidat</a></li>
+                                <li><a href="{{route('candidat_joburi_favorite')}}"> Joburi Favorite</a></li>
+                                <li><a href="{{route('aplicatii_candidat')}}"> Joburi la care ai aplicat</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -47,10 +48,10 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
                         <div class="item">
                             <h2 class="heading">Pentru Companii</h2>
                             <ul class="useful-links">
-                                <li><a href="">Posteaza un anunt</a></li>
-                                <li><a href="">Vizualizeaza Joburi</a></li>
-                                <li><a href="">Meniu Companie</a></li>
-                                <li><a href="">Aplicanti</a></li>
+                                <li><a href="{{route('pagina_companii')}}"> Cauta Companii</a></li>
+                                <li><a href="{{route('meniu_companie')}}"> Meniu Companie</a></li>
+                                <li><a href="{{route('creare_joburi_companie')}}"> Posteaza Anunt</a></li>
+                                <li><a href="{{route('companie_aplicatii_job')}}"> Vezi Aplicanti</a></li>
                             </ul>
                         </div>
                     </div>
@@ -63,41 +64,33 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div class="right">
-                                    Bulevardul Lacul Tei 124, București 
+                                    {{ $global_footer_data->footer_locatie }}
                                 </div>
                             </div>
                             <div class="list-item">
                                 <div class="left">
                                     <i class="fas fa-phone"></i>
                                 </div>
-                                <div class="right">+407721091234</div>
+                                <div class="right">{{ $global_footer_data->footer_telefon }}</div>
                             </div>
                             <div class="list-item">
                                 <div class="left">
                                     <i class="fas fa-envelope"></i>
                                 </div>
-                                <div class="right">jobwisecontact@gmail.com</div>
+                                <div class="right">{{ $global_footer_data->footer_email }}</div>
                             </div>
                             <ul class="social">
                                 <li>
-                                    <a href=""
-                                        ><i class="fab fa-facebook-f"></i
-                                    ></a>
+                                    <a href="{{ $global_footer_data->facebook }}"><i class="fab fa-facebook-f"></i></a>
                                 </li>
                                 <li>
-                                    <a href=""
-                                        ><i class="fab fa-twitter"></i
-                                    ></a>
+                                    <a href=" {{ $global_footer_data->twitter }}"><i class="fab fa-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href=""
-                                        ><i class="fab fa-linkedin-in"></i
-                                    ></a>
+                                    <a href=" {{ $global_footer_data->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
                                 </li>
                                 <li>
-                                    <a href=""
-                                        ><i class="fab fa-instagram"></i
-                                    ></a>
+                                    <a href="{{ $global_footer_data->instagram }}"><i class="fab fa-instagram"></i></a>
                                 </li>
                             </ul>
                         </div>

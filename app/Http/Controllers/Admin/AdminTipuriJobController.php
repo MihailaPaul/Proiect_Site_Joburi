@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobType;
+use App\Models\Job;
 
 class AdminTipuriJobController extends Controller
 {
@@ -54,6 +55,11 @@ class AdminTipuriJobController extends Controller
 
     public function stergere($id){
         
+        $verificare = Job::where('job_type_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceast tip este folosita de anunturi active deci nu poate fi stearsa!');
+        }
         $tip_job = JobType::where('id',$id)->delete();
 
         return redirect()->route('admin_tip_job')->with('success','Tipul a fost stearsa cu succes ! ');

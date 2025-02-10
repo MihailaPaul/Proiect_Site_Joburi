@@ -10,6 +10,7 @@ use App\Models\CompanieDomain;
 use App\Models\CompanieLocation;
 use App\Models\CompanieSize;
 use App\Models\CompaniePhoto;
+use App\Models\Order;
 use App\Models\PaginaDiverseItem;
 use App\Mail\Websitemail;
 
@@ -60,6 +61,11 @@ class PaginiCompanieController extends Controller
 
     public function detalii_companie($id)
     {  
+        $date_comanda = Order::where('company_id',$id)->where('status',1)->first();
+        if(date('Y-m-d') > date('Y-m-d',strtotime($date_comanda->data_expirare))){
+            return redirect()->route('acasa');
+        }   
+
         $companie_individuala = Company::withCount('rJob')->with('rCompanieDomain','rCompanieLocation','rCompanieSize')->where('id',$id)->first();
 
         if(CompaniePhoto::where('company_id',$companie_individuala->id)->exists()){

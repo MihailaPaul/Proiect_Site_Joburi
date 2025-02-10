@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanieLocation;
+use App\Models\Company;
 
 class AdminLocatieCompanieController extends Controller
 {
@@ -53,6 +54,12 @@ class AdminLocatieCompanieController extends Controller
     }
 
     public function stergere($id){
+
+        $verificare = Company::where('companie_location_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceasta locatie este folosita deci nu poate fi stearsa!');
+        }
         
         $locatie_companie = CompanieLocation::where('id',$id)->delete();
 

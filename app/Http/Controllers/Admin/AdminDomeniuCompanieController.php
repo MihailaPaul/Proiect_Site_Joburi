@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanieDomain;
+use App\Models\Company;
 
 class AdminDomeniuCompanieController extends Controller
 {
@@ -53,6 +54,12 @@ class AdminDomeniuCompanieController extends Controller
     }
 
     public function stergere($id){
+
+        $verificare = Company::where('companie_domain_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceast domeniu este folosit deci nu poate fi sters!');
+        }
         
         $domeniu_companie = CompanieDomain::where('id',$id)->delete();
 

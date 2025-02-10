@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobSalaryRange;
+use App\Models\Job;
 
 class AdminIntervalSalariuJobController extends Controller
 {
@@ -53,9 +54,14 @@ class AdminIntervalSalariuJobController extends Controller
     }
 
     public function stergere($id){
+        $verificare = Job::where('job_salary_range_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceasta suma este folosita de anunturi active deci nu poate fi stearsa!');
+        }
         
         $salariu_job = JobSalaryRange::where('id',$id)->delete();
 
-        return redirect()->route('admin_salariu_job')->with('success','Intervalul salarial a fost stears cu succes ! ');
+        return redirect()->route('admin_salariu_job')->with('success','Intervalul salarial a fost sters cu succes ! ');
     }
 }

@@ -195,7 +195,7 @@
                 @endif
 
                 @if(!$documente_candidat->count())
-                <div class="text-danger">Candidatul nu a incarcat informatii despre experienta sa.</div>
+                <div class="text-danger">Candidatul nu a incarcat documente despre experienta sa.</div>
                 @else
                 <h4 class="resume mt-5">Documente</h4>
 

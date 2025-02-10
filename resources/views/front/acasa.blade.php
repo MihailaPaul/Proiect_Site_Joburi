@@ -177,7 +177,23 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
             </div>
         </div>
         <div class="row">
+            @php $i=0; @endphp
             @foreach($joburi_promovate as $element)
+            @php 
+            $id_companie = $element->rCompany->id;
+            $date_comanda = \App\Models\Order::where('company_id',$id_companie)->where('status',1)->first();
+
+            if(date('Y-m-d') > date('Y-m-d',strtotime($date_comanda->data_expirare))){
+                continue;
+            }
+            @endphp
+            @php
+                $i++;
+                if($i>6){
+                    break; 
+                }
+
+            @endphp
             <div class="col-lg-6 col-md-12">
                 <div class="item d-flex justify-content-start">
                     <div class="logo">

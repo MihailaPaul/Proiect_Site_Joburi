@@ -22,11 +22,11 @@
             <div class="card-wrap">
                 {{-- Titlul Cardului  --}}
                 <div class="card-header">
-                    <h4>Test 1234</h4>
+                    <h4>Total Companii</h4>
                 </div>
                 {{-- Continutul cardului  --}}
                 <div class="card-body">
-                    12
+                   {{ $total_companii }}
                 </div>
             </div>
         </div>
@@ -39,10 +39,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total Tutoriale</h4>
+                    <h4>Total Candidati</h4>
                 </div>
                 <div class="card-body">
-                    122
+                    {{ $total_candidati }}
                 </div>
             </div>
         </div>
@@ -55,10 +55,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Numar Utilizatori</h4>
+                    <h4>Total Anunturi</h4>
                 </div>
                 <div class="card-body">
-                    45
+                    {{ $total_anunturi }}
                 </div>
             </div>
         </div>

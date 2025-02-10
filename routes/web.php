@@ -41,7 +41,9 @@ use App\Http\Controllers\Admin\AdminPaginaCategoriiController;
 use App\Http\Controllers\Admin\AdminPaginaPacheteController;
 use App\Http\Controllers\Admin\AdminPaginaDiverseController;
 use App\Http\Controllers\Admin\AdminAbonatController;
-
+use App\Http\Controllers\Admin\AdminSetariController;
+use App\Http\Controllers\Admin\AdminCompanieController;
+use App\Http\Controllers\Admin\AdminCandidatController;
 
 
 
@@ -539,4 +541,22 @@ Route::middleware(['admin:admin'])->group(function()
     Route::get('/admin/abonat-stergere/{id}',[AdminAbonatController::class,'stergere'])->name('admin_abonat_stergere');
 
 
+    Route::get('/admin/footer',[AdminSetariController::class,'index'])->name('admin_footer');
+    Route::post('/admin/footer/actualizare',[AdminSetariController::class,'actualizare'])->name('admin_actualizare_footer');
+
+    Route::get('/admin/companii',[AdminCompanieController::class,'companii'])->name('admin_companii');
+    Route::get('/admin/companii-detalii/{id}',[AdminCompanieController::class,'companii_detalii'])->name('admin_companii_detalii');
+    Route::get('/admin/companii-joburi/{id}',[AdminCompanieController::class,'companii_joburi'])->name('admin_companii_joburi');
+    Route::get('/admin/companii-aplicanti/{id}',[AdminCompanieController::class,'companii_aplicanti'])->name('admin_companii_aplicanti');
+    Route::get('/admin/companii-aplicanti-detalii/{id}',[AdminCompanieController::class,'companii_aplicanti_detalii'])->name('admin_companii_aplicanti_detalii');
+    Route::get('/admin/companii-stergere/{id}',[AdminCompanieController::class,'stergere'])->name('admin_companii_stergere');
+    
+
+
+    Route::get('/admin/candidati',[AdminCandidatController::class,'candidati'])->name('admin_candidati');
+    Route::get('/admin/candidati-detalii/{id}',[AdminCandidatController::class,'candidati_detalii'])->name('admin_candidati_detalii');
+    Route::get('/admin/candidati-aplicatii/{id}',[AdminCandidatController::class,'candidati_aplicatii'])->name('admin_candidati_aplicatii');
+    
+    Route::get('/admin/candidati-stergere/{id}',[AdminCandidatController::class,'stergere'])->name('admin_candidati_stergere');
+    
 });

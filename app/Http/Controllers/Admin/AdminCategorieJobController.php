@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobCategory;
+use App\Models\Job;
 
 class AdminCategorieJobController extends Controller
 {
@@ -56,10 +57,14 @@ class AdminCategorieJobController extends Controller
 
     }
 
-    public function stergere($id){
-        
+    public function stergere($id)
+    {
+        $verificare = Job::where('job_category_id',$id)->count();
+        if($verificare>0)
+        {
+            return redirect()->back()->with('error','Aceasta categorie este folosita de anunturi active deci nu poate fi stearsa!');
+        }
         $categorie_job = JobCategory::where('id',$id)->delete();
-
         return redirect()->route('admin_categorie_job')->with('success','Categoria a fost stearsa cu succes ! ');
     }
 }

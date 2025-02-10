@@ -35,7 +35,8 @@ class LogareController extends Controller
     
       $date_introduse = [
         'nume_utilizator' => $request->nume_utilizator,
-        'password' =>$request->parola
+        'password' =>$request->parola,
+        'status' => 1
       ];
 
      if(Auth::guard('companie')->attempt($date_introduse))
@@ -63,7 +64,8 @@ class LogareController extends Controller
     
       $date_introduse = [
         'nume_utilizator' => $request->nume_utilizator,
-        'password' =>$request->parola
+        'password' =>$request->parola,
+        'status' => 1
       ];
 
      if(Auth::guard('candidat')->attempt($date_introduse))

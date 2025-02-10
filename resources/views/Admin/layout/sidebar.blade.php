@@ -69,8 +69,6 @@
             </li>
 
 
-
-
             <li class="nav-item dropdown  {{ Request::is('admin/abonati-vizualizare')||Request::is('admin/abonati-trimite-email/*') ? 'active' : ' ' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Abonati</span></a>
                 <ul class="dropdown-menu">
@@ -80,6 +78,15 @@
             </li>
 
 
+            
+
+            <li class="{{ Request::is('admin/companii')||Request::is('admin/companii-detalii/*')||Request::is('admin/companii-joburi/*')||Request::is('admin/companii-aplicanti/*')||Request::is('admin/companii-aplicanti-detalii/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_companii') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Date Companie">
+                <i class="fas fa-hand-point-right"></i> <span>Date Companie</span></a>
+            </li>
+
+            <li class="{{ Request::is('admin/candidati')||Request::is('admin/candidati-detalii/*')||Request::is('admin/candidati-aplicatii/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_candidati') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Date Candidati">
+                <i class="fas fa-hand-point-right"></i> <span>Date Candidati</span></a>
+            </li>
 
             <li class="{{ Request::is('admin/alegere/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_alegere') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Alegere">
             <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Alegere</span></a>
@@ -92,8 +99,12 @@
             <li class="{{ Request::is('admin/articol/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_articol') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
                 <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Articol</span></a>
             </li>
+
+            <li class="{{ Request::is('admin/footer') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_footer') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Setari">
+                <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Footer</span></a>
+            </li>
             
-            <li class="{{ Request::is('admin/pachet/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pachet') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
+            <li class="{{ Request::is('admin/pachet/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pachet') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Pachete">
                 <i class="fas fa-hand-point-right"></i> <span>Pachete</span></a>
             </li>
             

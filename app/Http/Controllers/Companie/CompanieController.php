@@ -12,6 +12,7 @@ use App\Models\CompanieDomain;
 use App\Models\CompanieSize;
 use App\Models\CompaniePhoto;
 use App\Models\CandidatApplication;
+use App\Models\CandidatBookmark;
 use App\Models\Job;
 use App\Models\Candidate;
 use App\Models\CandidateEducation;
@@ -154,6 +155,10 @@ class CompanieController extends Controller
             return redirect()->back()->with('error','Numarul maxim de poze incarcate permis de pachet a fost atins! Pentru a adauga mai multe cumpara un pachet mai mare!');
         }
 
+        if(date('Y-m-d') > date('Y-m-d',strtotime($date_comenzi->data_expirare))){
+            return redirect()->back()->with('error','Pachetul cumparat a expirat!');
+        }
+
         $request->validate([
             'poza' => 'required|image|mimes:jpg,jpeg,png,gif'
         ]);
@@ -288,9 +293,13 @@ class CompanieController extends Controller
 
     public function creare_joburi()
     {
+
         $date_comenzi = Order::where('company_id',Auth::guard('companie')->user()->id)->where('status',1)->first();
         if(!$date_comenzi){
             return redirect()->back()->with('error','Trebuie sa cumperi un pachet pentru a accesa aceasta sectiune');
+        }
+        if(date('Y-m-d') > date('Y-m-d',strtotime($date_comenzi->data_expirare))){
+            return redirect()->back()->with('error','Pachetul cumparat a expirat!');
         }
 
 
@@ -413,6 +422,9 @@ class CompanieController extends Controller
    public function stergere_joburi_postate($id)
    {
     Job::where('id',$id)->delete();
+    CandidatApplication::where('job_id',$id)->delete();
+    CandidatBookmark::where('job_id',$id)->delete();
+
     return redirect()->route('joburi_postate_companie')->with('success',' Anuntul a fost sters cu succes! ');
    }
 
