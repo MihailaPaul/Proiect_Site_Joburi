@@ -150,19 +150,17 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
 
 
 
-
+@if($date_pagina_acasa->sectiune_alegere_stare == 'Vizibila')
 <div
     class="why-choose"
-    style="background-image: url({{ asset('uploads/banner3.jpg')}})"
->
+    style="background-image: url({{ asset('uploads/sectiune_alegere_fundal.jpg')}})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Why Choose Us</h2>
+                    <h2>{{ $date_pagina_acasa->sectiune_alegere_titlu }}</h2>
                     <p>
-                        Our Methods to help you build your career in
-                        future
+                       {{ $date_pagina_acasa->sectiune_alegere_text }}
                     </p>
                 </div>
             </div>
@@ -188,14 +186,17 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
         </div>
     </div>
 </div>
+@endif
 
+
+@if($date_pagina_acasa->sectiune_recomandari_stare == 'Vizibila')
 <div class="job">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Featured Jobs</h2>
-                    <p>Find the awesome jobs that matches your skill</p>
+                    <h2>{{ $date_pagina_acasa->sectiune_recomandari_titlu }}</h2>
+                    <p>{{ $date_pagina_acasa->sectiune_recomandari_text }}</p>
                 </div>
             </div>
         </div>
@@ -438,66 +439,48 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
         </div>
     </div>
 </div>
+@endif
 
+@if($date_pagina_acasa->sectiune_multumiri_stare == 'Vizibila')
 <div
     class="testimonial"
-    style="background-image: url({{ asset('uploads/banner11.jpg')}})"
+    style="background-image: url({{ asset('uploads/sectiune_multumiri_fundal.jpg')}})"
 >
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="main-header">Our Happy Clients</h2>
+                <h2 class="main-header">{{ $date_pagina_acasa->sectiune_multumiri_titlu }}</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="testimonial-carousel owl-carousel">
+
+                   @foreach ($recomandari_element as $element)
                     <div class="item">
                         <div class="photo">
-                            <img src="{{ asset('uploads/t1.jpg')}}" alt="" />
+                            <img src="{{ asset('uploads/'.$element->poza)}}" alt="" />
                         </div>
                         <div class="text">
-                            <h4>Robert Krol</h4>
-                            <p>CEO, ABC Company</p>
+                            <h4>{{ $element->nume }}</h4>
+                            <p>{{ $element->pozitie}}</p>
                         </div>
                         <div class="description">
                             <p>
-                                Lorem ipsum dolor sit amet, an labores
-                                explicari qui, eu nostrum copiosae
-                                argumentum has. Latine propriae quo no,
-                                unum ridens. Lorem ipsum dolor sit amet,
-                                an labores explicari qui, eu nostrum
-                                copiosae argumentum has. Latine propriae
-                                quo no, unum ridens.
+                                {!! nl2br($element->comentariu) !!}
                             </p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="photo">
-                            <img src="{{ asset('uploads/t2.jpg')}}" alt="" />
-                        </div>
-                        <div class="text">
-                            <h4>Sal Harvey</h4>
-                            <p>Director, DEF Company</p>
-                        </div>
-                        <div class="description">
-                            <p>
-                                Lorem ipsum dolor sit amet, an labores
-                                explicari qui, eu nostrum copiosae
-                                argumentum has. Latine propriae quo no,
-                                unum ridens. Lorem ipsum dolor sit amet,
-                                an labores explicari qui, eu nostrum
-                                copiosae argumentum has. Latine propriae
-                                quo no, unum ridens.
-                            </p>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endif
+
 
 <div class="blog">
     <div class="container">

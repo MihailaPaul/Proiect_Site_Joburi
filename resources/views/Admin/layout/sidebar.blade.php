@@ -35,7 +35,18 @@
                 </ul>
             </li>
 
-            <li class="{{ Request::is('admin/alegere/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_alegere') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Alegere"><i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Alegere</span></a></li>
+            <li class="{{ Request::is('admin/alegere/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_alegere') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Alegere">
+            <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Alegere</span></a>
+            </li>
+
+            <li class="{{ Request::is('admin/recomandari/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_recomandari') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Recomandari">
+             <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Multumiri</span></a>
+            </li>
+
+            <li class="{{ Request::is('admin/articol/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_articol') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
+                <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Articol</span></a>
+               </li>
+
         </ul>
     </aside>
 </div>

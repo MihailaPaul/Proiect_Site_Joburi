@@ -1,12 +1,12 @@
 {{-- Blade-ul care contine formularul de editare profil administrator --}}
 @extends('Admin.layout.panou_baza')
 {{-- Foloseste sablonul creat pentru a mentine stilul dorit --}}
-@section('heading','Alegere')
+@section('heading',' Elementele Sectiunii de articole')
 {{-- In sectiunea de main_content se constuieste formularul de editare profil  --}}
 @section('buton')
 
 <div>
-    <a href="{{ route('admin_alegere_creare') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga</a>
+    <a href="{{ route('admin_recomandari_creare') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga</a>
 </div>
 @endsection
 
@@ -21,26 +21,24 @@
                                 <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Simbol</th>
-                                    <th>Vizualizare Simbol</th>
+                                    <th>Poza</th>
                                     <th>Titlu</th>
-                                    <th>Text</th>
                                     <th>Optiuni</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($date_alegere as $element)
+                                    @foreach($date_articol as $element)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $element->simbol_alegere }}</td>
                                         <td>
-                                            <i class="{{ $element->simbol_alegere }}"></i>
+                                            <img src="{{ asset ('uploads/'. $element->poza) }}" alt="" class="w_150">
                                         </td>
-                                        <td>{{ $element->titlu_alegere }}</td>
-                                        <td>{{ $element->text_alegere }}</td>
+                                        <td>{{ $element->titlu}}</td>
+                                        <td>{{ $element->pozitie}}</td>
+
                                         <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_alegere_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>
-                                            <a href="{{ route('admin_alegere_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Sterge</a>
+                                            <a href="{{ route('admin_articol_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>
+                                            <a href="{{ route('admin_articol_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Esti sigur?');">Sterge</a>
                                         </td>
                                     </tr>
                                     @endforeach

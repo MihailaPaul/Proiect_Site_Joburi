@@ -29,7 +29,12 @@ return new class extends Migration
             $table->text('sectiune_alegere_text')->nullable();
             $table->text('sectiune_alegere_fundal');
             $table->text('sectiune_alegere_stare');
-
+            $table->text('sectiune_recomandari_titlu');
+            $table->text('sectiune_recomandari_text');
+            $table->text('sectiune_recomandari_stare');
+            $table->text('sectiune_multumiri_titlu');
+            $table->text('sectiune_multumiri_fundal');
+            $table->text('sectiune_multumiri_stare');
             $table->timestamps();
         });
     }

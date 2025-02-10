@@ -63,6 +63,6 @@ class AdminAlegereController extends Controller
         
         $alegere_element = AlegereItem::where('id',$id)->delete();
 
-        return redirect()->route('admin_alegere')->with('success','Elementul a fost stearsa cu succes! ');
+        return redirect()->route('admin_alegere')->with('success','Elementul a fost stears cu succes! ');
     }
 }

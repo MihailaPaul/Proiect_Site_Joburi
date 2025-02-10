@@ -19,13 +19,19 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                                     <button class="nav-link active" id="v-pills-1-tab" data-bs-toggle="pill" 
-                                    data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="true">Sectiune Cautare Job</button>
+                                    data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="true">Sectiunea Cautare Job</button>
     
                                     <button class="nav-link" id="v-pills-2-tab" data-bs-toggle="pill" 
-                                    data-bs-target="#v-pills-2" type="button" role="tab" aria-controls="v-pills-2" aria-selected="false">Sectiune Categorie</button>
+                                    data-bs-target="#v-pills-2" type="button" role="tab" aria-controls="v-pills-2" aria-selected="false">Sectiunea Categorie</button>
 
                                     <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" 
-                                    data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Sectiune Alegere</button>
+                                    data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Sectiunea Alegere</button>
+
+                                    <button class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" 
+                                    data-bs-target="#v-pills-4" type="button" role="tab" aria-controls="v-pills-4" aria-selected="false">Sectiunea Recomandari Job-uri</button>
+
+                                    <button class="nav-link" id="v-pills-5-tab" data-bs-toggle="pill" 
+                                    data-bs-target="#v-pills-5" type="button" role="tab" aria-controls="v-pills-5" aria-selected="false">Sectiunea Multumiri</button>
     
                                 </div>
                             </div>
@@ -107,6 +113,20 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                       {{-- Sfarsitul sectiunii de cautare job --}}
                                     </div>
       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab" tabindex="0">
                                       {{-- Startul sectiunii de categorii job --}}
                                       <div class="row">
@@ -141,6 +161,22 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                       {{-- Sfarsitul sectiunii de categorii job --}}
                                     </div>
                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab" tabindex="0">
                                         {{-- Startul sectiunii de motive de alegere --}}
@@ -179,7 +215,6 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                                  <input type="file" class="form-control mt_10" name="sectiune_alegere_fundal">
                                             </div>  
                                         </div>
-
                                         <div class="row">
                                           <div class="col-md-12">
                                              <div class="mb-4">
@@ -193,6 +228,102 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                        </div> 
                                         
                                         {{-- Sfarsitul sectiunii de motive de alegere --}}
+                                    </div>
+                                      
+
+
+
+
+
+
+
+
+
+
+                                    <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-2-tab" tabindex="0">
+                                        {{-- Startul sectiunii de Recomandari Job-uri --}}
+                                        <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="mb-4">
+                                                      <label class="form-label">Titlu </label>
+                                                      <input type="text" class="form-control" name="sectiune_recomandari_titlu" value="{{ $date_pagina_acasa->sectiune_recomandari_titlu }}">
+                                                  </div>
+                                              </div>
+                                        </div> 
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                              <div class="mb-4">
+                                                  <label class="form-label">Text </label>
+                                                  <input type="text" class="form-control" name="sectiune_recomandari_text" value="{{ $date_pagina_acasa->sectiune_recomandari_text }}">
+  
+                                              </div>
+                                           </div>
+                                        </div> 
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                             <div class="mb-4">
+                                                 <label class="form-label">Stare </label>
+                                                 <select name="sectiune_recomandari_stare" class="form-control select2">
+                                                  <option value="Invizibila" @if ( $date_pagina_acasa->sectiune_recomandari_stare =='Invizibila') selected @endif>Invizibila</option>
+                                                  <option value="Vizibila" @if ( $date_pagina_acasa->sectiune_recomandari_stare =='Vizibila') selected @endif>Vizibila</option>
+                                                 </select> 
+                                             </div>
+                                          </div>
+                                       </div> 
+                                        
+                                        {{-- Sfarsitul sectiunii Recomandari Job-uri --}}
+                                      </div>
+
+
+
+
+
+
+
+
+
+                                    
+                                      <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab" tabindex="0">
+                                        {{-- Startul sectiunii de multumiri de la clienti --}}
+                                        <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="mb-4">
+                                                      <label class="form-label">Titlu </label>
+                                                      <input type="text" class="form-control" name="sectiune_multumiri_titlu" value="{{ $date_pagina_acasa->sectiune_multumiri_titlu }}">
+                                                  </div>
+                                              </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                               <div class="mb-4">
+                                                   <label class="form-label">Fundal Actual</label>
+                                                 <div>
+                                                     <img src="{{ asset('uploads/'.$date_pagina_acasa->sectiune_multumiri_fundal)}}" alt="" class="w_300">
+                                                 </div>
+                                               </div>
+                                            </div>
+                                         </div> 
+
+                                         <div class="mb-4">
+                                            <label class="form-label">Poza Fundal</label>
+                                            <div>
+                                                 <input type="file" class="form-control mt_10" name="sectiune_multumiri_fundal">
+                                            </div>  
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                             <div class="mb-4">
+                                                 <label class="form-label">Stare </label>
+                                                 <select name="sectiune_multumiri_stare" class="form-control select2">
+                                                  <option value="Invizibila" @if ( $date_pagina_acasa->sectiune_multumiri_stare =='Invizibila') selected @endif>Invizibila</option>
+                                                  <option value="Vizibila" @if ( $date_pagina_acasa->sectiune_multumiri_stare =='Vizibila') selected @endif>Vizibila</option>
+                                                 </select> 
+                                             </div>
+                                          </div>
+                                       </div> 
+                                        
+                                        {{-- Sfarsitul sectiunii de multumiri de la clienti --}}
                                     </div>
                                       
 

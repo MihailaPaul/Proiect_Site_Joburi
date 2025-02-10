@@ -19,19 +19,19 @@
                 >
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a href="{{ route('acasa') }}" class="nav-link"> Home </a>
+                            <a href="{{ route('acasa') }}" class="nav-link"> Acasa </a>
                         </li>
                         <li class="nav-item">
-                            <a href="jobs.html" class="nav-link"> Find Jobs </a>
+                            <a href="jobs.html" class="nav-link"> Gaseste Job-uri </a>
                         </li>
                         <li class="nav-item">
-                            <a href="companies.html" class="nav-link"> Companies </a>
+                            <a href="companies.html" class="nav-link"> Companii </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pricing.html" class="nav-link">Pricing </a >
+                            <a href="pricing.html" class="nav-link"> Preturi </a >
                         </li>
                         <li class="nav-item">
-                            <a href="blog.html" class="nav-link"> Blog</a >
+                            <a href="blog.html" class="nav-link"> Dezvoltare </a >
                         </li>
                         <li class="nav-item">
                                 <a href="login.html" ><i class="fas fa-sign-in-alt"></i> Login </a >

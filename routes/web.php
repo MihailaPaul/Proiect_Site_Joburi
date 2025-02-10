@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\AdminPaginaAcasaController;
 use App\Http\Controllers\Admin\AdminCategorieJobController;
 use App\Http\Controllers\Front\CategoriiJobController;
 use App\Http\Controllers\Admin\AdminAlegereController;
+use App\Http\Controllers\Admin\AdminRecomandariController;
+use App\Http\Controllers\Admin\AdminArticolController;
+
 
 Route::get('/', [AcasaController::class, 'index'])->name('acasa');
 Route::get('categorii-job', [CategoriiJobController::class,'categorii'])->name('categorii_job');
@@ -84,4 +87,32 @@ Route::middleware(['admin:admin'])->group(function()
     Route::post('/admin/alegere/modifica/{id}',[AdminAlegereController::class,'modificare'])->name('admin_alegere_modificare');
 
     Route::get('/admin/alegere/stergere/{id}',[AdminAlegereController::class,'stergere'])->name('admin_alegere_stergere');
+
+
+
+    Route::get('/admin/recomandare/vizualizare',[AdminRecomandariController::class,'index'])->name('admin_recomandari');
+
+    Route::get('/admin/recomandare/creare',[AdminRecomandariController::class,'creare'])->name('admin_recomandari_creare');
+
+    Route::post('/admin/recomandare/salvare',[AdminRecomandariController::class,'salvare'])->name('admin_recomandari_salvare');
+
+    Route::get('/admin/recomandare/editare/{id}',[AdminRecomandariController::class,'editare'])->name('admin_recomandari_editare');
+
+    Route::post('/admin/recomandare/modifica/{id}',[AdminRecomandariController::class,'modificare'])->name('admin_recomandari_modificare');
+
+    Route::get('/admin/recomandare/stergere/{id}',[AdminRecomandariController::class,'stergere'])->name('admin_recomandari_stergere');
+
+
+
+    Route::get('/admin/articol/vizualizare',[AdminArticolController::class,'index'])->name('admin_articol');
+
+    Route::get('/admin/articol/creare',[AdminArticolController::class,'creare'])->name('admin_articol_creare');
+
+    Route::post('/admin/articol/salvare',[AdminArticolController::class,'salvare'])->name('admin_articol_salvare');
+
+    Route::get('/admin/articol/editare/{id}',[AdminArticolController::class,'editare'])->name('admin_articol_editare');
+
+    Route::post('/admin/articol/modifica/{id}',[AdminArticolController::class,'modificare'])->name('admin_articol_modificare');
+
+    Route::get('/admin/articol/stergere/{id}',[AdminArticolController::class,'stergere'])->name('admin_articol_stergere');
 });

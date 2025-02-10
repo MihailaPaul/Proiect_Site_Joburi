@@ -1468,7 +1468,7 @@ h6 .badge {
 /* 3.18 Navbar */
 .navbar {
   height: 70px;
-  left: 250px;
+  left: 260px;
   right: 5px;
   position: absolute;
   z-index: 890;
@@ -2415,7 +2415,7 @@ pre {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 250px;
+  width: 260px;
   background-color: #fff;
   z-index: 880;
   left: 0; }
@@ -2427,7 +2427,7 @@ pre {
   transition: all .5s; }
 
 body.sidebar-gone .main-sidebar {
-  left: -250px; }
+  left: -260px; }
 
 body.sidebar-mini .hide-sidebar-mini {
   display: none !important; }

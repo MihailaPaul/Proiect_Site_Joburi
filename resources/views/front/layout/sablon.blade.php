@@ -72,13 +72,13 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
                             <div class="left">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="right">contact@arefindev.com</div>
+                            <div class="right">email</div>
                         </div>
                         <div class="list-item">
                             <div class="left">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="right">122-222-1212</div>
+                            <div class="right">telefon</div>
                         </div>
                         <ul class="social">
                             <li>

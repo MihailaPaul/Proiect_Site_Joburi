@@ -29,7 +29,11 @@ class AdminPaginaAcasaController extends Controller
             'stare_sectiune_categorie'=>'required',
             'sectiune_alegere_titlu'=>'required',
             'sectiune_alegere_stare'=>'required',
-          ]);
+            'sectiune_recomandari_titlu'=>'required',
+            'sectiune_recomandari_stare'=>'required',
+            'sectiune_multumiri_titlu'=>'required',
+            'sectiune_multumiri_stare'=>'required',
+          ]); 
 
           if($request->hasFile('fundal')){
             $request->validate([ 
@@ -63,6 +67,22 @@ class AdminPaginaAcasaController extends Controller
             $date_pagina_acasa->sectiune_alegere_fundal = $nume_final_alegere;
           }
 
+          if($request->hasFile('sectiune_multumiri_fundal')){
+            $request->validate([ 
+                'sectiune_multumiri_fundal' => 'image|mimes:jpg,jpeg,png,gif'
+            ]);
+          
+            unlink(public_path('uploads/'.$date_pagina_acasa->sectiune_multumiri_fundal));
+
+            $ext_multumiri= $request->file('sectiune_multumiri_fundal')->extension();
+
+            $nume_final_multumiri = 'sectiune_multumiri_fundal'.'.'.$ext_multumiri;
+
+            $request->file('sectiune_multumiri_fundal')->move(public_path('uploads/'),$nume_final_multumiri);
+
+            $date_pagina_acasa->sectiune_multumiri_fundal = $nume_final_multumiri;
+          }
+
           $date_pagina_acasa->titlu = $request->titlu;
           $date_pagina_acasa->text = $request->text;
           $date_pagina_acasa->titlu_job = $request->titlu_job;
@@ -78,10 +98,16 @@ class AdminPaginaAcasaController extends Controller
           $date_pagina_acasa->sectiune_alegere_text = $request->sectiune_alegere_text;
           $date_pagina_acasa->sectiune_alegere_stare = $request->sectiune_alegere_stare;
 
+          $date_pagina_acasa->sectiune_recomandari_titlu = $request->sectiune_recomandari_titlu;
+          $date_pagina_acasa->sectiune_recomandari_text = $request->sectiune_recomandari_text;
+          $date_pagina_acasa->sectiune_recomandari_stare = $request->sectiune_recomandari_stare;
+
+          $date_pagina_acasa->sectiune_multumiri_titlu = $request->sectiune_multumiri_titlu;
+          $date_pagina_acasa->sectiune_multumiri_stare = $request->sectiune_multumiri_stare;
 
           $date_pagina_acasa->update();
 
-          return redirect()->back()->with('success','Modificarile datelor a fost efectuata cu succes!');
+          return redirect()->back()->with('success','Modificarea datelor a fost efectuata cu succes!');
        
 
 
