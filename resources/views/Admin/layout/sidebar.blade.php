@@ -19,11 +19,11 @@
             <li class="{{ Request::is('admin/home') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_home') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Tablou">
                 <i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 {{-- In lista de elemente se adauga si o instanta de drop down menu --}}
-            <li class="nav-item dropdown {{ Request::is('admin/pagina-acasa') ? 'active' : ' ' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/pagina-acasa') ||Request::is('admin/pagina-blog')}}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Setari Pagini</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/pagina-acasa') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pagina_acasa') }}"><i class="fas fa-angle-right"></i>Pagina Acasa</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>
+                    <li class="{{ Request::is('admin/pagina-blog') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pagina_blog') }}"><i class="fas fa-angle-right"></i>Pagina Blog</a></li>
                 </ul>
             </li>
 
@@ -45,8 +45,8 @@
 
             <li class="{{ Request::is('admin/articol/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_articol') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
                 <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Articol</span></a>
-               </li>
-
+            </li>
+            
         </ul>
     </aside>
 </div>

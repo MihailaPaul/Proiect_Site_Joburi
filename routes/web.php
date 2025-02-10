@@ -1,21 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Front\AcasaController;
+use App\Http\Controllers\Front\CategoriiJobController;
+use App\Http\Controllers\Front\ArticolController;
+
 use App\Http\Controllers\Admin\TablouAdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
-use App\Http\Controllers\Front\AcasaController;
 use App\Http\Controllers\Admin\AdminPaginaAcasaController;
+use App\Http\Controllers\Admin\AdminPaginaBlogController;
 use App\Http\Controllers\Admin\AdminCategorieJobController;
-use App\Http\Controllers\Front\CategoriiJobController;
 use App\Http\Controllers\Admin\AdminAlegereController;
 use App\Http\Controllers\Admin\AdminRecomandariController;
 use App\Http\Controllers\Admin\AdminArticolController;
 
 
+
 Route::get('/', [AcasaController::class, 'index'])->name('acasa');
+
 Route::get('categorii-job', [CategoriiJobController::class,'categorii'])->name('categorii_job');
 
+Route::get('blog', [ArticolController::class,'index'])->name('blog');
+Route::get('articol/{slug}', [ArticolController::class,'adresa'])->name('articol');
 
 
 
@@ -58,9 +66,16 @@ Route::middleware(['admin:admin'])->group(function()
     //Ruta pentru trimiterea editarilor facute profilului de admin
     Route::post('/admin/editare-profil-submit',[AdminProfileController::class,'profil_submit'])->name('profil_admin_submit');
 
-    Route::get('/admin/pagina-acasa',[AdminPaginaAcasaController::class,'index'])->name('admin_pagina_acasa');
 
+
+
+    Route::get('/admin/pagina-acasa',[AdminPaginaAcasaController::class,'index'])->name('admin_pagina_acasa');
     Route::post('/admin/pagina-acasa/modifica',[AdminPaginaAcasaController::class,'modifica'])->name('admin_pagina_acasa_modifica');
+
+
+    Route::get('/admin/pagina-blog',[AdminPaginaBlogController::class,'index'])->name('admin_pagina_blog');
+    Route::post('/admin/pagina-blog/modificare',[AdminPaginaBlogController::class,'modificare'])->name('admin_pagina_blog_modificare');
+
 
     Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
 

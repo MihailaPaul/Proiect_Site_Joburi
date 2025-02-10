@@ -35,6 +35,9 @@ return new class extends Migration
             $table->text('sectiune_multumiri_titlu');
             $table->text('sectiune_multumiri_fundal');
             $table->text('sectiune_multumiri_stare');
+            $table->text('sectiune_articole_titlu');
+            $table->text('sectiune_articole_text')->nullable();
+            $table->text('sectiune_articole_stare');
             $table->timestamps();
         });
     }

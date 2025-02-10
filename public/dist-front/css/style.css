@@ -418,7 +418,6 @@ select {
     margin-top: 30px;
 }
 .search-section .inner {
-    border: 1px dashed #e0e0e0;
     padding: 20px 20px;
     position: relative;
     z-index: 99999;
@@ -1854,4 +1853,18 @@ h4.resume {
     color: #46bc29;
     font-size: 22px;
     font-weight: 700;
+}
+
+/* Pagination */
+ul.pagination .active>.page-link, ul.pagination .page-link.active {
+background-color: #e34236;
+border-color: #e34236;
+}
+
+ul.pagination .page-link{
+    color: #e34236 ;
+}
+
+ul.pagination .active>.page-link{
+    color: #fff ;
 }

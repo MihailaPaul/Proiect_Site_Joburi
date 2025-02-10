@@ -1,12 +1,12 @@
 {{-- Blade-ul care contine formularul de editare profil administrator --}}
 @extends('Admin.layout.panou_baza')
 {{-- Foloseste sablonul creat pentru a mentine stilul dorit --}}
-@section('heading',' Elementele Sectiunii de articole')
+@section('heading',' Elementele Sectiunii De Articole')
 {{-- In sectiunea de main_content se constuieste formularul de editare profil  --}}
 @section('buton')
 
 <div>
-    <a href="{{ route('admin_recomandari_creare') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga</a>
+    <a href="{{ route('admin_articol_creare') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga</a>
 </div>
 @endsection
 
@@ -34,7 +34,6 @@
                                             <img src="{{ asset ('uploads/'. $element->poza) }}" alt="" class="w_150">
                                         </td>
                                         <td>{{ $element->titlu}}</td>
-                                        <td>{{ $element->pozitie}}</td>
 
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_articol_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>

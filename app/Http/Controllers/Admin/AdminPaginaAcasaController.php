@@ -33,6 +33,8 @@ class AdminPaginaAcasaController extends Controller
             'sectiune_recomandari_stare'=>'required',
             'sectiune_multumiri_titlu'=>'required',
             'sectiune_multumiri_stare'=>'required',
+            'sectiune_articole_titlu'=>'required',
+            'sectiune_articole_stare'=>'required'
           ]); 
 
           if($request->hasFile('fundal')){
@@ -104,6 +106,10 @@ class AdminPaginaAcasaController extends Controller
 
           $date_pagina_acasa->sectiune_multumiri_titlu = $request->sectiune_multumiri_titlu;
           $date_pagina_acasa->sectiune_multumiri_stare = $request->sectiune_multumiri_stare;
+
+          $date_pagina_acasa->sectiune_articole_titlu = $request->sectiune_articole_titlu;
+          $date_pagina_acasa->sectiune_articole_text = $request->sectiune_articole_text;
+          $date_pagina_acasa->sectiune_articole_stare = $request->sectiune_articole_stare;
 
           $date_pagina_acasa->update();
 

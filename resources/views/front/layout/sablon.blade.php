@@ -9,8 +9,8 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
 
-        <meta name="description" content="" />
-        <title>Job Wise</title>
+        <meta name="description" content="@yield('seo_meta_description')" />
+        <title>@yield('seo_title')</title>
 
         <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}" />
 

@@ -437,4 +437,10 @@ hr.invoice-above-table {
 
   }
 
- 
+ h4.seo_section{
+    margin-top: 40px;
+    padding: 5px;
+    background: #ffcfcf;
+    color: red;
+    font-size: 20px;
+ }

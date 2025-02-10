@@ -32,6 +32,9 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
 
                                     <button class="nav-link" id="v-pills-5-tab" data-bs-toggle="pill" 
                                     data-bs-target="#v-pills-5" type="button" role="tab" aria-controls="v-pills-5" aria-selected="false">Sectiunea Multumiri</button>
+
+                                    <button class="nav-link" id="v-pills-6-tab" data-bs-toggle="pill" 
+                                    data-bs-target="#v-pills-6" type="button" role="tab" aria-controls="v-pills-6" aria-selected="false">Sectiunea Articole</button>
     
                                 </div>
                             </div>
@@ -326,6 +329,44 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                         {{-- Sfarsitul sectiunii de multumiri de la clienti --}}
                                     </div>
                                       
+
+
+
+                                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab" tabindex="0">
+                                        {{-- Startul sectiunii de Articole --}}
+                                        <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="mb-4">
+                                                      <label class="form-label">Titlu </label>
+                                                      <input type="text" class="form-control" name="sectiune_articole_titlu" value="{{ $date_pagina_acasa->sectiune_articole_titlu }}">
+                                                  </div>
+                                              </div>
+                                        </div> 
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                              <div class="mb-4">
+                                                  <label class="form-label">Text </label>
+                                                  <input type="text" class="form-control" name="sectiune_articole_text" value="{{ $date_pagina_acasa->sectiune_articole_text }}">
+  
+                                              </div>
+                                           </div>
+                                        </div> 
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                             <div class="mb-4">
+                                                 <label class="form-label">Stare </label>
+                                                 <select name="sectiune_articole_stare" class="form-control select2">
+                                                  <option value="Invizibila" @if ( $date_pagina_acasa->sectiune_articole_stare =='Invizibila') selected @endif>Invizibila</option>
+                                                  <option value="Vizibila" @if ( $date_pagina_acasa->sectiune_articole_stare =='Vizibila') selected @endif>Vizibila</option>
+                                                 </select> 
+                                             </div>
+                                          </div>
+                                       </div> 
+                                        
+                                        {{-- Sfarsitul sectiunii Articole --}}
+                                      </div>
+
+
 
 
                                 </div>

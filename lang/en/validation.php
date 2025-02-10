@@ -10,7 +10,7 @@ return [
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
     | as the size rules. Feel free to tweak each of these messages here.
-    |
+    |attribute must only contain letters, numbers, dashes and underscores
     */
 
     'accepted' => 'The :attribute must be accepted.',
@@ -19,7 +19,7 @@ return [
     'after' => 'The :attribute must be a date after :date.',
     'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
     'alpha' => 'The :attribute must only contain letters.',
-    'alpha_dash' => 'The :attribute must only contain letters, numbers, dashes and underscores.',
+    'alpha_dash' => 'Campul :attribute poate sa contina doar litere, numere, linii si underscore.',
     'alpha_num' => 'The :attribute must only contain letters and numbers.',
     'array' => 'The :attribute must be an array.',
     'before' => 'The :attribute must be a date before :date.',
@@ -125,7 +125,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => 'Datele introduse in campul :attribute au fost folosite deja!',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',

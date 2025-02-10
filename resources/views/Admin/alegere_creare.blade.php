@@ -29,7 +29,7 @@
                             <label>Titlu </label>
                             <input type="text" class="form-control" name="titlu" value="">
                         </div>
-
+                        
                         <div class="form-group mb-3">
                             <label>Text </label>
                             <textarea name="text" class="form-control h_100" cols="30" rows="10"></textarea>

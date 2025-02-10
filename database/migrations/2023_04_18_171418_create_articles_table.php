@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('descriere');
             $table->text('vizualizari');
             $table->text('poza');
+            $table->text('SEO_titlu')->nullable();
+            $table->text('SEO_descriere')->nullable();
             $table->timestamps();
         });
     }
