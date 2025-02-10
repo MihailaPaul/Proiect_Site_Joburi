@@ -27,7 +27,7 @@
             </div>
 
             <div class="col-lg-9 col-md-12">
-                <div action="{{ route('actualizare_profil_candidat') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('actualizare_profil_candidat')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
@@ -55,9 +55,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for=""> Pozitie </label>
+                                <label for=""> Ocupatie(ex.Student/Director/Programator/Fara Ocupatie) </label>
                                 <div class="form-group">
-                                    <input type="text" name="pozitie" class="form-control" value="{{Auth::guard('candidat')->user()->pozitie }}"/>
+                                    <input type="text" name="pozitie" class="form-control" value="{{Auth::guard('candidat')->user()->pozitie}}"/>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -115,7 +115,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="">Data Nasterii</label>
                                 <div class="form-group">
-                                    <input type="text" name="date_nastere" class="form-control datepicker" value="{{Auth::guard('candidat')->user()->data_nastere }}"/>
+                                    <input type="text" name="data_nastere" class="form-control datepicker" value="{{Auth::guard('candidat')->user()->data_nastere }}"/>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -123,7 +123,6 @@
                                     <input type="submit" class="btn btn-primary" value="Modifica"/>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </form>
             </div>

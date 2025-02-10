@@ -31,6 +31,6 @@ class Job extends Model
     }
     public function rJobSalaryRange()
     {
-        return $this->belongsTo(JobSalaryRange::class,'job_salary_range');
+        return $this->belongsTo(JobSalaryRange::class,'job_salary_range_id');
     }
 }

@@ -2,7 +2,10 @@
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="index.html" class="logo">
-            <img src="{{ asset('uploads/logo.png')}}" alt="" />
+            <h1>
+                <span style="color: black; font-family: Helvetica; font-weight: bold; text-transform: none;">Job<span style="color: #46bc29; font-family: Helvetica; font-weight: bold; text-transform: none;">Wise</span></span>
+            </h1>
+            {{-- <img src="{{ asset('uploads/logo.png')}}" alt="" /> --}}
         </a>
     </div>
 
@@ -11,12 +14,14 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="{{ route('acasa') }}">
-                    <img src="{{ asset('uploads/logo.png')}}" alt="" />
+                    <h1>
+                        <span style="color: black; font-family: Helvetica; font-weight: bold; text-transform: none;">Job<span style="color: #46bc29; font-family: Helvetica; font-weight: bold; text-transform: none;">Wise</span></span>
+                    </h1>
+                    {{-- <img src="{{ asset('uploads/logo.png')}}" alt="" /> --}}
                 </a>
                 <div
                     class="collapse navbar-collapse mean-menu"
-                    id="navbarSupportedContent"
-                >
+                    id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                             <a href="{{ route('acasa') }}" class="nav-link"> Acasa </a>

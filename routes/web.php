@@ -9,7 +9,7 @@ use App\Http\Controllers\Front\PachetController;
 use App\Http\Controllers\Front\LogareController;
 use App\Http\Controllers\Front\InregistrareController;
 use App\Http\Controllers\Front\ParolaUitataController;
-
+use App\Http\Controllers\Front\PaginaJoburiController;
 
 use App\Http\Controllers\Companie\CompanieController;
 use App\Http\Controllers\Candidat\CandidatController;
@@ -51,6 +51,8 @@ Route::get('blog', [ArticolController::class,'index'])->name('blog');
 Route::get('articol/{slug}', [ArticolController::class,'adresa'])->name('articol');
 
 Route::get('pachete', [PachetController::class,'index'])->name('pachete');
+
+Route::get('locuri-de-munca', [PaginaJoburiController::class,'index'])->name('pagina_joburi');
 
 
 
@@ -132,8 +134,44 @@ Route::middleware(['candidat:candidat'])->group(function()
     Route::get('/candidat/editare-profil',[CandidatController::class,'editare_profil_candidat'])->name('editare_profil_candidat');
     Route::post('/candidat/editare-profil/modifica',[CandidatController::class,'actualizare_profil_candidat'])->name('actualizare_profil_candidat');
 
+    Route::get('/candidat/editare-parola',[CandidatController::class,'editare_parola_candidat'])->name('editare_parola_candidat');
+    Route::post('/candidat/editare-parola/actualizare',[CandidatController::class,'actualizare_parola_candidat'])->name('actualizare_parola_candidat');
+
+    
+    Route::get('/candidat/educatie/vizualizare',[CandidatController::class,'educatie'])->name('educatie_candidat');
+    Route::get('/candidat/educatie/creare',[CandidatController::class,'creare_educatie'])->name('educatie_candidat_creare');
+    Route::post('/candidat/educatie/salvare',[CandidatController::class,'salvare_educatie'])->name('educatie_candidat_salvare');
+    Route::get('/candidat/educatie/editare/{id}',[CandidatController::class,'editare_educatie'])->name('educatie_candidat_editare');
+    Route::post('/candidat/educatie/actualizare/{id}',[CandidatController::class,'actualizare_educatie'])->name('educatie_candidat_actualizare');
+    Route::get('/candidat/educatie/stergere/{id}',[CandidatController::class,'stergere_educatie'])->name('educatie_candidat_stergere');
+
+
+    Route::get('/candidat/competente/vizualizare',[CandidatController::class,'competente'])->name('competente_candidat');
+    Route::get('/candidat/competente/creare',[CandidatController::class,'creare_competente'])->name('competente_candidat_creare');
+    Route::post('/candidat/competente/salvare',[CandidatController::class,'salvare_competente'])->name('competente_candidat_salvare');
+    Route::get('/candidat/competente/editare/{id}',[CandidatController::class,'editare_competente'])->name('competente_candidat_editare');
+    Route::post('/candidat/competente/actualizare/{id}',[CandidatController::class,'actualizare_competente'])->name('competente_candidat_actualizare');
+    Route::get('/candidat/competente/stergere/{id}',[CandidatController::class,'stergere_competente'])->name('competente_candidat_stergere');
+
+    
+    Route::get('/candidat/experienta/vizualizare',[CandidatController::class,'experienta'])->name('experienta_candidat');
+    Route::get('/candidat/experienta/creare',[CandidatController::class,'creare_experienta'])->name('experienta_candidat_creare');
+    Route::post('/candidat/experienta/salvare',[CandidatController::class,'salvare_experienta'])->name('experienta_candidat_salvare');
+    Route::get('/candidat/experienta/editare/{id}',[CandidatController::class,'editare_experienta'])->name('experienta_candidat_editare');
+    Route::post('/candidat/experienta/actualizare/{id}',[CandidatController::class,'actualizare_experienta'])->name('experienta_candidat_actualizare');
+    Route::get('/candidat/experienta/stergere/{id}',[CandidatController::class,'stergere_experienta'])->name('experienta_candidat_stergere');
+
+
+    Route::get('/candidat/documente/vizualizare',[CandidatController::class,'documente'])->name('documente_candidat');
+    Route::get('/candidat/documente/creare',[CandidatController::class,'creare_documente'])->name('documente_candidat_creare');
+    Route::post('/candidat/documente/salvare',[CandidatController::class,'salvare_documente'])->name('documente_candidat_salvare');
+    Route::get('/candidat/documente/editare/{id}',[CandidatController::class,'editare_documente'])->name('documente_candidat_editare');
+    Route::post('/candidat/documente/actualizare/{id}',[CandidatController::class,'actualizare_documente'])->name('documente_candidat_actualizare');
+    Route::get('/candidat/documente/stergere/{id}',[CandidatController::class,'stergere_documente'])->name('documente_candidat_stergere');
+
+
     });
- 
+  
 
 
 

@@ -4,16 +4,17 @@
 @section('seo_meta_description'){{ $date_pagina_articol->SEO_descriere }}@endsection --}}
 
 @section('continut')
+
 <div class="page-top"style="background-image: url('{{ asset('uploads/banner.jpg')}}')">
-<div class="bg"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Editare Parola</h2>
+            <div class="bg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Editare Parola</h2>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 <div class="page-content user-panel">
@@ -21,11 +22,12 @@
         <div class="row">
             <div class="col-lg-3 col-md-12">
                 <div class="card">
-                   @include('companie.layout.meniu_lateral')
+                   @include('candidat.layout.meniu_lateral')
                 </div>
             </div>
+
             <div class="col-lg-9 col-md-12">
-                <form action="{{ route('salvare_editare_parola_companie') }}" method="post">
+                <form action="{{ route('actualizare_parola_candidat') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -40,7 +42,7 @@
                                 <input type="password" name="reintroducere_parola" class="form-control" value=""/>
                             </div>
                         </div>
-                    </div>  
+                    </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
@@ -52,5 +54,5 @@
         </div>
     </div>
 </div>
-
+         
 @endsection

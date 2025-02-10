@@ -9,4 +9,9 @@ class Company extends Authenticatable
 {  
    
     use HasFactory;
+
+    public function rJob()
+    {
+        return $this->hasMany(Job::class);
+    }
 }

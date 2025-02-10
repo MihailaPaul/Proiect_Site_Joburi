@@ -24,14 +24,15 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                         </p>
                     </div>
                     <div class="search-section">
-                        <form action="jobs.html" method="post">
+                        <form action="{{ url('locuri-de-munca') }}" method="get">
+                          
                             <div class="inner">
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <input
                                                 type="text"
-                                                name=""
+                                                name="titlu"
                                                 class="form-control"
                                                 placeholder="{{$date_pagina_acasa->titlu_job}}"
                                             />
@@ -39,26 +40,8 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
-                                            <select
-                                                name=""
-                                                class="form-select select2"
-                                            >
-                                                <option value="">
-                                                    {{$date_pagina_acasa->locatie_job}}
-                                                </option>
-                                                @foreach( $locatie_job as $obiect)
-                                                    <option value="{{ $obiect->id }}">{{ $obiect->nume_locatie }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <select name=""class="form-select select2">
-
-                                                <option value="">
-                                                    {{$date_pagina_acasa->categorie_job}}
-                                                </option>
+                                            <select name="nume_categorie"class="form-select select2">
+                                                <option value="">{{$date_pagina_acasa->categorie_job}}</option>
                                                 @foreach( $categorie_job_extins as $obiect)
                                                     <option value="{{ $obiect->id }}">{{ $obiect->nume_categorie }}</option>
                                                 @endforeach
@@ -67,18 +50,29 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
-                                        <button
-                                            type="submit"
-                                            class="btn btn-primary"
-                                        >
-                                            <i
-                                                class="fas fa-search"
-                                            ></i>
+                                        <div class="form-group">
+                                            <select name="nume_locatie" class="form-select select2">
+                                                <option value="">
+                                                    {{$date_pagina_acasa->locatie_job}}
+                                                </option>
+                                                @foreach($locatie_job as $obiect)
+                                                    <option value="{{ $obiect->id }}">{{ $obiect->nume_locatie }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="hidden" name="nume_tip" value="">
+                                        <input type="hidden" name="nume_experienta" value="">
+                                        <input type="hidden" name="sume" value="">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-search"></i>
                                             {{$date_pagina_acasa->text_buton}}
                                         </button>
                                     </div>
                                 </div>
                             </div>
+                        
                         </form>
                     </div>
                 </div>
