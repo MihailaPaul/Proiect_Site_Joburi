@@ -74,6 +74,13 @@ Route::middleware(['companie:companie'])->group(function()
     {
     Route::get('/companie/meniu',[CompanieController::class,'meniu_companie'])->name('meniu_companie');
     Route::get('/companie/logout',[LogareController::class,'logout_companie'])->name('logout_companie');
+    Route::get('/companie/plata-pachet',[CompanieController::class,'plata_pachet'])->name('plata_pachet_companie');
+    Route::get('/companie/plati',[CompanieController::class,'plati_companie'])->name('plati_companie');
+
+    Route::post('/companie/paypal/plata', [CompanieController::class, 'paypal'])->name('companie_paypal');
+    Route::get('/companie/paypal/succes', [CompanieController::class, 'paypal_succes'])->name('companie_paypal_succes');
+    Route::get('/companie/paypal/anulare', [CompanieController::class, 'paypal_anulare'])->name('companie_paypal_anulare');
+
     });
 
 

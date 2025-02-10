@@ -26,7 +26,7 @@
                         <div class="card mb-5 mb-lg-0">
                             <div class="card-body">
                                 <h2 class="card-title">{{$element->nume_pachet}}</h2>
-                                <h3 class="card-price">{{$element->pret_pachet}} lei</h3>
+                                <h3 class="card-price">{{$element->pret_pachet}} €</h3>
                                 <h4 class="card-day">({{$element->durata_pachet}} De Zile)</h4>
                                 <hr/>
                                 <ul class="fa-ul">
@@ -119,7 +119,7 @@
 
                                 <div class="buy">
                                     <a href="" class="btn btn-primary">
-                                        Choose Plan
+                                       Alege Plan
                                     </a>
                                 </div>
                             </div>
