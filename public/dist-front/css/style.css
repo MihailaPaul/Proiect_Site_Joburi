@@ -672,6 +672,7 @@ select {
 .job .item .text h3 {
     font-size: 18px;
     font-weight: 600;
+    padding-right: 40px;
 }
 .job .item .text h3 a {
     color: #333;

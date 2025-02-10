@@ -26,15 +26,19 @@
                         <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                             <a href="{{ route('acasa') }}" class="nav-link"> Acasa </a>
                         </li>
+
                         <li class="nav-item {{ Request::is('locuri-de-munca')||Request::is('detalii-job/*') ? 'active' : '' }}">
                             <a href="{{ route('pagina_joburi') }}" class="nav-link"> Joburi </a>
                         </li>
-                        <li class="nav-item ">
-                            <a href="companies.html" class="nav-link"> Companii </a>
+
+                        <li class="nav-item {{ Request::is('companii')||Request::is('detalii-companie/*') ? 'active' : '' }}">
+                            <a href="{{ route('pagina_companii') }}" class="nav-link"> Companii </a>
                         </li>
+
                         <li class="nav-item {{ Request::is('pachete') ? 'active' : '' }}">
                             <a href="{{ route('pachete') }}" class="nav-link"> Pachete </a >
                         </li>
+                        
                         <li class="nav-item {{ Request::is('blog')||Request::is('articol/*') ? 'active' : '' }}">
                             <a href="{{ route('blog') }}" class="nav-link"> Blog </a >
                         </li>

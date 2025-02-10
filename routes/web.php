@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\LogareController;
 use App\Http\Controllers\Front\InregistrareController;
 use App\Http\Controllers\Front\ParolaUitataController;
 use App\Http\Controllers\Front\PaginaJoburiController;
+use App\Http\Controllers\Front\PaginiCompanieController;
 
 use App\Http\Controllers\Companie\CompanieController;
 use App\Http\Controllers\Candidat\CandidatController;
@@ -58,6 +59,9 @@ Route::get('locuri-de-munca', [PaginaJoburiController::class,'index'])->name('pa
 Route::get('detalii-job/{id}', [PaginaJoburiController::class,'detalii_job'])->name('detalii_job');
 Route::post('detalii-job/contact/email', [PaginaJoburiController::class,'contactare_companie'])->name('email_contactare_companie');
 
+Route::get('companii', [PaginiCompanieController::class,'index'])->name('pagina_companii');
+Route::get('detalii-companie/{id}', [PaginiCompanieController::class,'detalii_companie'])->name('detalii_companie');
+Route::post('detalii-companie/contact/email', [PaginiCompanieController::class,'contactare_companie_direct'])->name('contactare_companie');
 
 
 Route::get('login', [LogareController::class,'index'])->name('login');
@@ -171,8 +175,10 @@ Route::middleware(['candidat:candidat'])->group(function()
     Route::get('/candidat/documente/editare/{id}',[CandidatController::class,'editare_documente'])->name('documente_candidat_editare');
     Route::post('/candidat/documente/actualizare/{id}',[CandidatController::class,'actualizare_documente'])->name('documente_candidat_actualizare');
     Route::get('/candidat/documente/stergere/{id}',[CandidatController::class,'stergere_documente'])->name('documente_candidat_stergere');
-
-
+    
+    Route::get('/candidat/salvare-job/{id}',[CandidatController::class,'salvare_job'])->name('candidat_salvare_job');
+    Route::get('/candidat/joburi-favorite/vizualizare',[CandidatController::class,'joburi_favorite_vizualizare'])->name('candidat_joburi_favorite');
+    Route::get('/candidat/joburi-favorite-stergere/{id}',[CandidatController::class,'joburi_favorite_stergere'])->name('candidat_joburi_favorite_stergere');
     });
   
 

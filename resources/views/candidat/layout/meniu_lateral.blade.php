@@ -7,6 +7,10 @@
         <a href="candidate-applied-jobs.html">Applied Jobs</a>
     </li>
 
+    <li class="list-group-item {{ Request::is('candidat/joburi-favorite/vizualizare') ? 'active' : '' }}">
+        <a href="{{ route('candidat_joburi_favorite') }}">Anunturi Favorite</a>
+    </li>
+
     <li class="list-group-item  {{ Request::is('candidat/educatie/vizualizare') ? 'active' : '' }}">
         <a href="{{route('educatie_candidat')}}" > Educatie si Certificari </a>
     </li>

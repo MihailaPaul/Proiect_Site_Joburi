@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Locuri De Munca</h2>
+                    <h2>Joburi</h2>
                 </div>
             </div>
         </div>
@@ -133,9 +133,23 @@
                                                 {{$element->rJobType->nume_tip}}
                                             </div>
                                         </div>
+                                        @if(!Auth::guard('companie')->check())
                                         <div class="bookmark">
-                                            <a href=""><i class="fas fa-bookmark active"></i></a>
+                                            @if(Auth::guard('candidat')->check())
+                                            @php
+                                            $count = \App\Models\CandidatBookmark::where('candidate_id',Auth::guard('candidat')->user()->id)->where('job_id',$element->id)->count();    
+                                            if($count>0) {
+                                                $favorite_status = "active";
+                                            }else{
+                                                $favorite_status = '';
+                                            }
+                                            @endphp
+                                        @else
+                                            @php $favorite_status = ''; @endphp
+                                        @endif
+                                        <a href="{{ route('candidat_salvare_job',$element->id) }}"><i class="fas fa-bookmark {{  $favorite_status }}"></i></a>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

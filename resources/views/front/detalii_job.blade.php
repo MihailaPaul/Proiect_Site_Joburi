@@ -33,7 +33,7 @@
                         </div>
                         <div class="apply">
                             <a href="apply.html" class="btn btn-primary">Aplica Acum</a>
-                            <a href="apply.html" class="btn btn-primary save-job">Salveaza</a>
+                            <a href="{{ route('candidat_salvare_job',$job_individual->id) }}" class="btn btn-primary save-job">Adauga la favorite</a>
                         </div>
                     </div>
                 </div>
@@ -120,10 +120,23 @@
                                                     {{$element->rJobType->nume_tip}}
                                                 </div>
                                             </div>
+                                            @if(!Auth::guard('companie')->check())
                                             <div class="bookmark">
-                                                <a href=""><i class="fas fa-bookmark active"></i
-                                                ></a>
+                                                @if(Auth::guard('candidat')->check())
+                                                @php
+                                                $count = \App\Models\CandidatBookmark::where('candidate_id',Auth::guard('candidat')->user()->id)->where('job_id',$element->id)->count();    
+                                                if($count>0) {
+                                                    $favorite_status = "active";
+                                                }else{
+                                                    $favorite_status = '';
+                                                }
+                                                @endphp
+                                            @else
+                                                @php $favorite_status = ''; @endphp
+                                            @endif
+                                            <a href="{{ route('candidat_salvare_job',$element->id) }}"><i class="fas fa-bookmark {{  $favorite_status }}"></i></a>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

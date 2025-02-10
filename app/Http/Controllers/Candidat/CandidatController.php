@@ -9,6 +9,7 @@ use App\Models\CandidateEducation;
 use App\Models\CandidateSkill;
 use App\Models\CandidateExperience;
 use App\Models\CandidateDocument;
+use App\Models\CandidatBookmark;
 use Illuminate\Validation\Rule;
 use Hash;
 use Auth;
@@ -372,6 +373,40 @@ class CandidatController extends Controller
         unlink(public_path('uploads/'.$document_individual->fisier));
         CandidateDocument::where('id',$id)->delete();
         return redirect()->route('documente_candidat')->with('success','Informatia a fost stearsa!');
+    }
+
+    public function salvare_job($id)
+    { 
+        
+        if(Auth::guard('companie')->check()){
+            return redirect()->back()->with('error','Doar candidatii pot adauga joburi la favorite!');
+        }
+
+        $verificare_favorite = CandidatBookmark::where('candidate_id',Auth::guard('candidat')->user()->id)->where('job_id',$id)->count();
+
+        if($verificare_favorite > 0) {
+            return redirect()->back()->with('error','Acest anunt a fost deja adaugat la favorite!');
+        }
+
+        $obiect = new CandidatBookmark();
+        $obiect->candidate_id = Auth::guard('candidat')->user()->id;
+        $obiect->job_id = $id;
+        $obiect->save();
+
+        return redirect()->back()->with('success','Anuntul a fost adaugat la favorite!');
+    }
+
+    public function joburi_favorite_vizualizare()
+    { 
+        $joburi_favorite= CandidatBookmark::with('rJob','rCandidat')->where('candidate_id',Auth::guard('candidat')->user()->id)->get();
+
+        return view('candidat.joburi_favorite',compact('joburi_favorite'));
+    }
+
+    public function joburi_favorite_stergere($id)
+    {
+        CandidatBookmark::where('id',$id)->delete();
+        return redirect()->back()->with('success','Anuntul a fost scos de la favorite!');
     }
 
     

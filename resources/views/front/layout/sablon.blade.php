@@ -137,7 +137,6 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
             </div>
         </div>
     </div>
-
         
         <div class="scroll-top">
             <i class="fas fa-angle-up"></i>
