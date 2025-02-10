@@ -26,8 +26,8 @@
                         <i class="{{ $obiect->simbol_categorie }}"></i>
                     </div>
                     <h3>{{ $obiect->nume_categorie }}</h3>
-                    <p>(5 Open Positions)</p>
-                    <a href=""></a>
+                    <p>({{ $obiect->r_job_count }} Anunturi Postate)</p>
+                    <a href="{{ url('locuri-de-munca?nume_categorie='.$obiect->id) }}"></a>
                 </div>
             </div>
             @endforeach

@@ -9,6 +9,7 @@ use App\Models\JobLocation;
 use App\Models\JobType;
 use App\Models\JobExperience;
 use App\Models\JobSalaryRange;
+use App\Mail\Websitemail;
 use Illuminate\Http\Request;
 
 class PaginaJoburiController extends Controller
@@ -65,5 +66,37 @@ class PaginaJoburiController extends Controller
 
         return view('front.pagina_joburi', compact('joburi','categorii_job','locatii_job','tipuri_job','experienta_job','salarii_job',
         'titlu_formular','categorie_formular','locatie_formular','tip_formular','experienta_formular','salariu_formular'));
+    }
+
+
+    public function detalii_job($id)
+    {  
+
+        setlocale(LC_TIME, 'Romanian');
+        $job_individual = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->where('id',$id)->first();
+
+        $joburi = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->where('job_category_id',$job_individual->job_category_id)->get();
+        return view('front.detalii_job',compact('job_individual','joburi'));
+    }
+
+    public function contactare_companie(Request $request)
+    {
+        $request->validate([
+            'nume_vizitator' => 'required',
+            'email_vizitator' => 'required|email',
+            'numar_telefon_vizitator' => 'required',
+            'mesaj_vizitator' => 'required'
+        ]);
+
+        $subject = 'Mesaj pentru anuntul : ' .$request->titlu_job;
+        $message = 'Informatiile persoanei care a trimis mesajul: <br>';
+        $message .= 'Nume: '.$request->nume_vizitator.'<br>';
+        $message .= 'Email: '.$request->email_vizitator.'<br>';
+        $message .= 'Numar Telefon: '.$request->numar_telefon_vizitator.'<br>';
+        $message .= 'Mesaj: '.$request->mesaj_vizitator;
+
+        \Mail::to($request->email_receptor)->send(new Websitemail($subject,$message));
+
+        return redirect()->back()->with('success', 'Mesajul a fost trimis catre companie!');
     }
 }

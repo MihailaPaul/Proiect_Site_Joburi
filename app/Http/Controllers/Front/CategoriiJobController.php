@@ -11,8 +11,9 @@ class CategoriiJobController extends Controller
 {
     public function categorii()
     {   
-        $categorie_job_extins = JobCategory::orderBy('nume_categorie','asc')->get();
+      
         $date_pagina_categorii = PaginaCategoriiItem::where('id',1)->first();
+        $categorie_job_extins = JobCategory::withCount('rJob')->orderBy('r_job_count','desc')->get();
         return view('front.categorii_job',compact('categorie_job_extins','date_pagina_categorii'));
     }
 

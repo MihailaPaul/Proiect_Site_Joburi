@@ -29,11 +29,12 @@ class CompanieController extends Controller
     public function meniu_companie()
 
     { 
+        $pachetul_activ = Order::with('rPackage')->where('company_id', Auth::guard('companie')->user()->id)->where('status',1)->first();
         $joburi_postate = Job::where('company_id',Auth::guard('companie')->user()->id)->count();
         $joburi_promovate = Job::where('company_id',Auth::guard('companie')->user()->id)->where('este_promovat',1)->count();
         $pachet_activ = Order::with('rPackage')->where('company_id', Auth::guard('companie')->user()->id)->where('status',1)->first();
         $joburi = Job::with('rJobCategory')->where('company_id',Auth::guard('companie')->user()->id)->orderBy('id','desc')->take(2)->get();
-        return view('companie.meniu',compact('joburi','joburi_postate','joburi_promovate','pachet_activ'));
+        return view('companie.meniu',compact('joburi','joburi_postate','joburi_promovate','pachet_activ','pachetul_activ'));
     }
 
  
@@ -398,7 +399,7 @@ class CompanieController extends Controller
     $obiect->este_promovat = $request->este_promovat;
     $obiect->update();
 
-    return redirect()->back()->with('success','Jobul a fost actualizat cu succes!');
+    return redirect()->route('joburi_postate_companie')->with('success','Jobul a fost actualizat cu succes!');
 
    }
 

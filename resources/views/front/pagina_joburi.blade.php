@@ -85,10 +85,6 @@
                     </div>
 
                     </form>
-
-                    <div class="advertisement">
-                        <a href="" ><img src="uploads/ad-2.png" alt=""/></a>
-                    </div>
                 </div>
             </div>
             <div class="col-md-9">
@@ -110,7 +106,7 @@
                                         <img src="{{ asset('uploads/'.$element->rCompany->logo) }}"alt=""/>
                                     </div>
                                     <div class="text">
-                                        <h3><a href="job.html">{{ $element->titlu}}, {{$element->rCompany->nume_companie}}</a></h3>
+                                        <h3><a href= "{{route ('detalii_job',$element->id) }}"> {{$element->titlu}}, {{$element->rCompany->nume_companie}}</a></h3>
                                         <div class="detail-1 d-flex justify-content-start">
                                             <div class="category">
                                                {{$element->rJobCategory->nume_categorie}}

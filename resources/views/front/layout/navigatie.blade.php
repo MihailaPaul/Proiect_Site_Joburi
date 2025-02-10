@@ -26,10 +26,10 @@
                         <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                             <a href="{{ route('acasa') }}" class="nav-link"> Acasa </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="jobs.html" class="nav-link"> Gaseste Job-uri </a>
+                        <li class="nav-item {{ Request::is('locuri-de-munca')||Request::is('detalii-job/*') ? 'active' : '' }}">
+                            <a href="{{ route('pagina_joburi') }}" class="nav-link"> Joburi </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a href="companies.html" class="nav-link"> Companii </a>
                         </li>
                         <li class="nav-item {{ Request::is('pachete') ? 'active' : '' }}">

@@ -52,8 +52,11 @@ Route::get('articol/{slug}', [ArticolController::class,'adresa'])->name('articol
 
 Route::get('pachete', [PachetController::class,'index'])->name('pachete');
 
-Route::get('locuri-de-munca', [PaginaJoburiController::class,'index'])->name('pagina_joburi');
 
+
+Route::get('locuri-de-munca', [PaginaJoburiController::class,'index'])->name('pagina_joburi');
+Route::get('detalii-job/{id}', [PaginaJoburiController::class,'detalii_job'])->name('detalii_job');
+Route::post('detalii-job/contact/email', [PaginaJoburiController::class,'contactare_companie'])->name('email_contactare_companie');
 
 
 

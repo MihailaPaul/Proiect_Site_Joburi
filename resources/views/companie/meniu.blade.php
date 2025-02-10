@@ -46,8 +46,12 @@
 
                     <div class="col-md-4">
                         <div class="box2">
+                            @if($pachetul_activ == null)
+                        <span class="text-danger">Nu exista pachet activ ! </span>
+                            @else
                             <h4>{{ $pachet_activ->rPackage->nume_pachet }}</h4>
                             <p>Pachetul Activ</p>
+                            @endif
                         </div>
                     </div>
                 </div>

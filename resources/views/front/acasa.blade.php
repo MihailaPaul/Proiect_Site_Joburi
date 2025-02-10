@@ -103,8 +103,8 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                             <i class="{{ $obiect->simbol_categorie }}"></i>
                         </div>
                         <h3>{{ $obiect->nume_categorie }}</h3>
-                        <p>(5 Open Positions)</p>
-                        <a href=""></a>
+                        <p>({{ $obiect->r_job_count }} Anunturi Postate)</p>
+                        <a href="{{ url('locuri-de-munca?nume_categorie='.$obiect->id) }}"></a>
                     </div>
                 </div>
                 @endforeach
@@ -115,9 +115,7 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
         <div class="row">
             <div class="col-md-12">
                 <div class="all">
-                    <a href="{{ route ('categorii_job') }}" class="btn btn-primary"
-                        >See All Categories</a
-                    >
+                    <a href="{{ route ('categorii_job') }}" class="btn btn-primary">Vezi toate Domeniile</a>
                 </div>
             </div>
         </div>
@@ -179,36 +177,39 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
             </div>
         </div>
         <div class="row">
+            @foreach($joburi_promovate as $element)
             <div class="col-lg-6 col-md-12">
                 <div class="item d-flex justify-content-start">
                     <div class="logo">
-                        <img src="{{ asset('uploads/logo1.png')}}" alt="" />
+                        <img src="{{ asset('uploads/'.$element->rCompany->logo) }}"alt=""/>
                     </div>
                     <div class="text">
-                        <h3>
-                            <a href="job.html"
-                                >Software Engineer, Google</a
-                            >
-                        </h3>
-                        <div
-                            class="detail-1 d-flex justify-content-start"
-                        >
-                            <div class="category">Web Development</div>
-                            <div class="location">United States</div>
+                        <h3><a href= "{{route ('detalii_job',$element->id) }}"> {{$element->titlu}},{{$element->rCompany->nume_companie}}</a></h3>
+                        <div class="detail-1 d-flex justify-content-start">
+                            <div class="category">
+                                {{$element->rJobCategory->nume_categorie}}
+                            </div>
+                            <div class="location">
+                                {{$element->rJobLocation->nume_locatie}}
+                            </div>
                         </div>
-                        <div
-                            class="detail-2 d-flex justify-content-start"
-                        >
-                            <div class="date">3 days ago</div>
-                            <div class="budget">$300-$600</div>
-                            <div class="expired">Expired</div>
+                        <div class="detail-2 d-flex justify-content-start">
+                            <div class="date">
+                                {{ $element->created_at->diffForHumans() }}
+                            </div>
+                            <div class="budget">
+                                {{$element->rJobSalaryRange->sume}}
+                            </div>
                         </div>
-                        <div
-                            class="special d-flex justify-content-start"
-                        >
-                            <div class="featured">Featured</div>
-                            <div class="type">Full Time</div>
-                            <div class="urgent">Urgent</div>
+                        <div class="special d-flex justify-content-start">
+                            @if($element->este_promovat == 1)
+                            <div class="featured">
+                                Promovat
+                            </div>
+                            @endif
+                            <div class="type">
+                                {{$element->rJobType->nume_tip}}
+                            </div>
                         </div>
                         <div class="bookmark">
                             <a href=""
@@ -218,200 +219,12 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="item d-flex justify-content-start">
-                    <div class="logo">
-                        <img src="{{ asset('uploads/logo2.png')}}" alt="" />
-                    </div>
-                    <div class="text">
-                        <h3>
-                            <a href="job.html">Web Designer, Amplify</a>
-                        </h3>
-                        <div
-                            class="detail-1 d-flex justify-content-start"
-                        >
-                            <div class="category">Web Development</div>
-                            <div class="location">United States</div>
-                        </div>
-                        <div
-                            class="detail-2 d-flex justify-content-start"
-                        >
-                            <div class="date">1 day ago</div>
-                            <div class="budget">$1000</div>
-                        </div>
-                        <div
-                            class="special d-flex justify-content-start"
-                        >
-                            <div class="featured">Featured</div>
-                            <div class="type">Part Time</div>
-                        </div>
-                        <div class="bookmark">
-                            <a href=""
-                                ><i class="fas fa-bookmark"></i
-                            ></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="item d-flex justify-content-start">
-                    <div class="logo">
-                        <img src="{{ asset('uploads/logo3.png')}}" alt="" />
-                    </div>
-                    <div class="text">
-                        <h3>
-                            <a href="job.html"
-                                >Laravel Developer, Gimpo</a
-                            >
-                        </h3>
-                        <div
-                            class="detail-1 d-flex justify-content-start"
-                        >
-                            <div class="category">Web Development</div>
-                            <div class="location">Canada</div>
-                        </div>
-                        <div
-                            class="detail-2 d-flex justify-content-start"
-                        >
-                            <div class="date">2 days ago</div>
-                            <div class="budget">$1000-$3000</div>
-                        </div>
-                        <div
-                            class="special d-flex justify-content-start"
-                        >
-                            <div class="featured">Featured</div>
-                            <div class="type">Full Time</div>
-                            <div class="urgent">Urgent</div>
-                        </div>
-                        <div class="bookmark">
-                            <a href=""
-                                ><i class="fas fa-bookmark"></i
-                            ></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="item d-flex justify-content-start">
-                    <div class="logo">
-                        <img src="{{ asset('uploads/logo4.png')}}" alt="" />
-                    </div>
-                    <div class="text">
-                        <h3>
-                            <a href="job.html"
-                                >PHP Developer, Kite Solution</a
-                            >
-                        </h3>
-                        <div
-                            class="detail-1 d-flex justify-content-start"
-                        >
-                            <div class="category">Web Development</div>
-                            <div class="location">Australia</div>
-                        </div>
-                        <div
-                            class="detail-2 d-flex justify-content-start"
-                        >
-                            <div class="date">7 hours ago</div>
-                            <div class="budget">$1800</div>
-                        </div>
-                        <div
-                            class="special d-flex justify-content-start"
-                        >
-                            <div class="featured">Featured</div>
-                            <div class="type">Full Time</div>
-                            <div class="urgent">Urgent</div>
-                        </div>
-                        <div class="bookmark">
-                            <a href=""
-                                ><i class="fas fa-bookmark"></i
-                            ></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="item d-flex justify-content-start">
-                    <div class="logo">
-                        <img src="{{ asset('uploads/logo5.png')}}" alt="" />
-                    </div>
-                    <div class="text">
-                        <h3>
-                            <a href="job.html"
-                                >Junior Accountant, ABC Media</a
-                            >
-                        </h3>
-                        <div
-                            class="detail-1 d-flex justify-content-start"
-                        >
-                            <div class="category">Marketing</div>
-                            <div class="location">Canada</div>
-                        </div>
-                        <div
-                            class="detail-2 d-flex justify-content-start"
-                        >
-                            <div class="date">2 hours ago</div>
-                            <div class="budget">$400</div>
-                        </div>
-                        <div
-                            class="special d-flex justify-content-start"
-                        >
-                            <div class="featured">Featured</div>
-                            <div class="type">Part Time</div>
-                            <div class="urgent">Urgent</div>
-                        </div>
-                        <div class="bookmark">
-                            <a href=""
-                                ><i class="fas fa-bookmark"></i
-                            ></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="item d-flex justify-content-start">
-                    <div class="logo">
-                        <img src="{{ asset('uploads/logo6.png')}}" alt="" />
-                    </div>
-                    <div class="text">
-                        <h3>
-                            <a href="job.html"
-                                >Sales Manager, Tingshu Limited</a
-                            >
-                        </h3>
-                        <div
-                            class="detail-1 d-flex justify-content-start"
-                        >
-                            <div class="category">Marketing</div>
-                            <div class="location">Canada</div>
-                        </div>
-                        <div
-                            class="detail-2 d-flex justify-content-start"
-                        >
-                            <div class="date">9 hours ago</div>
-                            <div class="budget">$600-$800</div>
-                        </div>
-                        <div
-                            class="special d-flex justify-content-start"
-                        >
-                            <div class="featured">Featured</div>
-                            <div class="type">Full Time</div>
-                            <div class="urgent">Urgent</div>
-                        </div>
-                        <div class="bookmark">
-                            <a href=""
-                                ><i class="fas fa-bookmark"></i
-                            ></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="all">
-                    <a href="{{ route('categorii_job') }}" class="btn btn-primary"
-                        >Vezi toate Categoriile</a
-                    >
+                    <a href="{{ route('pagina_joburi') }}" class="btn btn-primary">Vezi toate joburile</a>
                 </div>
             </div>
         </div>
