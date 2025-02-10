@@ -3,6 +3,8 @@ Astfel pagina principala contine doar continutul care apare exclusiv pe pagina p
 care apoi cu ajutorrul laravel este legat la sablon care contine toate celelalte elemente neschimbate pentru a afisa pagina completa  --}}
 @extends('front.layout.sablon')
 
+@section('seo_title'){{ $date_pagina_acasa->seo_titlu }}@endsection
+@section('seo_meta_description'){{ $date_pagina_acasa->seo_descriere }}@endsection
 {{-- In sectiunea de continut se include tot codul paginii care urmeaza a fi creeata,
 aceasta sectiune sete apoi adaugata cu ajutorul laravel prin comanda yields.
 In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pagina web in parte --}}
@@ -431,8 +433,8 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
         <div class="row">
             <div class="col-md-12">
                 <div class="all">
-                    <a href="jobs.html" class="btn btn-primary"
-                        >See All Jobs</a
+                    <a href="{{ route('categorii_job') }}" class="btn btn-primary"
+                        >Vezi toate Categoriile</a
                     >
                 </div>
             </div>

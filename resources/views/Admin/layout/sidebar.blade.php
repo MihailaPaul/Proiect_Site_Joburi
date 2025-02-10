@@ -18,14 +18,28 @@
 
             <li class="{{ Request::is('admin/home') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_home') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Tablou">
                 <i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
-{{-- In lista de elemente se adauga si o instanta de drop down menu --}}
-            <li class="nav-item dropdown {{ Request::is('admin/pagina-acasa') ||Request::is('admin/pagina-blog')}}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Setari Pagini</span></a>
+{{-- In lista de elemente se adauga si o instanta de drop down menu care contine setarile paginilor--}}
+            <li class="nav-item dropdown {{ Request::is('admin/pagina-acasa')||Request::is('admin/pagina-blog')||Request::is('admin/pagina-categorii') ? 'active' : ''}}">
+
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Modificare Pagini</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/pagina-acasa') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pagina_acasa') }}"><i class="fas fa-angle-right"></i>Pagina Acasa</a></li>
-                    <li class="{{ Request::is('admin/pagina-blog') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pagina_blog') }}"><i class="fas fa-angle-right"></i>Pagina Blog</a></li>
+                    <li class="{{ Request::is('admin/pagina-acasa') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin_pagina_acasa') }}"><i class="fas fa-angle-right"></i>Pagina Acasa</a></li>
+
+                    <li class="{{ Request::is('admin/pagina-blog') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin_pagina_blog') }}"><i class="fas fa-angle-right"></i>Pagina Blog</a></li>
+
+                    <li class="{{ Request::is('admin/pagina-categorii') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin_pagina_categorii') }}"><i class="fas fa-angle-right"></i>Pagina Categorii Job-uri</a></li>
+
+                    <li class="{{ Request::is('admin/pagina-pachete') ? 'active' : '' }}">
+                         <a class="nav-link" href="{{ route('admin_pagina_pachete') }}"><i class="fas fa-angle-right"></i>Pagina Pachete</a></li>
                 </ul>
             </li>
+
+
+
+
 
             <li class="nav-item dropdown  {{ Request::is('admin/categorie-job/*') ? 'active' : ' ' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Elemente Sectiune Job</span></a>
@@ -39,13 +53,19 @@
             <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Alegere</span></a>
             </li>
 
-            <li class="{{ Request::is('admin/recomandari/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_recomandari') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Recomandari">
+            <li class="{{ Request::is('admin/recomandare/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_recomandari') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Recomandari">
              <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Multumiri</span></a>
             </li>
 
             <li class="{{ Request::is('admin/articol/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_articol') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
                 <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Articol</span></a>
             </li>
+
+            
+            <li class="{{ Request::is('admin/pachet/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pachet') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
+                <i class="fas fa-hand-point-right"></i> <span>Pachete</span></a>
+            </li>
+            
             
         </ul>
     </aside>

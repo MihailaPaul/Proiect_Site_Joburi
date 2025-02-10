@@ -10,7 +10,7 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('acasa') }}">
                     <img src="{{ asset('uploads/logo.png')}}" alt="" />
                 </a>
                 <div
@@ -27,8 +27,8 @@
                         <li class="nav-item">
                             <a href="companies.html" class="nav-link"> Companii </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pricing.html" class="nav-link"> Preturi </a >
+                        <li class="nav-item {{ Request::is('pachete') ? 'active' : '' }}">
+                            <a href="{{ route('pachete') }}" class="nav-link"> Pachete </a >
                         </li>
                         <li class="nav-item {{ Request::is('blog')||Request::is('articol/*') ? 'active' : '' }}">
                             <a href="{{ route('blog') }}" class="nav-link"> Blog </a >

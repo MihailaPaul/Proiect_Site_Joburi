@@ -38,6 +38,8 @@ return new class extends Migration
             $table->text('sectiune_articole_titlu');
             $table->text('sectiune_articole_text')->nullable();
             $table->text('sectiune_articole_stare');
+            $table->text('SEO_titlu')->nullable();
+            $table->text('SEO_descriere')->nullable();
             $table->timestamps();
         });
     }

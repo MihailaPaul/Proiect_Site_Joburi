@@ -5,16 +5,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\AcasaController;
 use App\Http\Controllers\Front\CategoriiJobController;
 use App\Http\Controllers\Front\ArticolController;
+use App\Http\Controllers\Front\PachetController;
+
 
 use App\Http\Controllers\Admin\TablouAdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
-use App\Http\Controllers\Admin\AdminPaginaAcasaController;
-use App\Http\Controllers\Admin\AdminPaginaBlogController;
+
 use App\Http\Controllers\Admin\AdminCategorieJobController;
 use App\Http\Controllers\Admin\AdminAlegereController;
 use App\Http\Controllers\Admin\AdminRecomandariController;
 use App\Http\Controllers\Admin\AdminArticolController;
+use App\Http\Controllers\Admin\AdminPachetController;
+
+use App\Http\Controllers\Admin\AdminPaginaAcasaController;
+use App\Http\Controllers\Admin\AdminPaginaBlogController;
+use App\Http\Controllers\Admin\AdminPaginaCategoriiController;
+use App\Http\Controllers\Admin\AdminPaginaPacheteController;
+
 
 
 
@@ -23,7 +31,10 @@ Route::get('/', [AcasaController::class, 'index'])->name('acasa');
 Route::get('categorii-job', [CategoriiJobController::class,'categorii'])->name('categorii_job');
 
 Route::get('blog', [ArticolController::class,'index'])->name('blog');
+
 Route::get('articol/{slug}', [ArticolController::class,'adresa'])->name('articol');
+
+Route::get('pachete', [PachetController::class,'index'])->name('pachete');
 
 
 
@@ -75,6 +86,15 @@ Route::middleware(['admin:admin'])->group(function()
 
     Route::get('/admin/pagina-blog',[AdminPaginaBlogController::class,'index'])->name('admin_pagina_blog');
     Route::post('/admin/pagina-blog/modificare',[AdminPaginaBlogController::class,'modificare'])->name('admin_pagina_blog_modificare');
+
+
+    Route::get('/admin/pagina-categorii',[AdminPaginaCategoriiController::class,'index'])->name('admin_pagina_categorii');
+    Route::post('/admin/pagina-categorii/modificare',[AdminPaginaCategoriiController::class,'modificare'])->name('admin_pagina_categorii_modificare');
+
+
+    Route::get('/admin/pagina-pachete',[AdminPaginaPacheteController::class,'index'])->name('admin_pagina_pachete');
+    Route::post('/admin/pagina-pachete/modificare',[AdminPaginaPacheteController::class,'modificare'])->name('admin_pagina_pachete_modificare');
+
 
 
     Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
@@ -130,4 +150,18 @@ Route::middleware(['admin:admin'])->group(function()
     Route::post('/admin/articol/modifica/{id}',[AdminArticolController::class,'modificare'])->name('admin_articol_modificare');
 
     Route::get('/admin/articol/stergere/{id}',[AdminArticolController::class,'stergere'])->name('admin_articol_stergere');
+
+
+
+    Route::get('/admin/pachet/vizualizare',[AdminPachetController::class,'index'])->name('admin_pachet');
+
+    Route::get('/admin/pachet/creare',[AdminPachetController::class,'creare'])->name('admin_pachet_creare');
+
+    Route::post('/admin/pachet/salvare',[AdminPachetController::class,'salvare'])->name('admin_pachet_salvare');
+
+    Route::get('/admin/pachet/editare/{id}',[AdminPachetController::class,'editare'])->name('admin_pachet_editare');
+
+    Route::post('/admin/pachet/modifica/{id}',[AdminPachetController::class,'modificare'])->name('admin_pachet_modificare');
+
+    Route::get('/admin/pachet/stergere/{id}',[AdminPachetController::class,'stergere'])->name('admin_pachet_stergere');
 });

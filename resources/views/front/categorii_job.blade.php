@@ -1,4 +1,8 @@
 @extends('front.layout.sablon')
+
+@section('seo_title'){{ $date_pagina_categorii->SEO_titlu }}@endsection
+@section('seo_meta_description'){{ $date_pagina_categorii->SEO_descriere }}@endsection
+
 @section('continut')
 
 <div class="page-top" style="background-image: url('uploads/banner.jpg')">
@@ -6,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Categorii Job</h2>
+                <h2>{{ $date_pagina_categorii->titlu }}</h2>
             </div>
         </div>
     </div>

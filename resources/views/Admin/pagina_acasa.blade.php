@@ -35,7 +35,9 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
 
                                     <button class="nav-link" id="v-pills-6-tab" data-bs-toggle="pill" 
                                     data-bs-target="#v-pills-6" type="button" role="tab" aria-controls="v-pills-6" aria-selected="false">Sectiunea Articole</button>
-    
+                                    
+                                    <button class="nav-link" id="v-pills-7-tab" data-bs-toggle="pill" 
+                                    data-bs-target="#v-pills-7" type="button" role="tab" aria-controls="v-pills-7" aria-selected="false">Sectiunea SEO</button>
                                 </div>
                             </div>
 
@@ -364,6 +366,33 @@ v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal 
                                        </div> 
                                         
                                         {{-- Sfarsitul sectiunii Articole --}}
+                                      </div>
+
+
+
+
+                                      <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab" tabindex="0">
+                                        {{-- Startul sectiunii de SEO --}}
+                                        <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="mb-4">
+                                                      <label class="form-label">Titlu SEO </label>
+                                                      <input type="text" class="form-control" name="seo_titlu" value="{{ $date_pagina_acasa->seo_titlu}}">
+                                                  </div>
+                                              </div>
+                                        </div> 
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                              <div class="mb-4">
+                                                  <label class="form-label">Descriere SEO </label>
+                                                  <input type="text" class="form-control" name="seo_descriere" value="{{ $date_pagina_acasa->seo_descriere}}">
+  
+                                              </div>
+                                           </div>
+                                        </div> 
+    
+                                        
+                                        {{-- Sfarsitul sectiunii SEO --}}
                                       </div>
 
 

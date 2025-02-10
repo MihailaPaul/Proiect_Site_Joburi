@@ -111,6 +111,9 @@ class AdminPaginaAcasaController extends Controller
           $date_pagina_acasa->sectiune_articole_text = $request->sectiune_articole_text;
           $date_pagina_acasa->sectiune_articole_stare = $request->sectiune_articole_stare;
 
+          $date_pagina_acasa->seo_titlu = $request->seo_titlu;
+          $date_pagina_acasa->seo_descriere = $request->seo_descriere;
+
           $date_pagina_acasa->update();
 
           return redirect()->back()->with('success','Modificarea datelor a fost efectuata cu succes!');
