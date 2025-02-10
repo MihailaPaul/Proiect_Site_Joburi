@@ -10,6 +10,7 @@ use App\Models\CompanieDomain;
 use App\Models\CompanieLocation;
 use App\Models\CompanieSize;
 use App\Models\CompaniePhoto;
+use App\Models\PaginaDiverseItem;
 use App\Mail\Websitemail;
 
 class PaginiCompanieController extends Controller
@@ -51,7 +52,10 @@ class PaginiCompanieController extends Controller
         $companii = $companii->paginate(6);
         //$joburi = $joburi->appends($request->all());
 
-        return view('front.pagina_companii', compact('companii','domenii_companie','locatii_companie','angajati_companie','nume_formular','domeniu_formular','locatie_formular','angajati_formular'));
+        $date_pagina_diverse = PaginaDiverseItem::where('id',1)->first();
+
+        return view('front.pagina_companii', compact('companii','domenii_companie','locatii_companie','angajati_companie','nume_formular',
+        'domeniu_formular','locatie_formular','angajati_formular','date_pagina_diverse'));
     }
 
     public function detalii_companie($id)
@@ -66,9 +70,9 @@ class PaginiCompanieController extends Controller
 
         $joburi = Job::with('rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->where('company_id',$companie_individuala->id)->get();
       
-
+        $date_pagina_diverse = PaginaDiverseItem::where('id',1)->first();
         // $companii = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->where('job_category_id',$job_individual->job_category_id)->get();
-        return view('front.detalii_companie',compact('companie_individuala','poze_companie','joburi'));
+        return view('front.detalii_companie',compact('companie_individuala','poze_companie','joburi','date_pagina_diverse'));
     }
 
 

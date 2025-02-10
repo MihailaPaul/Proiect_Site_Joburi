@@ -27,7 +27,7 @@
 
             <div class="col-lg-9 col-md-12">
                 @if(!$joburi_favorite->count())
-                    <div class="text-danger">Nu au fost gasite informatii. Adauga acum informatii despre experienta ta in domeniul prrofesional</div>
+                    <div class="text-danger">Nu ai adaugat nici un anunt la favorite!</div>
                 @else
                 <div class="table-responsive">
                     <table class="table table-bordered">

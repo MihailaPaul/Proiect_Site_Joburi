@@ -1,3 +1,4 @@
+
 body {
     font-family: "Work Sans", sans-serif;
     font-size: 15px;
@@ -369,13 +370,6 @@ select {
     background: #313131;
 }
 
-/* Advertisement */
-.ad-section-1 img {
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 
 /* Home Slider */
 .slider {
@@ -949,6 +943,7 @@ select {
     color: #fff;
     padding-top: 40px;
     padding-bottom: 20px;
+    margin-top: auto;
 }
 .footer h2.heading {
     font-size: 20px;
@@ -1121,7 +1116,7 @@ select {
 /* Page Content */
 .page-content {
     padding-top: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 200px;
 }
 .page-content .featured-photo {
     margin-bottom: 15px;
@@ -1157,72 +1152,6 @@ select {
     font-size: 24px;
 }
 
-/* Contact Page */
-.contact-form textarea {
-    height: 200px;
-}
-.map iframe {
-    width: 100%;
-    height: 450px;
-}
-@media (max-width: 1199px) {
-    .map iframe {
-        height: 400px;
-    }
-}
-
-/* FAQ Page */
-.faq .accordion {
-    width: 70%;
-}
-.faq .accordion-button {
-    color: #46bc29;
-    font-weight: 700;
-    background: #ebebeb;
-}
-.faq .accordion-button.collapsed {
-    background: none;
-}
-.faq .accordion-button:focus {
-    box-shadow: none !important;
-}
-.faq .accordion-item {
-    margin-bottom: 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.125) !important;
-}
-.faq .accordion-button::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f107";
-    font-weight: 700;
-    background-image: none;
-    transform: none;
-    color: #46bc29;
-}
-.faq .accordion-button.collapsed::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f105";
-    font-weight: 700;
-    background-image: none;
-}
-.faq .accordion-item .accordion-button {
-    border-radius: 0 !important;
-}
-.faq .accordion-body {
-    font-weight: 400;
-}
-.faq .accordion-item:first-of-type {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-.faq .accordion-item:last-of-type {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-@media (max-width: 991px) {
-    .faq .accordion {
-        width: 100% !important;
-    }
-}
 
 /* Testimonial */
 .testimonial {
@@ -1843,6 +1772,7 @@ select {
 
 .select2-container {
     z-index: 99999 !important;
+    width:100% !important
 }
 .select2-container--bootstrap .select2-selection--single {
     height: 36px !important;
@@ -1869,3 +1799,11 @@ ul.pagination .page-link{
 ul.pagination .active>.page-link{
     color: #fff ;
 }
+.datepicker-dropdown {
+    z-index: 99999 !important;
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }

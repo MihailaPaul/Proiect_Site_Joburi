@@ -1,7 +1,7 @@
 @extends('front.layout.sablon')
 
-{{-- @section('seo_title'){{ $date_pagina_blog->subtitlu }}@endsection
-@section('seo_meta_description'){{ $date_pagina_blog->meta_description }}@endsection --}}
+@section('seo_title'){{$date_pagina_diverse->seo_titlu_pagina_companii }}@endsection
+@section('seo_meta_description'){{  $date_pagina_diverse->seo_descriere_pagina_companii }}@endsection
 
 @section('continut')
 
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Companii</h2>
+                    <h2>{{ $date_pagina_diverse->titlu_pagina_companii }}</h2>
                 </div>
             </div>
         </div>

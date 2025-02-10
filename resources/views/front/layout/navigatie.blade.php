@@ -40,7 +40,7 @@
                         </li>
                         
                         <li class="nav-item {{ Request::is('blog')||Request::is('articol/*') ? 'active' : '' }}">
-                            <a href="{{ route('blog') }}" class="nav-link"> Blog </a >
+                            <a href="{{ route('blog') }}" class="nav-link"> Cariera </a >
                         </li>
 
                         @if(Auth::guard('companie')->check())

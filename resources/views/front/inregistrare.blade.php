@@ -37,7 +37,7 @@
                                     aria-controls="pills-home"
                                     aria-selected="true"
                                 >
-                                    <i class="far fa-user"></i> Candidate </button>
+                                    <i class="far fa-user"></i> Candidat </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button
@@ -51,7 +51,7 @@
                                     aria-selected="false"
                                 >
                                     <i class="fas fa-briefcase"></i>
-                                    Company
+                                    Companie
                                 </button>
                             </li>
                         </ul>

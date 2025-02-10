@@ -21,7 +21,9 @@ class AdminPaginaDiverseController extends Controller
         $request->validate([
             'titlu_logare'=>'required',
             'titlu_inregistrare'=>'required',
-            'titlu_parola_uitata'=>'required'
+            'titlu_parola_uitata'=>'required',
+            'titlu_pagina_joburi'=>'required',
+            'titlu_pagina_companii'=>'required'
         ]);
 
 
@@ -36,6 +38,14 @@ class AdminPaginaDiverseController extends Controller
         $date_pagina_diverse->titlu_parola_uitata = $request->titlu_parola_uitata;
         $date_pagina_diverse->seo_titlu_parola_uitata = $request->seo_titlu_parola_uitata;
         $date_pagina_diverse->seo_descriere_parola_uitata = $request->seo_descriere_parola_uitata;
+
+        $date_pagina_diverse->titlu_pagina_joburi = $request->titlu_pagina_joburi;
+        $date_pagina_diverse->seo_titlu_pagina_joburi = $request->seo_titlu_pagina_joburi;
+        $date_pagina_diverse->seo_descriere_pagina_joburi = $request->seo_descriere_pagina_joburi;
+        
+        $date_pagina_diverse->titlu_pagina_companii = $request->titlu_pagina_companii;
+        $date_pagina_diverse->seo_titlu_pagina_companii = $request->seo_titlu_pagina_companii;
+        $date_pagina_diverse->seo_descriere_pagina_companii = $request->seo_descriere_pagina_companii;
 
         $date_pagina_diverse->update();
 

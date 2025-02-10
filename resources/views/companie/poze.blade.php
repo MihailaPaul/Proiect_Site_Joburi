@@ -57,7 +57,7 @@
                                     <div class="bg"></div>
                                 </a>
                             </div>
-                             <a href="{{ route('poze_companie_stergere',$element->id) }}" class="btn btn-danger btn-sm mb-2"  onClick="return confirm('Confirma Stergerea Pozei !');"> Delete </a>
+                             <a href="{{ route('poze_companie_stergere',$element->id) }}" class="btn btn-danger btn-sm mb-2"  onClick="return confirm('Confirma Stergerea Pozei !');"> Sterge Poza </a>
                         </div>
                         @endforeach
                     </div>

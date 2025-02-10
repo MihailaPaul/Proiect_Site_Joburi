@@ -24,6 +24,12 @@ return new class extends Migration
             $table->text('titlu_parola_uitata');
             $table->text('seo_titlu_parola_uitata')->nullable();
             $table->text('seo_descriere_parola_uitata')->nullable();
+            $table->text('titlu_pagina_joburi');
+            $table->text('seo_titlu_pagina_joburi')->nullable();
+            $table->text('seo_descriere_pagina_joburi')->nullable();
+            $table->text('titlu_pagina_companii');
+            $table->text('seo_titlu_pagina_companii')->nullable();
+            $table->text('seo_descriere_pagina_companii')->nullable();
             $table->timestamps();
         });
     }

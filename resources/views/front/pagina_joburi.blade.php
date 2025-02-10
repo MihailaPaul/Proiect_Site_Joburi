@@ -1,7 +1,7 @@
 @extends('front.layout.sablon')
 
-{{-- @section('seo_title'){{ $date_pagina_blog->subtitlu }}@endsection
-@section('seo_meta_description'){{ $date_pagina_blog->meta_description }}@endsection --}}
+@section('seo_title'){{$date_pagina_diverse->seo_titlu_pagina_joburi }}@endsection
+@section('seo_meta_description'){{  $date_pagina_diverse->seo_descriere_pagina_joburi }}@endsection
 
 @section('continut')
 
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Joburi</h2>
+                    <h2>{{ $date_pagina_diverse->titlu_pagina_joburi }}</h2>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
 
                     <div class="filter-button">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-search"></i> Filter</a>
+                            <i class="fas fa-search"></i> Filtreaza</a>
                         </button>
                     </div>
 
@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="detail-2 d-flex justify-content-start">
                                             <div class="date">
-                                                {{ $element->created_at->diffForHumans() }}
+                                               cu {{ $element->created_at->diffForHumans() }}
                                             </div>
                                             <div class="budget">
                                                 {{$element->rJobSalaryRange->sume}}

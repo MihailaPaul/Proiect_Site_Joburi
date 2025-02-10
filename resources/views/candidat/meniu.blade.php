@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Meniu Companie</h2>
+                        <h2>Meniu Candidat</h2>
                     </div>
                 </div>
             </div>
@@ -28,94 +28,28 @@
 
             <div class="col-lg-9 col-md-12">
                 <h3>Salut, {{ Auth::guard('candidat')->user()->nume_candidat }}</h3>
-                <p>See all the statistics at a glance:</p>
+                <p>Vezi starea aplicatiilor tale:</p>
 
                 <div class="row box-items">
                     <div class="col-md-4">
                         <div class="box1">
-                            <h4>12</h4>
-                            <p>Applied Jobs</p>
+                            <h4>{{ $total_aplicatii }}</h4>
+                            <p>Anunturi la care inca astepti raspuns</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box2">
-                            <h4>3</h4>
-                            <p>Bookmarked Jobs</p>
+                            <h4>{{ $total_aplicatii_respinse }}</h4>
+                            <p>Aplicatii Respinse</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box3">
-                            <h4>5</h4>
-                            <p>Rejected Jobs</p>
+                            <h4>{{ $total_aplicatii_acceptate }}</h4>
+                            <p>Aplicatii Acceptate</p>
+                            
                         </div>
                     </div>
-                </div>
-
-                <h3 class="mt-5">Recently Applied</h3>
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>SL</th>
-                                <th>Job Title</th>
-                                <th>Company</th>
-                                <th>Status</th>
-                                <th class="w-100">Detail</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Senior Laravel Developer</td>
-                                <td>ABC Multimedia</td>
-                                <td>
-                                    <div class="badge bg-primary">
-                                        Applied
-                                    </div>
-                                </td>
-                                <td>
-                                    <a
-                                        href="job.html"
-                                        class="btn btn-primary btn-sm text-white"
-                                        ><i class="fas fa-eye"></i
-                                    ></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Expert Laravel Developer</td>
-                                <td>Big Axis Limited</td>
-                                <td>
-                                    <div class="badge bg-danger">
-                                        Rejected
-                                    </div>
-                                </td>
-                                <td>
-                                    <a
-                                        href="job.html"
-                                        class="btn btn-primary btn-sm text-white"
-                                        ><i class="fas fa-eye"></i
-                                    ></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>MySQL Database Expert</td>
-                                <td>Kite IT Solution</td>
-                                <td>
-                                    <div class="badge bg-success">
-                                        Approved
-                                    </div>
-                                </td>
-                                <td>
-                                    <a
-                                        href="job.html"
-                                        class="btn btn-primary btn-sm text-white"
-                                        ><i class="fas fa-eye"></i
-                                    ></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

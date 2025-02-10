@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Candidat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Candidate;
+use App\Models\Job;
 use App\Models\CandidateEducation;
 use App\Models\CandidateSkill;
 use App\Models\CandidateExperience;
 use App\Models\CandidateDocument;
 use App\Models\CandidatBookmark;
+use App\Models\CandidatApplication;
+use App\Mail\Websitemail;
 use Illuminate\Validation\Rule;
 use Hash;
 use Auth;
@@ -17,9 +20,17 @@ use Auth;
 class CandidatController extends Controller
 {
     public function meniu_candidat()
+    { $total_aplicatii = 0;
+      $total_aplicatii_respinse = 0;
+      $total_aplicatii_acceptate = 0;
 
-    { 
-        return view('candidat.meniu');
+        $total_aplicatii = CandidatApplication::where('candidate_id',Auth::guard('candidat')->user()->id)->where('status','Aplicat')->count();
+
+        $total_aplicatii_respinse = CandidatApplication::where('candidate_id',Auth::guard('candidat')->user()->id)->where('status','Respinsa')->count();
+
+        $total_aplicatii_acceptate = CandidatApplication::where('candidate_id',Auth::guard('candidat')->user()->id)->where('status','Acceptata')->count();
+
+        return view('candidat.meniu',compact('total_aplicatii','total_aplicatii_respinse','total_aplicatii_acceptate'));
     }
 
     public function editare_profil_candidat()
@@ -377,10 +388,6 @@ class CandidatController extends Controller
 
     public function salvare_job($id)
     { 
-        
-        if(Auth::guard('companie')->check()){
-            return redirect()->back()->with('error','Doar candidatii pot adauga joburi la favorite!');
-        }
 
         $verificare_favorite = CandidatBookmark::where('candidate_id',Auth::guard('candidat')->user()->id)->where('job_id',$id)->count();
 
@@ -409,5 +416,45 @@ class CandidatController extends Controller
         return redirect()->back()->with('success','Anuntul a fost scos de la favorite!');
     }
 
+    public function aplica($id)
+    {
+        $verificare_aplicare = CandidatApplication::where('candidate_id',Auth::guard('candidat')->user()->id)->where('job_id',$id)->count();
+
+        if($verificare_aplicare > 0) {
+            return redirect()->back()->with('error','Ai aplicat deja la acest anunt!');
+        }
+
+        $job_individual = Job::where('id',$id)->first();
+
+        return view('candidat.aplicare_job', compact('job_individual'));
+    }
+
+    public function aplica_salvare(Request $request, $id)
+    {
+        $obiect = new CandidatApplication();
+        $obiect->candidate_id = Auth::guard('candidat')->user()->id;
+        $obiect->job_id = $id;
+        $obiect->scrisoare_motivare = $request->scrisoare_motivare;
+        $obiect->status = 'Aplicat';
+        $obiect->save();
+
+        $date_job = Job::with('rCompany')->where('id',$id)->first();
+        $email_companie = $date_job->rCompany->email;
+
+        //Trimitere mail catre companie
+        $link_lista_aplicanti= route('companie_aplicanti_job',$id);
+        $subject =  'O persoana a aplicat pentru un anunt postat de compania ta!';
+        $message = '<a href="'.$link_lista_aplicanti.'"> Apasa aici pentru a vedea lista de aplicanti!</a>';
+     
+        \Mail::to($email_companie)->send(new Websitemail($subject,$message));
+
+        return redirect()->route('detalii_job',$id)->with('success','Ai aplicat la acest job!');
+    }
+
+    public function aplicatii_vizualizare()
+    {
+      $aplicatii_joburi = CandidatApplication::with('rJob')->where('candidate_id',Auth::guard('candidat')->user()->id)->get();
+        return view('candidat.aplicatii', compact('aplicatii_joburi'));
+    }
     
 }

@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Meniu Companie</h2>
+                        <h2>Aplicatiile Candidatilor</h2>
                     </div>
                 </div>
             </div>
@@ -26,37 +26,7 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <h3>Salut, {{ Auth::guard('companie')->user()->nume_reprezentant }} ({{ Auth::guard('companie')->user()->nume_companie }})</h3>
-                <p>Vezi toate statisticile companiei tale</p>
-
-                <div class="row box-items">
-                    <div class="col-md-4">
-                        <div class="box1">
-                            <h4>{{ $joburi_postate }}</h4>
-                            <p>Anunturi Postate</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="box3">
-                            <h4>{{ $joburi_promovate }}</h4>
-                            <p>Anunturi Promovate</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="box2">
-                            @if($pachetul_activ == null)
-                        <span class="text-danger">Nu exista pachet activ ! </span>
-                            @else
-                            <h4>{{ $pachet_activ->rPackage->nume_pachet }}</h4>
-                            <p>Pachetul Activ</p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="mt-5">Anunturi Postate Recent</h3>
+                <h4>Anunturile Companiei</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
@@ -66,20 +36,27 @@
                                 <th>Categorie</th>
                                 <th>Locatie</th>
                                 <th>Promovat</th>
+                                <th>Detalii Job</th>
+                                <th>Aplicanti</th>
                             </tr>
                             @foreach($joburi as $element )
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $element->titlu }}</td>
                                 <td>{{ $element->rJobCategory->nume_categorie }}</td>
-                                <td>{{ $element->rJobLocation->nume_locatie
-                                 }}</td>
+                                <td>{{ $element->rJobLocation->nume_locatie}}</td>
                                 <td>
                                     @if($element->este_promovat == 1)
                                     <span class="badge bg-success">Promovat</span>
                                     @else
                                     <span class="badge bg-danger">Nepromovat</span>
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('detalii_job',$element->id) }}" class="btn btn-primary btn-sm">Detalii</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('companie_aplicanti_job',$element->id) }}" class="btn btn-primary btn-sm">Aplicanti</a>
                                 </td>
                             </tr>
                             @endforeach

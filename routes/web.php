@@ -11,6 +11,7 @@ use App\Http\Controllers\Front\InregistrareController;
 use App\Http\Controllers\Front\ParolaUitataController;
 use App\Http\Controllers\Front\PaginaJoburiController;
 use App\Http\Controllers\Front\PaginiCompanieController;
+use App\Http\Controllers\Front\AbonatController;
 
 use App\Http\Controllers\Companie\CompanieController;
 use App\Http\Controllers\Candidat\CandidatController;
@@ -39,6 +40,7 @@ use App\Http\Controllers\Admin\AdminPaginaBlogController;
 use App\Http\Controllers\Admin\AdminPaginaCategoriiController;
 use App\Http\Controllers\Admin\AdminPaginaPacheteController;
 use App\Http\Controllers\Admin\AdminPaginaDiverseController;
+use App\Http\Controllers\Admin\AdminAbonatController;
 
 
 
@@ -65,8 +67,11 @@ Route::post('detalii-companie/contact/email', [PaginiCompanieController::class,'
 
 
 Route::get('login', [LogareController::class,'index'])->name('login');
-
 Route::get('inregistrare', [InregistrareController::class,'index'])->name('inregistrare');
+
+Route::post('abonat/trimite-email', [AbonatController::class,'trimite_email'])->name('abonat_trimite_email');
+Route::get('abonat/verifica/{email}/{token}', [AbonatController::class,'verificare'])->name('abonat_verificare_email');
+
 
 
 
@@ -116,6 +121,12 @@ Route::middleware(['companie:companie'])->group(function()
     Route::get('/companie/editare-joburi-postate/{id}',[CompanieController::class,'editare_joburi_postate'])->name('editare_joburi_postate_companie');
     Route::post('/companie/actualizare-joburi-postate/{id}',[CompanieController::class,'actualizare_joburi_postate'])->name('actualizare_joburi_postate_companie');
     Route::get('/companie/stergere-joburi-postate/{id}',[CompanieController::class,'stergere_joburi_postate'])->name('stergere_joburi_postate_companie');
+
+    Route::get('/companie/aplicatii',[CompanieController::class,'aplicatii'])->name('companie_aplicatii_job');
+    Route::get('/companie/aplicanti-job/{id}',[CompanieController::class,'aplicanti'])->name('companie_aplicanti_job');
+    Route::get('/companie/aplicant-detalii/{id}',[CompanieController::class,'aplicant_detalii'])->name('companie_detalii_aplicant');
+    Route::post('/companie/aplicatie-status-selectare',[CompanieController::class,'aplicatie_status_selectare'])->name('companie_aplicatie_status_selectare');
+
     });
 
 
@@ -179,6 +190,12 @@ Route::middleware(['candidat:candidat'])->group(function()
     Route::get('/candidat/salvare-job/{id}',[CandidatController::class,'salvare_job'])->name('candidat_salvare_job');
     Route::get('/candidat/joburi-favorite/vizualizare',[CandidatController::class,'joburi_favorite_vizualizare'])->name('candidat_joburi_favorite');
     Route::get('/candidat/joburi-favorite-stergere/{id}',[CandidatController::class,'joburi_favorite_stergere'])->name('candidat_joburi_favorite_stergere');
+
+    Route::get('/candidat/aplica/{id}',[CandidatController::class,'aplica'])->name('candidat_aplicare_job');
+    Route::post('/candidat/aplica-salvare/{id}',[CandidatController::class,'aplica_salvare'])->name('candidat_aplicare_salvare');
+    Route::get('/candidat/aplicatii',[CandidatController::class,'aplicatii_vizualizare'])->name('aplicatii_candidat');
+    
+    
     });
   
 
@@ -514,5 +531,12 @@ Route::middleware(['admin:admin'])->group(function()
     Route::post('/admin/marime-companie/modifica/{id}',[AdminMarimeCompanieController::class,'modifica'])->name('admin_marime_companie_modifica');
 
     Route::get('/admin/marime-companie/stergere/{id}',[AdminMarimeCompanieController::class,'stergere'])->name('admin_marime_companie_stergere');
+
+
+    Route::get('/admin/abonati-vizualizare',[AdminAbonatController::class,'abonati_vizualizare'])->name('admin_abonati_vizualizare');
+    Route::get('/admin/abonati-trimite-email',[AdminAbonatController::class,'trimite_email'])->name('admin_abonati_trimite_email');
+    Route::post('/admin/abonati-trimite-email-salvare',[AdminAbonatController::class,'trimite_email_salvare'])->name('admin_abonati_trimite_email_salvare');
+    Route::get('/admin/abonat-stergere/{id}',[AdminAbonatController::class,'stergere'])->name('admin_abonat_stergere');
+
 
 });

@@ -1,8 +1,8 @@
 
 @extends('front.layout.sablon')
 
-{{-- @section('seo_title'){{ $date_pagina_blog->subtitlu }}@endsection
-@section('seo_meta_description'){{ $date_pagina_blog->meta_description }}@endsection --}}
+@section('seo_title'){{$date_pagina_diverse->seo_titlu_pagina_joburi }}@endsection
+@section('seo_meta_description'){{  $date_pagina_diverse->seo_descriere_pagina_joburi }}@endsection
 
 @section('continut')
 
@@ -31,10 +31,12 @@
                             @endif
                             <div class="type">  {{$job_individual->rJobType->nume_tip}} </div>
                         </div>
+                        @if(!Auth::guard('companie')->check())
                         <div class="apply">
-                            <a href="apply.html" class="btn btn-primary">Aplica Acum</a>
+                            <a href="{{ route('candidat_aplicare_job',$job_individual->id) }}" class="btn btn-primary">Aplica Acum</a>
                             <a href="{{ route('candidat_salvare_job',$job_individual->id) }}" class="btn btn-primary save-job">Adauga la favorite</a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -56,7 +58,7 @@
                         {!!($job_individual->responsabilitati) !!}
                 </div>
                 <div class="left-item">
-                    <h2><i class="fas fa-file-invoice"></i> Skills and Abilities </h2>
+                    <h2><i class="fas fa-file-invoice"></i> Competente Si Abilitati </h2>
                         {!!($job_individual->cerinte) !!}    
                 </div>
                 <div class="left-item">

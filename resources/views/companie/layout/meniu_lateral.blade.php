@@ -17,8 +17,8 @@
     <li class="list-group-item {{ Request::is('companie/poze') ? 'active' : '' }}">
         <a href="{{ route('poze_companie') }}">Poze Prezentare Companie Incarcate</a>
     </li>
-    <li class="list-group-item">
-        <a href="company-applications.html">Candidate Applications</a>
+    <li class="list-group-item {{ Request::is('companie/aplicatii') ? 'active' : '' }}">
+        <a href="{{ route('companie_aplicatii_job') }}">Aplicatii Candidati</a>
     </li>
     <li class="list-group-item {{ Request::is('companie/editare-profil') ? 'active' : '' }}">
         <a href="{{route('editare_profil_companie')}}">Modificare Profil</a>

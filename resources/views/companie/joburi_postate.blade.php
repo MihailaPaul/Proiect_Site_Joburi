@@ -34,8 +34,8 @@
                                 <th>Titlu Job</th>
                                 <th>Categorie</th>
                                 <th>Locatie</th>
-                                <th>Promovat</th>
-                                <th>Action</th>
+                                <th>Status Promovare</th>
+                                <th>Optiuni</th>
                             </tr>
                             @foreach($joburi as $element )
                             <tr>

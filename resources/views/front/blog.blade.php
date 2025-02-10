@@ -38,7 +38,7 @@
                         </div>
                         <div class="button">
                             <a href="{{ route('articol',$element->slug) }}" class="btn btn-primary">
-                                 Read More
+                              Citeste Articolul
                             </a>
                         </div>
                     </div>

@@ -70,6 +70,17 @@
 
 
 
+
+            <li class="nav-item dropdown  {{ Request::is('admin/abonati-vizualizare')||Request::is('admin/abonati-trimite-email/*') ? 'active' : ' ' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Abonati</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/abonati-vizualizare') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_abonati_vizualizare') }}"><i class="fas fa-angle-right"></i> Toti Abonatii </a></li>
+                    <li class="{{ Request::is('admin/abonati-trimite-email/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_abonati_trimite_email') }}"><i class="fas fa-angle-right"></i> Trimite Email Catre Abonati </a></li>
+                </ul>
+            </li>
+
+
+
             <li class="{{ Request::is('admin/alegere/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_alegere') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Alegere">
             <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Alegere</span></a>
             </li>

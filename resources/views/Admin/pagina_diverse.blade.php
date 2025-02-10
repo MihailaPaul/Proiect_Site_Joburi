@@ -27,6 +27,12 @@
                                     <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" 
                                     data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Pagina Parola Uitata</button>
 
+                                    <button class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" 
+                                    data-bs-target="#v-pills-4" type="button" role="tab" aria-controls="v-pills-4" aria-selected="false">Pagina Joburi</button>
+
+                                    <button class="nav-link" id="v-pills-5-tab" data-bs-toggle="pill" 
+                                    data-bs-target="#v-pills-5" type="button" role="tab" aria-controls="v-pills-5" aria-selected="false">Pagina Companii</button>
+
                                   
                                 </div>
                             </div>
@@ -143,6 +149,76 @@
 
 
 
+                                      <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab" tabindex="0">
+                                        {{-- Startul sectiunii pagina Joburi --}}
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label"> Titlu </label>
+                                                    <input type="text" class="form-control" name="titlu_pagina_joburi" value="{{ $date_pagina_diverse->titlu_pagina_joburi}}">
+                                                </div>
+                                            </div>
+                                      </div> 
+
+                                        <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="mb-4">
+                                                      <label class="form-label">Titlu SEO </label>
+                                                      <input type="text" class="form-control" name="seo_titlu_pagina_joburi" value="{{ $date_pagina_diverse->seo_titlu_pagina_joburi}}">
+                                                  </div>
+                                              </div>
+                                        </div> 
+                                        
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                              <div class="mb-4">
+                                                  <label class="form-label">Descriere SEO </label>
+                                                  <textarea name="seo_descriere_pagina_joburi" class="form-control h_100" cols="30" rows="10">{{ $date_pagina_diverse->seo_descriere_pagina_joburi }}</textarea>
+                                              </div>
+                                           </div>
+                                        </div> 
+    
+                                        
+                                        {{-- Sfarsitul sectiunii pagina Joburi --}}
+                                    </div>
+
+
+
+
+                                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab" tabindex="0">
+                                        {{-- Startul sectiunii pagina companii --}}
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label"> Titlu </label>
+                                                    <input type="text" class="form-control" name="titlu_pagina_companii" value="{{ $date_pagina_diverse->titlu_pagina_companii}}">
+                                                </div>
+                                            </div>
+                                      </div> 
+
+                                        <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="mb-4">
+                                                      <label class="form-label">Titlu SEO </label>
+                                                      <input type="text" class="form-control" name="seo_titlu_pagina_companii" value="{{ $date_pagina_diverse->seo_titlu_pagina_companii}}">
+                                                  </div>
+                                              </div>
+                                        </div> 
+                                        
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                              <div class="mb-4">
+                                                  <label class="form-label">Descriere SEO </label>
+                                                  <textarea name="seo_descriere_pagina_companii" class="form-control h_100" cols="30" rows="10">{{ $date_pagina_diverse->seo_descriere_pagina_companii }}</textarea>
+                                              </div>
+                                           </div>
+                                        </div> 
+    
+                                        
+                                        {{-- Sfarsitul sectiunii pagina companii --}}
+                                    </div>
 
                                 </div>
 

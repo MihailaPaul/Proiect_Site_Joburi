@@ -11,12 +11,19 @@ use App\Models\CompanieLocation;
 use App\Models\CompanieDomain;
 use App\Models\CompanieSize;
 use App\Models\CompaniePhoto;
+use App\Models\CandidatApplication;
 use App\Models\Job;
+use App\Models\Candidate;
+use App\Models\CandidateEducation;
+use App\Models\CandidateSkill;
+use App\Models\CandidateExperience;
+use App\Models\CandidateDocument;
 use App\Models\JobCategory;
 use App\Models\JobLocation;
 use App\Models\JobType;
 use App\Models\Jobexperience;
 use App\Models\JobSalaryRange;
+use App\Mail\WebsiteMail;
 use Illuminate\Validation\Rule;
 use Auth;
 use Hash;
@@ -405,8 +412,60 @@ class CompanieController extends Controller
 
    public function stergere_joburi_postate($id)
    {
-    
     Job::where('id',$id)->delete();
     return redirect()->route('joburi_postate_companie')->with('success',' Anuntul a fost sters cu succes! ');
+   }
+
+   public function aplicatii()
+   {
+    $joburi = Job::with('rJobCategory','rJobLocation','rJobType','rJobSalaryRange','rJobExperience')->where('company_id',Auth::guard('companie')->user()->id)->get();
+    return view('companie.aplicatii', compact('joburi'));
+   }
+
+   public function aplicanti($id)
+   {
+    $aplicanti = CandidatApplication::with('rCandidat')->where('job_id',$id)->get();
+
+    $job_individual = Job::where('id',$id)->first();
+
+    return view('companie.aplicanti', compact('aplicanti','job_individual'));
+   }
+
+   public function aplicant_detalii($id)
+   {
+    $candidat_individual = Candidate::where('id',$id)->first();
+
+    $educatie_candidat = CandidateEducation::where('candidate_id',$id)->get();
+    
+    $abilitati_candidat = CandidateSkill::where('candidate_id',$id)->get();
+
+    $experienta_candidat = CandidateExperience::where('candidate_id',$id)->get();
+
+    $documente_candidat = CandidateDocument::where('candidate_id',$id)->get();
+
+
+    return view('companie.aplicant_detalii',compact('candidat_individual','educatie_candidat','educatie_candidat','abilitati_candidat','experienta_candidat','documente_candidat'));
+   }
+
+   public function aplicatie_status_selectare(Request $request)
+   {
+
+    $obiect = CandidatApplication::with('rCandidat')->where('candidate_id',$request->candidate_id)->where('job_id',$request->job_id)->first();
+    $obiect->status = $request->status;
+    $obiect->update();
+
+    $email_candidat = $obiect->rCandidat->email;
+//Trimitere email catre candidati
+    if($request->status == 'Acceptata')
+    {
+        $link_detalii= route('aplicatii_candidat');
+        $subject =  'Felicitari! Aplicatia ta a fost acceptata!';
+        $message = 'Vezi mai multe detalii prin apasarea link-ului de mai jos: <br>';
+        $message .= '<a href="'.$link_detalii.'">Apasa Aici</a>';
+     
+        \Mail::to($email_candidat)->send(new Websitemail($subject,$message));
+    }
+
+    return redirect()->back()->with('success','Statusul aplicatiei a fost schimbat.');
    }
 }

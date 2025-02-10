@@ -3,8 +3,8 @@
         <a href="{{ route('meniu_candidat') }}" > Statistici </a>
     </li>
     
-    <li class="list-group-item">
-        <a href="candidate-applied-jobs.html">Applied Jobs</a>
+    <li class="list-group-item {{ Request::is('candidat/aplicatii') ? 'active' : '' }}">
+        <a href="{{ route('aplicatii_candidat') }}">Aplicatii Joburi</a>
     </li>
 
     <li class="list-group-item {{ Request::is('candidat/joburi-favorite/vizualizare') ? 'active' : '' }}">

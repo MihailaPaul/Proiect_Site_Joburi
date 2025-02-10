@@ -1,7 +1,7 @@
 @extends('front.layout.sablon')
 
-{{-- @section('seo_title'){{ $date_pagina_blog->subtitlu }}@endsection
-@section('seo_meta_description'){{ $date_pagina_blog->meta_description }}@endsection --}}
+@section('seo_title'){{$date_pagina_diverse->seo_titlu_pagina_companii }}@endsection
+@section('seo_meta_description'){{  $date_pagina_diverse->seo_descriere_pagina_companii }}@endsection
 
 @section('continut')
     <div class="page-top page-top-job-single page-top-company-single"  style="background-image:  url('{{ asset('uploads/banner.jpg')}}')">
@@ -230,7 +230,7 @@
                     @endif
 
                     <div class="right-item">
-                        <h2><i class="fas fa-file-invoice"></i>Contacteaza Compania</h2>
+                        <h2><i class="fas fa-file-invoice"></i> Contacteaza Compania</h2>
                         <div class="enquery-form">
                             <form action="{{ route('contactare_companie') }}" method="post">
                                 @csrf

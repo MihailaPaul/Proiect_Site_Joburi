@@ -9,6 +9,7 @@ use App\Models\JobLocation;
 use App\Models\JobType;
 use App\Models\JobExperience;
 use App\Models\JobSalaryRange;
+use App\Models\PaginaDiverseItem;
 use App\Mail\Websitemail;
 use Illuminate\Http\Request;
 
@@ -62,10 +63,12 @@ class PaginaJoburiController extends Controller
        
 
         $joburi = $joburi->paginate(6);
+
+        $date_pagina_diverse = PaginaDiverseItem::where('id',1)->first();
         //$joburi = $joburi->appends($request->all());
 
         return view('front.pagina_joburi', compact('joburi','categorii_job','locatii_job','tipuri_job','experienta_job','salarii_job',
-        'titlu_formular','categorie_formular','locatie_formular','tip_formular','experienta_formular','salariu_formular'));
+        'titlu_formular','categorie_formular','locatie_formular','tip_formular','experienta_formular','salariu_formular','date_pagina_diverse'));
     }
 
 
@@ -74,9 +77,9 @@ class PaginaJoburiController extends Controller
 
         setlocale(LC_TIME, 'Romanian');
         $job_individual = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->where('id',$id)->first();
-
+        $date_pagina_diverse = PaginaDiverseItem::where('id',1)->first();
         $joburi = Job::with('rCompany','rJobCategory','rJobLocation','rJobSalaryRange','rJobType','rJobExperience')->where('job_category_id',$job_individual->job_category_id)->get();
-        return view('front.detalii_job',compact('job_individual','joburi'));
+        return view('front.detalii_job',compact('job_individual','joburi','date_pagina_diverse'));
     }
 
     public function contactare_companie(Request $request)

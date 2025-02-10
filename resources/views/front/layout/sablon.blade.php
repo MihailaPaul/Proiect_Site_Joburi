@@ -23,120 +23,109 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
         />
     </head>
     <body>
-        <div class="top">
-        </div>
+        <div class="top"></div>
 
        @include('front.layout.navigatie')
 
        @yield('continut')
 
-       <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <h2 class="heading">For Candidates</h2>
-                        <ul class="useful-links">
-                            <li><a href="">Browser Jobs</a></li>
-                            <li><a href="">Browse Candidates</a></li>
-                            <li><a href="">Candidate Dashboard</a></li>
-                            <li><a href="">Saved Jobs</a></li>
-                        </ul>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <h2 class="heading">Pentru Candidati</h2>
+                            <ul class="useful-links">
+                                <li><a href="">Cauta Joburi</a></li>
+                                <li><a href="">Cauta Companii</a></li>
+                                <li><a href="">Meniu Candidat</a></li>
+                                <li><a href="">Joburi Favorite</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <h2 class="heading">For Companies</h2>
-                        <ul class="useful-links">
-                            <li><a href="">Post Job</a></li>
-                            <li><a href="">Browse Jobs</a></li>
-                            <li><a href="">Company Dashboard</a></li>
-                            <li><a href="">Applications</a></li>
-                        </ul>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <h2 class="heading">Pentru Companii</h2>
+                            <ul class="useful-links">
+                                <li><a href="">Posteaza un anunt</a></li>
+                                <li><a href="">Vizualizeaza Joburi</a></li>
+                                <li><a href="">Meniu Companie</a></li>
+                                <li><a href="">Aplicanti</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <h2 class="heading">Contact</h2>
-                        <div class="list-item">
-                            <div class="left">
-                                <i class="fas fa-map-marker-alt"></i>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <h2 class="heading">Contactează-ne</h2>
+                            <div class="list-item">
+                                <div class="left">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="right">
+                                    Bulevardul Lacul Tei 124, București 
+                                </div>
                             </div>
-                            <div class="right">
-                                34 Antiger Lane, USA, 12937
+                            <div class="list-item">
+                                <div class="left">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="right">+407721091234</div>
                             </div>
+                            <div class="list-item">
+                                <div class="left">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="right">jobwisecontact@gmail.com</div>
+                            </div>
+                            <ul class="social">
+                                <li>
+                                    <a href=""
+                                        ><i class="fab fa-facebook-f"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href=""
+                                        ><i class="fab fa-twitter"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href=""
+                                        ><i class="fab fa-linkedin-in"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href=""
+                                        ><i class="fab fa-instagram"></i
+                                    ></a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="list-item">
-                            <div class="left">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="right">email</div>
-                        </div>
-                        <div class="list-item">
-                            <div class="left">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="right">telefon</div>
-                        </div>
-                        <ul class="social">
-                            <li>
-                                <a href=""
-                                    ><i class="fab fa-facebook-f"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    ><i class="fab fa-twitter"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    ><i class="fab fa-pinterest-p"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    ><i class="fab fa-linkedin-in"></i
-                                ></a>
-                            </li>
-                            <li>
-                                <a href=""
-                                    ><i class="fab fa-instagram"></i
-                                ></a>
-                            </li>
-                        </ul>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <h2 class="heading">Newsletter</h2>
-                        <p>
-                            To get the latest news from our website, please
-                            subscribe us here:
-                        </p>
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    name=""
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="submit"
-                                    class="btn btn-primary"
-                                    value="Subscribe Now"
-                                />
-                            </div>
-                        </form>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <h2 class="heading">Newsletter</h2>
+                            <p>
+                                Pentru a ramane la curect cu trendurile din industrie si dezvoltarea carierei aboneazata la Newsletter-ul nostru!
+                            </p>
+
+                            <form action = "{{ route('abonat_trimite_email') }}" method="post"
+                            class="form_subscribe_ajax">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" name="email" class="form-control">
+                                    <span class="text-danger error-text email_error"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Aboneaza-te Acum"> 
+                                </div>  
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         
         <div class="scroll-top">
             <i class="fas fa-angle-up"></i>
@@ -176,5 +165,53 @@ care contine partile din pagina care raman neschimbate de la pagina la pagina de
                 });
             </script>
         @endif
+
+        <script>
+            (function($){
+                $(".form_subscribe_ajax").on('submit', function(e){
+                    e.preventDefault();
+                    var form = this;
+                    $.ajax({
+                        url:$(form).attr('action'),
+                        method:$(form).attr('method'),
+                        data:new FormData(form),
+                        processData:false,
+                        dataType:'json',
+                        contentType:false,
+                        beforeSend:function(){
+                            $(form).find('span.error-text').text('');
+                        },
+                        success:function(data)
+                        {
+                            if(data.code == 0)
+                            {
+                                $.each(data.error_message, function(prefix, val) {
+                                    $(form).find('span.'+prefix+'_error').text(val[0]);
+                                });
+                            }
+                            else if(data.code == 2)
+                            {
+                                $.each(data.error_message_2, function(prefix, val) {
+                                    $('.email_error').text(data.error_message_2);
+                                });
+                            }
+                            else if(data.code == 1)
+                            {
+                                $(form)[0].reset();
+                                iziToast.success({
+                                    title: '',
+                                    position: 'topRight',
+                                    message: data.success_message,
+                                });
+                             }
+            
+                        }
+                    });
+                });
+            })(jQuery);
+            </script>    
+
+
     </body>
+
 </html>

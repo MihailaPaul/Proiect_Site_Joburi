@@ -236,7 +236,7 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
         <div class="row">
             <div class="col-md-12">
                 <div class="all">
-                    <a href="{{ route('pagina_joburi') }}" class="btn btn-primary">Vezi toate joburile</a>
+                    <a href="{{ route('pagina_joburi') }}" class="btn btn-primary">Vezi toate anunturile</a>
                 </div>
             </div>
         </div>
@@ -262,7 +262,7 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
 
                    @foreach ($recomandari_element as $element)
                     <div class="item">
-                        <div class="photo">
+                        <div class="photo ">
                             <img src="{{ asset('uploads/'.$element->poza)}}" alt="" />
                         </div>
                         <div class="text">
@@ -319,7 +319,7 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                         </div>
                         <div class="button">
                             <a href="{{ route('articol',$element->slug) }}" class="btn btn-primary"
-                                >Read More
+                                >Citeste Articolul
                             </a>
                         </div>
                     </div>
