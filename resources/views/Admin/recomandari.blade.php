@@ -39,7 +39,7 @@
 
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_recomandari_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>
-                                            <a href="{{ route('admin_recomandari_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Esti sigur?');">Sterge</a>
+                                            <a href="{{ route('admin_recomandari_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Confirma Stergerea Recomandarii !');">Sterge</a>
                                         </td>
                                     </tr>
                                     @endforeach

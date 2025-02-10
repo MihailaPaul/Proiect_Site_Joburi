@@ -46,27 +46,9 @@ In acest mod se evita scrierea codului pentru navbar si footer pentru fiecare pa
                                                 <option value="">
                                                     {{$date_pagina_acasa->locatie_job}}
                                                 </option>
-                                                <option value="">
-                                                    Australia
-                                                </option>
-                                                <option value="">
-                                                    Bangladesh
-                                                </option>
-                                                <option value="">
-                                                    Canada
-                                                </option>
-                                                <option value="">
-                                                    China
-                                                </option>
-                                                <option value="">
-                                                    India
-                                                </option>
-                                                <option value="">
-                                                    United Kingdom
-                                                </option>
-                                                <option value="">
-                                                    United States
-                                                </option>
+                                                @foreach( $locatie_job as $obiect)
+                                                    <option value="{{ $obiect->id }}">{{ $obiect->nume_locatie }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

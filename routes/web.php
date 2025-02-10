@@ -19,6 +19,15 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 
 use App\Http\Controllers\Admin\AdminCategorieJobController;
+use App\Http\Controllers\Admin\AdminLocatieJobController;
+use App\Http\Controllers\Admin\AdminTipuriJobController;
+use App\Http\Controllers\Admin\AdminExperientaJobController;
+use App\Http\Controllers\Admin\AdminIntervalSalariuJobController;
+
+use App\Http\Controllers\Admin\AdminLocatieCompanieController;
+use App\Http\Controllers\Admin\AdminDomeniuCompanieController;
+use App\Http\Controllers\Admin\AdminMarimeCompanieController;
+
 use App\Http\Controllers\Admin\AdminAlegereController;
 use App\Http\Controllers\Admin\AdminRecomandariController;
 use App\Http\Controllers\Admin\AdminArticolController;
@@ -161,23 +170,6 @@ Route::middleware(['admin:admin'])->group(function()
     Route::get('/admin/pagina-diverse',[AdminPaginaDiverseController::class,'index'])->name('admin_pagina_diverse');
     Route::post('/admin/pagina-diverse/modificare',[AdminPaginaDiverseController::class,'modificare'])->name('admin_pagina_diverse_modificare');
 
-    
-
-
-
-    Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
-
-    Route::get('/admin/categorie-job/creare',[AdminCategorieJobController::class,'creeaza'])->name('admin_categorie_job_creeaza');
-
-    Route::post('/admin/categorie-job/salvare',[AdminCategorieJobController::class,'salveaza'])->name('admin_categorie_job_salveaza');
-
-    Route::get('/admin/categorie-job/editare/{id}',[AdminCategorieJobController::class,'editare'])->name('admin_categorie_job_editare');
-
-    Route::post('/admin/categorie-job/modifica/{id}',[AdminCategorieJobController::class,'modifica'])->name('admin_categorie_job_modifica');
-
-    Route::get('/admin/categorie-job/stergere/{id}',[AdminCategorieJobController::class,'stergere'])->name('admin_categorie_job_stergere');
-
-
 
     Route::get('/admin/alegere/vizualizare',[AdminAlegereController::class,'index'])->name('admin_alegere');
 
@@ -232,4 +224,214 @@ Route::middleware(['admin:admin'])->group(function()
     Route::post('/admin/pachet/modifica/{id}',[AdminPachetController::class,'modificare'])->name('admin_pachet_modificare');
 
     Route::get('/admin/pachet/stergere/{id}',[AdminPachetController::class,'stergere'])->name('admin_pachet_stergere');
+
+
+
+
+    Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
+
+    Route::get('/admin/categorie-job/creare',[AdminCategorieJobController::class,'creeaza'])->name('admin_categorie_job_creeaza');
+
+    Route::post('/admin/categorie-job/salvare',[AdminCategorieJobController::class,'salveaza'])->name('admin_categorie_job_salveaza');
+
+    Route::get('/admin/categorie-job/editare/{id}',[AdminCategorieJobController::class,'editare'])->name('admin_categorie_job_editare');
+
+    Route::post('/admin/categorie-job/modifica/{id}',[AdminCategorieJobController::class,'modifica'])->name('admin_categorie_job_modifica');
+
+    Route::get('/admin/categorie-job/stergere/{id}',[AdminCategorieJobController::class,'stergere'])->name('admin_categorie_job_stergere');
+
+
+
+
+    Route::get('/admin/locatie-job/vizualizare',[AdminLocatieJobController::class,'index'])->name('admin_locatie_job');
+
+    Route::get('/admin/locatie-job/creare',[AdminLocatieJobController::class,'creeaza'])->name('admin_locatie_job_creeaza');
+
+    Route::post('/admin/locatie-job/salvare',[AdminLocatieJobController::class,'salveaza'])->name('admin_locatie_job_salveaza');
+
+    Route::get('/admin/locatie-job/editare/{id}',[AdminLocatieJobController::class,'editare'])->name('admin_locatie_job_editare');
+
+    Route::post('/admin/locatie-job/modifica/{id}',[AdminLocatieJobController::class,'modifica'])->name('admin_locatie_job_modifica');
+
+    Route::get('/admin/locatie-job/stergere/{id}',[AdminLocatieJobController::class,'stergere'])->name('admin_locatie_job_stergere');
+
+
+
+    Route::get('/admin/salariu-job/vizualizare',[AdminIntervalSalariuJobController::class,'index'])->name('admin_salariu_job');
+
+    Route::get('/admin/salariu-job/creare',[AdminIntervalSalariuJobController::class,'creeaza'])->name('admin_salariu_job_creeaza');
+
+    Route::post('/admin/salariu-job/salvare',[AdminIntervalSalariuJobController::class,'salveaza'])->name('admin_salariu_job_salveaza');
+
+    Route::get('/admin/salariu-job/editare/{id}',[AdminIntervalSalariuJobController::class,'editare'])->name('admin_salariu_job_editare');
+
+    Route::post('/admin/salariu-job/modifica/{id}',[AdminIntervalSalariuJobController::class,'modifica'])->name('admin_salariu_job_modifica');
+
+    Route::get('/admin/salariu-job/stergere/{id}',[AdminIntervalSalariuJobController::class,'stergere'])->name('admin_salariu_job_stergere');
+
+
+
+
+    Route::get('/admin/tip-job/vizualizare',[AdminTipuriJobController::class,'index'])->name('admin_tip_job');
+
+    Route::get('/admin/tip-job/creare',[AdminTipuriJobController::class,'creeaza'])->name('admin_tip_job_creeaza');
+
+    Route::post('/admin/tip-job/salvare',[AdminTipuriJobController::class,'salveaza'])->name('admin_tip_job_salveaza');
+
+    Route::get('/admin/tip-job/editare/{id}',[AdminTipuriJobController::class,'editare'])->name('admin_tip_job_editare');
+
+    Route::post('/admin/tip-job/modifica/{id}',[AdminTipuriJobController::class,'modifica'])->name('admin_tip_job_modifica');
+
+    Route::get('/admin/tip-job/stergere/{id}',[AdminTipuriJobController::class,'stergere'])->name('admin_tip_job_stergere');
+
+
+
+
+    Route::get('/admin/experienta-job/vizualizare',[AdminExperientaJobController::class,'index'])->name('admin_experienta_job');
+
+    Route::get('/admin/experienta-job/creare',[AdminExperientaJobController::class,'creeaza'])->name('admin_experienta_job_creeaza');
+
+    Route::post('/admin/experienta-job/salvare',[AdminExperientaJobController::class,'salveaza'])->name('admin_experienta_job_salveaza');
+
+    Route::get('/admin/experienta-job/editare/{id}',[AdminExperientaJobController::class,'editare'])->name('admin_experienta_job_editare');
+
+    Route::post('/admin/experienta-job/modifica/{id}',[AdminExperientaJobController::class,'modifica'])->name('admin_experienta_job_modifica');
+
+    Route::get('/admin/experienta-job/stergere/{id}',[AdminExperientaJobController::class,'stergere'])->name('admin_experienta_job_stergere');
+
+
+
+
+
+
+
+
+    Route::get('/admin/locatie-companie/vizualizare',[AdminLocatieCompanieController::class,'index'])->name('admin_locatie_companie');
+
+    Route::get('/admin/locatie-companie/creare',[AdminLocatieCompanieController::class,'creeaza'])->name('admin_locatie_companie_creeaza');
+
+    Route::post('/admin/locatie-companie/salvare',[AdminLocatieCompanieController::class,'salveaza'])->name('admin_locatie_companie_salveaza');
+
+    Route::get('/admin/locatie-companie/editare/{id}',[AdminLocatieCompanieController::class,'editare'])->name('admin_locatie_companie_editare');
+
+    Route::post('/admin/locatie-companie/modifica/{id}',[AdminLocatieCompanieController::class,'modifica'])->name('admin_locatie_companie_modifica');
+
+    Route::get('/admin/locatie-companie/stergere/{id}',[AdminLocatieCompanieController::class,'stergere'])->name('admin_locatie_companie_stergere');
+Route::get('/admin/categorie-job/vizualizare',[AdminCategorieJobController::class,'index'])->name('admin_categorie_job');
+
+    Route::get('/admin/categorie-job/creare',[AdminCategorieJobController::class,'creeaza'])->name('admin_categorie_job_creeaza');
+
+    Route::post('/admin/categorie-job/salvare',[AdminCategorieJobController::class,'salveaza'])->name('admin_categorie_job_salveaza');
+
+    Route::get('/admin/categorie-job/editare/{id}',[AdminCategorieJobController::class,'editare'])->name('admin_categorie_job_editare');
+
+    Route::post('/admin/categorie-job/modifica/{id}',[AdminCategorieJobController::class,'modifica'])->name('admin_categorie_job_modifica');
+
+    Route::get('/admin/categorie-job/stergere/{id}',[AdminCategorieJobController::class,'stergere'])->name('admin_categorie_job_stergere');
+
+
+
+
+    Route::get('/admin/locatie-job/vizualizare',[AdminLocatieJobController::class,'index'])->name('admin_locatie_job');
+
+    Route::get('/admin/locatie-job/creare',[AdminLocatieJobController::class,'creeaza'])->name('admin_locatie_job_creeaza');
+
+    Route::post('/admin/locatie-job/salvare',[AdminLocatieJobController::class,'salveaza'])->name('admin_locatie_job_salveaza');
+
+    Route::get('/admin/locatie-job/editare/{id}',[AdminLocatieJobController::class,'editare'])->name('admin_locatie_job_editare');
+
+    Route::post('/admin/locatie-job/modifica/{id}',[AdminLocatieJobController::class,'modifica'])->name('admin_locatie_job_modifica');
+
+    Route::get('/admin/locatie-job/stergere/{id}',[AdminLocatieJobController::class,'stergere'])->name('admin_locatie_job_stergere');
+
+
+
+    Route::get('/admin/salariu-job/vizualizare',[AdminIntervalSalariuJobController::class,'index'])->name('admin_salariu_job');
+
+    Route::get('/admin/salariu-job/creare',[AdminIntervalSalariuJobController::class,'creeaza'])->name('admin_salariu_job_creeaza');
+
+    Route::post('/admin/salariu-job/salvare',[AdminIntervalSalariuJobController::class,'salveaza'])->name('admin_salariu_job_salveaza');
+
+    Route::get('/admin/salariu-job/editare/{id}',[AdminIntervalSalariuJobController::class,'editare'])->name('admin_salariu_job_editare');
+
+    Route::post('/admin/salariu-job/modifica/{id}',[AdminIntervalSalariuJobController::class,'modifica'])->name('admin_salariu_job_modifica');
+
+    Route::get('/admin/salariu-job/stergere/{id}',[AdminIntervalSalariuJobController::class,'stergere'])->name('admin_salariu_job_stergere');
+
+
+
+
+    Route::get('/admin/tip-job/vizualizare',[AdminTipuriJobController::class,'index'])->name('admin_tip_job');
+
+    Route::get('/admin/tip-job/creare',[AdminTipuriJobController::class,'creeaza'])->name('admin_tip_job_creeaza');
+
+    Route::post('/admin/tip-job/salvare',[AdminTipuriJobController::class,'salveaza'])->name('admin_tip_job_salveaza');
+
+    Route::get('/admin/tip-job/editare/{id}',[AdminTipuriJobController::class,'editare'])->name('admin_tip_job_editare');
+
+    Route::post('/admin/tip-job/modifica/{id}',[AdminTipuriJobController::class,'modifica'])->name('admin_tip_job_modifica');
+
+    Route::get('/admin/tip-job/stergere/{id}',[AdminTipuriJobController::class,'stergere'])->name('admin_tip_job_stergere');
+
+
+
+
+    Route::get('/admin/experienta-job/vizualizare',[AdminExperientaJobController::class,'index'])->name('admin_experienta_job');
+
+    Route::get('/admin/experienta-job/creare',[AdminExperientaJobController::class,'creeaza'])->name('admin_experienta_job_creeaza');
+
+    Route::post('/admin/experienta-job/salvare',[AdminExperientaJobController::class,'salveaza'])->name('admin_experienta_job_salveaza');
+
+    Route::get('/admin/experienta-job/editare/{id}',[AdminExperientaJobController::class,'editare'])->name('admin_experienta_job_editare');
+
+    Route::post('/admin/experienta-job/modifica/{id}',[AdminExperientaJobController::class,'modifica'])->name('admin_experienta_job_modifica');
+
+    Route::get('/admin/experienta-job/stergere/{id}',[AdminExperientaJobController::class,'stergere'])->name('admin_experienta_job_stergere');
+
+
+
+
+
+
+
+    Route::get('/admin/locatie-companie/vizualizare',[AdminLocatieCompanieController::class,'index'])->name('admin_locatie_companie');
+
+    Route::get('/admin/locatie-companie/creare',[AdminLocatieCompanieController::class,'creeaza'])->name('admin_locatie_companie_creeaza');
+
+    Route::post('/admin/locatie-companie/salvare',[AdminLocatieCompanieController::class,'salveaza'])->name('admin_locatie_companie_salveaza');
+
+    Route::get('/admin/locatie-companie/editare/{id}',[AdminLocatieCompanieController::class,'editare'])->name('admin_locatie_companie_editare');
+
+    Route::post('/admin/locatie-companie/modifica/{id}',[AdminLocatieCompanieController::class,'modifica'])->name('admin_locatie_companie_modifica');
+
+    Route::get('/admin/locatie-companie/stergere/{id}',[AdminLocatieCompanieController::class,'stergere'])->name('admin_locatie_companie_stergere');
+
+    
+
+
+    Route::get('/admin/domeniu-companie/vizualizare',[AdminDomeniuCompanieController::class,'index'])->name('admin_domeniu_companie');
+
+    Route::get('/admin/domeniu-companie/creare',[AdminDomeniuCompanieController::class,'creeaza'])->name('admin_domeniu_companie_creeaza');
+
+    Route::post('/admin/domeniu-companie/salvare',[AdminDomeniuCompanieController::class,'salveaza'])->name('admin_domeniu_companie_salveaza');
+
+    Route::get('/admin/domeniu-companie/editare/{id}',[AdminDomeniuCompanieController::class,'editare'])->name('admin_domeniu_companie_editare');
+
+    Route::post('/admin/domeniu-companie/modifica/{id}',[AdminDomeniuCompanieController::class,'modifica'])->name('admin_domeniu_companie_modifica');
+
+    Route::get('/admin/domeniu-companie/stergere/{id}',[AdminDomeniuCompanieController::class,'stergere'])->name('admin_domeniu_companie_stergere');
+
+
+    Route::get('/admin/marime-companie/vizualizare',[AdminMarimeCompanieController::class,'index'])->name('admin_marime_companie');
+
+    Route::get('/admin/marime-companie/creare',[AdminMarimeCompanieController::class,'creeaza'])->name('admin_marime_companie_creeaza');
+
+    Route::post('/admin/marime-companie/salvare',[AdminMarimeCompanieController::class,'salveaza'])->name('admin_marime_companie_salveaza');
+
+    Route::get('/admin/marime-companie/editare/{id}',[AdminMarimeCompanieController::class,'editare'])->name('admin_marime_companie_editare');
+
+    Route::post('/admin/marime-companie/modifica/{id}',[AdminMarimeCompanieController::class,'modifica'])->name('admin_marime_companie_modifica');
+
+    Route::get('/admin/marime-companie/stergere/{id}',[AdminMarimeCompanieController::class,'stergere'])->name('admin_marime_companie_stergere');
+
 });

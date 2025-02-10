@@ -22,7 +22,7 @@
             <div class="card-wrap">
                 {{-- Titlul Cardului  --}}
                 <div class="card-header">
-                    <h4>Total Categorii Noi</h4>
+                    <h4>Test 1234</h4>
                 </div>
                 {{-- Continutul cardului  --}}
                 <div class="card-body">

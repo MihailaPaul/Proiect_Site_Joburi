@@ -40,7 +40,7 @@
                                         <td>{{ $element->text_alegere }}</td>
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_alegere_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>
-                                            <a href="{{ route('admin_alegere_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Sterge</a>
+                                            <a href="{{ route('admin_alegere_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Confirma Stergerea Elementului!');">Sterge</a>
                                         </td>
                                     </tr>
                                     @endforeach

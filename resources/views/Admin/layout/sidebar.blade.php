@@ -46,13 +46,29 @@
 
 
 
-            <li class="nav-item dropdown  {{ Request::is('admin/categorie-job/*') ? 'active' : ' ' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Elemente Sectiune Job</span></a>
+            <li class="nav-item dropdown  {{ Request::is('admin/categorie-job/*')||Request::is('admin/locatie-job/*')||Request::is('admin/tip-job/*')||Request::is('admin/experienta-job/*')|| Request::is('admin/salariu-job/*') ? 'active' : ' ' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Elemente/Filtre sectiune Job</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/categorie-job/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_categorie_job') }}"><i class="fas fa-angle-right"></i>Categorie Job</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Locatie Job</a></li>
+                    <li class="{{ Request::is('admin/categorie-job/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_categorie_job') }}"><i class="fas fa-angle-right"></i>Categorii Job</a></li>
+                    <li class="{{ Request::is('admin/locatie-job/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_locatie_job') }}"><i class="fas fa-angle-right"></i> Locatii Job</a></li>
+                    <li class="{{ Request::is('admin/tip-job/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_tip_job') }}"><i class="fas fa-angle-right"></i> Tipuri Job</a></li>
+                    <li class="{{ Request::is('admin/experienta-job/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_experienta_job') }}"><i class="fas fa-angle-right"></i> Niveluri Experienta Job</a></li>
+                    <li class="{{ Request::is('admin/salariu-job/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_salariu_job') }}"><i class="fas fa-angle-right"></i>Intervale Salariale</a></li>
                 </ul>
             </li>
+
+
+
+            <li class="nav-item dropdown  {{ Request::is('admin/locatie-companie/*')||Request::is('admin/domeniu-companie/*')||Request::is('admin/marime-companie/*') ? 'active' : ' ' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Filtre Companie</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/locatie-companie/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_locatie_companie') }}"><i class="fas fa-angle-right"></i> Locatii Companie</a></li>
+                    <li class="{{ Request::is('admin/domeniu-companie/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_domeniu_companie') }}"><i class="fas fa-angle-right"></i> Domenii Companie</a></li>
+                    <li class="{{ Request::is('admin/marime-companie/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_marime_companie') }}"><i class="fas fa-angle-right"></i> Marime Companie</a></li>
+                </ul>
+            </li>
+
+
 
             <li class="{{ Request::is('admin/alegere/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_alegere') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Alegere">
             <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Alegere</span></a>
@@ -65,7 +81,6 @@
             <li class="{{ Request::is('admin/articol/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_articol') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
                 <i class="fas fa-hand-point-right"></i> <span>Elemente Sectiune Articol</span></a>
             </li>
-
             
             <li class="{{ Request::is('admin/pachet/*') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_pachet') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Elemente Sectiune Articol">
                 <i class="fas fa-hand-point-right"></i> <span>Pachete</span></a>

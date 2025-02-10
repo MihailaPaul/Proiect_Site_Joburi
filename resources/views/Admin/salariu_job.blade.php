@@ -1,12 +1,12 @@
 {{-- Blade-ul care contine formularul de editare profil administrator --}}
 @extends('Admin.layout.panou_baza')
 {{-- Foloseste sablonul creat pentru a mentine stilul dorit --}}
-@section('heading',' Elementele Sectiunii De Articole')
+@section('heading','Intervale Salariale')
 {{-- In sectiunea de main_content se constuieste formularul de editare profil  --}}
 @section('buton')
 
 <div>
-    <a href="{{ route('admin_articol_creare') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga</a>
+    <a href="{{ route('admin_salariu_job_creeaza') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga</a>
 </div>
 @endsection
 
@@ -21,23 +21,18 @@
                                 <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Poza</th>
-                                    <th>Titlu</th>
-                                    <th>Optiuni</th>
+                                    <th>Intervale Salariale</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($date_articol as $element)
+                                    @foreach($date_salariu_job as $element)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            <img src="{{ asset ('uploads/'. $element->poza) }}" alt="" class="w_150">
-                                        </td>
-                                        <td>{{ $element->titlu}}</td>
-
+                                        <td>{{ $element->sume }}</td>
                                         <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_articol_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>
-                                            <a href="{{ route('admin_articol_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Confirma Stergerea Articolului !');">Sterge</a>
+                                            <a href="{{ route('admin_salariu_job_editare',$element->id) }}" class="btn btn-primary btn-sm">Editare</a>
+                                            <a href="{{ route('admin_salariu_job_stergere',$element->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Confirma Stergerea Intervalului Salarial');">Sterge</a>
                                         </td>
                                     </tr>
                                     @endforeach
