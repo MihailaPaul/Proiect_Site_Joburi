@@ -57,89 +57,64 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
-                            <div
-                                class="tab-pane fade show active"
-                                id="pills-home"
-                                role="tabpanel"
-                                aria-labelledby="pills-home-tab"
-                                tabindex="0"
-                            >
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Username</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Password</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary bg-website"
-                                    >
-                                        Login
-                                    </button>
-                                    <a
-                                        href="{{route('parola_uitata')}}"
-                                        class="primary-color"
-                                        >Forget Password?</a
-                                    >
-                                </div>
+                            <div class="tab-pane fade show active" id="pills-home"  role="tabpanel" aria-labelledby="pills-home-tab"  tabindex="0">
+
+                            <form action="{{ route('trimitere_logare_candidat') }}" method="">
+                            @csrf
+
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nume De Utilizator</label >
+                                <input type="text" class="form-control" name="nume_utilizator" value="{{old('nume_utilizator')}}"/>
+                            </div>                                                                 
+
+                            <div class="mb-3">
+                                <label for="" class="form-label"> Parola </label>
+                                <input type="password" class="form-control" name="parola"/>
                             </div>
-                            <div
-                                class="tab-pane fade"
-                                id="pills-profile"
-                                role="tabpanel"
-                                aria-labelledby="pills-profile-tab"
-                                tabindex="0"
-                            >
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary bg-website">
+                                    Login
+                                </button>
+                                <a href="{{route('parola_uitata_candidat')}}" class="primary-color">Ai uitat Parola? </a>
+                            </div>
+                            </form>
+                        </div>
+
+
+
+
+
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0" >
+                                <form action="{{ route('trimitere_logare_companie') }}" method="">
+                                 @csrf
+                              
                                 <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Username</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
+                                    <label for="" class="form-label">Nume De Utilizator</label >
+                                    <input type="text" class="form-control" name="nume_utilizator" value="{{old('nume_utilizator')}}" />
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Password</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
+                                    <label for="" class="form-label"> Parola </label>
+                                    <input type="password" class="form-control" name="parola"/>
                                 </div>
+
                                 <div class="mb-3">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary bg-website"
-                                    >
+                                    <button type="submit" class="btn btn-primary bg-website">
                                         Login
                                     </button>
-                                    <a
-                                        href="{{route('parola_uitata')}}"
-                                        class="primary-color"
-                                        >Forget Password?</a
-                                    >
+
+                                    <a href="{{route('parola_uitata_companie')}}" class="primary-color">
+                                        Ai uitat Parola?
+                                    </a>
                                 </div>
+                                </form>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <a href="{{ route('inregistrare') }}" class="primary-color"
-                                >Don't have an account? Create Account</a
+                                > Nu ai cont? Creeaza Acum</a
                             >
                         </div>
                     </div>

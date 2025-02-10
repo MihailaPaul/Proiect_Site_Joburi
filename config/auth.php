@@ -55,6 +55,11 @@ return [
             // se foloseste provider ul admins pentru a citii informatii din baza de date
             'provider' => 'companies',
         ],
+
+        'candidat' => [
+            'driver' => 'session',
+            'provider' => 'candidates',
+        ],
     ],
 
     /*
@@ -79,6 +84,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
 
 // Pentru verificarea Adminilor se foloseste drriver ul eloquent care foloseste modelul construit App\Models\Admin pentru a retrage date din baza de date
         'companies' => [
@@ -86,11 +96,12 @@ return [
             'model' => App\Models\Company::class,
         ],
 
-        'companii' => [
+        'candidates' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => App\Models\Candidate::class,
         ],
 
+     
         
 
         // 'users' => [
@@ -134,12 +145,17 @@ return [
         ],
         'companies' => [
             'provider' => 'companies',
-        //Password_resets este folosit pentru a stoca token urile de resetare parola 
+       
             'table' => 'password_resets',
-        //Expire defineste cat timp sun valabile token urile de resetare parola in minute
             'expire' => 60,
-        // Throttle este foolosit pentru a limita numarul de incercari pentru resetarea parolei
-        //  de catre un user inainte de a fi blocat pana la expirarea token ului 
+            'throttle' => 60,
+        ],
+
+        'candidates' => [
+            'provider' => 'candidates',
+       
+            'table' => 'password_resets',
+            'expire' => 60,
             'throttle' => 60,
         ],
     ],

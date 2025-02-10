@@ -37,8 +37,7 @@
                                     aria-controls="pills-home"
                                     aria-selected="true"
                                 >
-                                    <i class="far fa-user"></i> Candidate
-                                </button>
+                                    <i class="far fa-user"></i> Candidate </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button
@@ -64,58 +63,37 @@
                                 aria-labelledby="pills-home-tab"
                                 tabindex="0"
                             >
+                            <form action="{{ route('trimitere_inregistrare_candidat') }}" method="post">
+                                @csrf 
+
                                 <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Candidate Name *</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
+                                    <label for="" class="form-label"> Nume Candidat </label>
+                                    <input type="text" class="form-control" name="nume_candidat" value="{{ old('nume_candidat') }}"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="" class="form-label"> Username </label>
+                                    <input type="text" class="form-control" name="nume_utilizator" value="{{ old('nume_utilizator') }}"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="" class="form-label"> Adresa de Email </label >
+                                   <input type="text" class="form-control" name="email" value="{{ old('email') }}"/>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="" class="form-label"> Parola </label>
+                                   <input type="password" class="form-control" name="parola" value="{{ old('parola') }}"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Username *</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
+                                    <label for="" class="form-label"> Confirma Parola </label>
+                                    <input type="password" class="form-control" name="confirma_parola" value="{{ old('confirma_parola') }}"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Email Address *</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Password *</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Confirm Password *</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary bg-website"
-                                    >
-                                        Create Account
+                                    <button type="submit" class="btn btn-primary bg-website">
+                                        Creaza Cont 
                                     </button>
+                                </form>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0" >
@@ -123,17 +101,17 @@
                             <form action="{{ route('trimitere_inregistrare_companie') }}" method="post">
                                 @csrf 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Company Name *</label>
+                                    <label for="" class="form-label">Nume Companie </label>
                                     <input type="text" class="form-control" name="nume_companie" value="{{ old('nume_companie') }}"/>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Contact Person Name *</label>
+                                    <label for="" class="form-label"> Nume Reprezentant Companie</label>
                                     <input type="text"class="form-control" name="nume_reprezentant" value="{{ old('nume_reprezentant') }}"/>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Username *</label>
+                                    <label for="" class="form-label">Username </label>
                                     <input type="text" class="form-control" name="nume_utilizator" value="{{ old('nume_utilizator') }}"/>
                                 </div>
 
@@ -143,19 +121,19 @@
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Parola *</label>
-                                    <input type="password" class="form-control" name="password" value=""/>
+                                    <label for="" class="form-label">Parola </label>
+                                    <input type="password" class="form-control" name="parola" value=""/>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Rescrie Parola *</label>
-                                    <input type="password" class="form-control" name="retype_password" value=""/>
+                                    <label for="" class="form-label">Confirma Parola </label>
+                                    <input type="password" class="form-control" name="confirma_parola" value=""/>
                                 </div>
 
 
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary bg-website">
-                                        Create Account
+                                        Creaza Cont
                                     </button>
                                 </div>
 
@@ -165,8 +143,8 @@
 
                         <div class="mb-3">
                             <a href="{{ route('login') }}" class="primary-color"
-                                >Existing User? Login Now</a
-                            >
+                                >Ai deja cont? Dai Login Acum !
+                            </a>
                         </div>
                     </div>
                 </div>

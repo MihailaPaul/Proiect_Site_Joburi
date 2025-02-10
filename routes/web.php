@@ -10,6 +10,10 @@ use App\Http\Controllers\Front\LogareController;
 use App\Http\Controllers\Front\InregistrareController;
 use App\Http\Controllers\Front\ParolaUitataController;
 
+
+use App\Http\Controllers\Companie\CompanieController;
+use App\Http\Controllers\Candidat\CandidatController;
+
 use App\Http\Controllers\Admin\TablouAdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -39,19 +43,56 @@ Route::get('articol/{slug}', [ArticolController::class,'adresa'])->name('articol
 
 Route::get('pachete', [PachetController::class,'index'])->name('pachete');
 
+
+
+
 Route::get('login', [LogareController::class,'index'])->name('login');
 
 Route::get('inregistrare', [InregistrareController::class,'index'])->name('inregistrare');
 
-Route::get('parola-uitata', [ParolaUitataController::class,'index'])->name('parola_uitata');
 
 
 
 
+
+
+
+
+
+// RUTE COMPANIE
+
+Route::get('trimitere-logare-companie', [LogareController::class,'trimitere_logare_companie'])->name('trimitere_logare_companie');
 Route::post('trimitere-inregistrare-companie', [InregistrareController::class,'trimitere_inregistrare_companie'])->name('trimitere_inregistrare_companie');
-
 Route::get('verificare-inregistrare-companie/{token}/{email}', [InregistrareController::class,'verificare_inregistrare_companie'])->name('verificare_inregistrare_companie');
+Route::get('parola-uitata/companie', [ParolaUitataController::class,'parola_uitata_companie'])->name('parola_uitata_companie');
+Route::post('trimitere-parola-uitata/companie', [ParolaUitataController::class,'trimitere_parola_uitata_companie'])->name('trimitere_parola_uitata_companie');
+Route::get('resetare-parola/companie/{token}/{email}',[ParolaUitataController::class,'resetare_parola_companie'])->name('resetare_parola_companie');
+Route::post('trimitere-resetare-parola/companie',[ParolaUitataController::class,'trimitere_resetare_parola_companie'])->name('trimitere_resetare_parola_companie');
 
+// Rute Companie cu Middleware
+Route::middleware(['companie:companie'])->group(function() 
+    {
+    Route::get('/companie/meniu',[CompanieController::class,'meniu_companie'])->name('meniu_companie');
+    Route::get('/companie/logout',[LogareController::class,'logout_companie'])->name('logout_companie');
+    });
+
+
+
+//RUTE CANDIDAT
+Route::get('trimitere-logare-candidat', [LogareController::class,'trimitere_logare_candidat'])->name('trimitere_logare_candidat');
+Route::post('trimitere-inregistrare-candidat', [InregistrareController::class,'trimitere_inregistrare_candidat'])->name('trimitere_inregistrare_candidat');
+Route::get('verificare-inregistrare-candidat/{token}/{email}', [InregistrareController::class,'verificare_inregistrare_candidat'])->name('verificare_inregistrare_candidat');
+Route::get('parola-uitata/candidat', [ParolaUitataController::class,'parola_uitata_candidat'])->name('parola_uitata_candidat');
+Route::post('trimitere-parola-uitata/candidat', [ParolaUitataController::class,'trimitere_parola_uitata_candidat'])->name('trimitere_parola_uitata_candidat');
+Route::get('resetare-parola/candidat/{token}/{email}',[ParolaUitataController::class,'resetare_parola_candidat'])->name('resetare_parola_candidat');
+Route::post('trimitere-resetare-parola/candidat',[ParolaUitataController::class,'trimitere_resetare_parola_candidat'])->name('trimitere_resetare_parola_candidat');
+
+//Rute Candidat  cu Middleware
+Route::middleware(['candidat:candidat'])->group(function() 
+    {
+    Route::get('/candidat/meniu',[CandidatController::class,'meniu_candidat'])->name('meniu_candidat');
+    Route::get('/candidat/logout',[LogareController::class,'logout_candidat'])->name('logout_candidat');
+    });
 
 
 // Rute TablouAdmin

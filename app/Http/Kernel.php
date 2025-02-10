@@ -66,5 +66,7 @@ class Kernel extends HttpKernel
 // Declararea middleware ului Admin in kernel
         'admin' => \App\Http\Middleware\Admin::class,
         'companie' => \App\Http\Middleware\Companie::class,
+        'candidat' => \App\Http\Middleware\Candidat::class,
+
     ];
 }

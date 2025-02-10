@@ -33,12 +33,27 @@
                         <li class="nav-item {{ Request::is('blog')||Request::is('articol/*') ? 'active' : '' }}">
                             <a href="{{ route('blog') }}" class="nav-link"> Blog </a >
                         </li>
+
+                        @if(Auth::guard('companie')->check())
                         <li class="nav-item">
-                                <a href="{{ route('login') }}" ><i class="fas fa-sign-in-alt"></i> Login </a >
-                         </li>
+                            <a href="{{ route('meniu_companie') }}"><i class="fas fa-house-user"></i> Meniu Companie </a>
+                        </li>
+
+                        @elseif(Auth::guard('candidat')->check())
                         <li class="nav-item">
-                                <a href="{{ route('inregistrare') }}"><i class="fas fa-user"></i> Sign Up </a>
+                            <a href="{{ route('meniu_companie') }}"><i class="fas fa-house-user"></i> Meniu Candidat </a>
+                        </li>
+
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" ><i class="fas fa-sign-in-alt"></i> Login </a >
                          </li>
+                         
+                         <li class="nav-item">
+                            <a href="{{ route('inregistrare') }}"><i class="fas fa-user"></i> Sign Up </a>
+                        </li>
+                        @endif
+
                     </ul>
                 </div>
             </nav>
