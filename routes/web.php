@@ -93,6 +93,12 @@ Route::middleware(['companie:companie'])->group(function()
 
     Route::get('/companie/editare-profil',[CompanieController::class,'editare_profil_companie'])->name('editare_profil_companie');
     Route::post('/companie/editare-profil/modifica',[CompanieController::class,'salvare_editare_profil_companie'])->name('salvare_editare_profil_companie');
+
+
+    Route::get('/companie/poze',[CompanieController::class,'poze_companie'])->name('poze_companie');
+    Route::post('/companie/poze/salvare',[CompanieController::class,'poze_companie_salvare'])->name('poze_companie_salvare');
+    Route::get('/companie/poze/stergere/{id}',[CompanieController::class,'poze_companie_stergere'])->name('poze_companie_stergere');
+
     });
 
 

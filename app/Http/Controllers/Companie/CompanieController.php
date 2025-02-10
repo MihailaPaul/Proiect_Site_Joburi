@@ -10,6 +10,7 @@ use App\Models\company;
 use App\Models\CompanieLocation;
 use App\Models\CompanieDomain;
 use App\Models\CompanieSize;
+use App\Models\CompaniePhoto;
 use Illuminate\Validation\Rule;
 use Auth;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
@@ -23,12 +24,7 @@ class CompanieController extends Controller
         return view('companie.meniu');
     }
 
-    public function plati_companie()
-    {
-        $date_plati = Order::with('rPackage')->orderBy('id', 'desc')->where('company_id', Auth::guard('companie')->user()->id)->get();
-        return view('companie.plati', compact('date_plati'));
-
-    }
+ 
 
     public function editare_profil_companie()
     {
@@ -92,12 +88,69 @@ class CompanieController extends Controller
     }
 
 
+    public function poze_companie()
+    { //Verifica daca compania a cumparat un pachet
+        $date_comenzi = Order::where('company_id',Auth::guard('companie')->user()->id)->where('status',1)->first();
+
+        if(!($date_comenzi)){
+            return redirect()->back()->with('error','Trebuie sa cumperi un pachet pentru a putea incarca poze');
+        }
+        // Verrifica daca pachetul cumparat are nivelul necesar sa acceseze pagina de poze 
+        $date_pachet = Package::where('id',$date_comenzi->package_id)->first();
+
+        if($date_pachet->numar_permis_poze == 0)
+        {
+            return redirect()->back()->with('error','Pachetul actual nu are posibilitatea sa acceseze sectiunea poze! ');
+        }
+
+        $poze=CompaniePhoto::where('company_id',Auth::guard('companie')->user()->id)->get();
+        return view('companie.poze',compact('poze'));
+    }
+
+    public function poze_companie_salvare(Request $request)
+    {
+
+        $date_comenzi = Order::where('company_id',Auth::guard('companie')->user()->id)->where('status',1)->first();
+        $date_pachet = Package::where('id',$date_comenzi->package_id)->first();
+        $numar_poze_incarcate = CompaniePhoto::where('company_id',Auth::guard('companie')->user()->id)->count();
+
+        if( $date_pachet->numar_permis_poze == $numar_poze_incarcate){
+            return redirect()->back()->with('error','Numarul maxim de poze incarcate permis de pachet a fost atins! Pentru a adauga mai multe cumpara un pachet mai mare!');
+        }
+
+        $request->validate([
+            'poza' => 'required|image|mimes:jpg,jpeg,png,gif'
+        ]);
+        
+        $obiect = new CompaniePhoto();
+
+          $ext= $request->file('poza')->extension();
+          $nume_final = 'poza_companie_'.time().'.'.$ext;
+          $request->file('poza')->move(public_path('uploads/'),$nume_final);
+
+         $obiect->poza =$nume_final;
+         $obiect->company_id =Auth::guard('companie')->user()->id;
+         $obiect->save();
+         
+
+         return redirect()->route('poze_companie')->with('success','Poza a fost incarcata cu succes! ');
+    }
+
+    public function poze_companie_stergere($id)
+    {
+        $poza_individuala = CompaniePhoto::where('id',$id)->first();
+        unlink(public_path('uploads/'.$poza_individuala->poza));
+        CompaniePhoto::where('id',$id)-> delete();
+        return redirect()->back()->with('success','Poza a fost stearsa cu succes! ');
+    }
 
 
+    public function plati_companie()
+    {
+        $date_plati = Order::with('rPackage')->orderBy('id', 'desc')->where('company_id', Auth::guard('companie')->user()->id)->get();
+        return view('companie.plati', compact('date_plati'));
 
-
-
-
+    }
 
     public function plata_pachet()
     {

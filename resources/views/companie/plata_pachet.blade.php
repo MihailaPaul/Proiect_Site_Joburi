@@ -41,28 +41,29 @@
             </div>
 
             <h4>Cumpara Pachet</h4>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <form action="{{ route('companie_paypal') }}" method="post">
-                        @csrf
-                    <tr>
-                        <td class="w-300">
-                            <select name="package_id" class="form-control select2">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <form action="{{ route('companie_paypal') }}" method="post">
+                            @csrf
+                        <tr>
+                            <td class="w-200">
+                                <select name="package_id" class="form-control select2">
 
-                                @foreach ($pachete as $element)
-                                <option value="{{ $element->id }}">{{$element->nume_pachet}} ({{$element->pret_pachet}} € )</option>
-                                @endforeach
+                                    @foreach ($pachete as $element)
+                                    <option value="{{ $element->id }}">{{$element->nume_pachet}} ({{$element->pret_pachet}} € )</option>
+                                    @endforeach
 
-                            </select>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">
-                                Plateste cu Paypal
-                            </button>
-                        </td>
-                    </tr>
-                    </form>
-                </table>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">
+                                    Plateste cu Paypal
+                                </button>
+                            </td>
+                        </tr>
+                        </form>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
