@@ -24,14 +24,11 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('numar_telefon')->nullable();
             $table->string('adresa')->nullable();
-            $table->string('tara')->nullable();
+            $table->integer('companie_location_id')->nullable();
+            $table->integer('companie_size_id')->nullable();
+            $table->integer('companie_domain_id')->nullable();
             $table->string('website')->nullable();
-            $table->string('numar_angajati')->nullable();
-            $table->string('an_infintare')->nullable();
-            $table->integer('domeniu_id')->nullable();
             $table->text('descriere')->nullable();
-            $table->string('program_saptamana')->nullable();
-            $table->string('program_weekend')->nullable();
             $table->text('map_code')->nullable();
             $table->text('facebook')->nullable();
             $table->text('twitter')->nullable();

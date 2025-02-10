@@ -90,6 +90,9 @@ Route::middleware(['companie:companie'])->group(function()
     Route::get('/companie/paypal/succes', [CompanieController::class, 'paypal_succes'])->name('companie_paypal_succes');
     Route::get('/companie/paypal/anulare', [CompanieController::class, 'paypal_anulare'])->name('companie_paypal_anulare');
 
+
+    Route::get('/companie/editare-profil',[CompanieController::class,'editare_profil_companie'])->name('editare_profil_companie');
+    Route::post('/companie/editare-profil/modifica',[CompanieController::class,'salvare_editare_profil_companie'])->name('salvare_editare_profil_companie');
     });
 
 
