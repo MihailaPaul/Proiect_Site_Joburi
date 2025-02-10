@@ -1,4 +1,4 @@
-v{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal titlul textul si optiunile de cautare --}}
+{{-- Pagina de editare a continutului din pagina acasa a site-ului in pricipal titlul textul si optiunile de cautare --}}
 {{-- Se face legatura cu sablonul de Panou Control --}}
 @extends('Admin.layout.panou_baza')
 

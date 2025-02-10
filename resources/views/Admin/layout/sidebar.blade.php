@@ -19,7 +19,7 @@
             <li class="{{ Request::is('admin/home') ? 'active' : ' ' }}"><a class="nav-link" href="{{ route('admin_home') }}" data-bs-toggle="tooltip" data-bs-placement="right"  data-bs-title="Tablou">
                 <i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 {{-- In lista de elemente se adauga si o instanta de drop down menu care contine setarile paginilor--}}
-            <li class="nav-item dropdown {{ Request::is('admin/pagina-acasa')||Request::is('admin/pagina-blog')||Request::is('admin/pagina-categorii') ? 'active' : ''}}">
+            <li class="nav-item dropdown {{ Request::is('admin/pagina-acasa')||Request::is('admin/pagina-blog')||Request::is('admin/pagina-categorii')||Request::is('admin/pagina-pachete')||Request::is('admin/pagina-diverse')? 'active' : ''}}">
 
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Modificare Pagini</span></a>
                 <ul class="dropdown-menu">
@@ -34,6 +34,11 @@
 
                     <li class="{{ Request::is('admin/pagina-pachete') ? 'active' : '' }}">
                          <a class="nav-link" href="{{ route('admin_pagina_pachete') }}"><i class="fas fa-angle-right"></i>Pagina Pachete</a></li>
+
+                    <li class="{{ Request::is('admin/pagina-diverse') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin_pagina_diverse') }}"><i class="fas fa-angle-right"></i>Pagina Diverse</a></li>
+
+
                 </ul>
             </li>
 

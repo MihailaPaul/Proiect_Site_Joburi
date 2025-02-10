@@ -34,10 +34,10 @@
                             <a href="{{ route('blog') }}" class="nav-link"> Blog </a >
                         </li>
                         <li class="nav-item">
-                                <a href="login.html" ><i class="fas fa-sign-in-alt"></i> Login </a >
+                                <a href="{{ route('login') }}" ><i class="fas fa-sign-in-alt"></i> Login </a >
                          </li>
                         <li class="nav-item">
-                                <a href="signup.html"><i class="fas fa-user"></i> Sign Up </a>
+                                <a href="{{ route('inregistrare') }}"><i class="fas fa-user"></i> Sign Up </a>
                          </li>
                     </ul>
                 </div>

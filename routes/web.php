@@ -6,7 +6,9 @@ use App\Http\Controllers\Front\AcasaController;
 use App\Http\Controllers\Front\CategoriiJobController;
 use App\Http\Controllers\Front\ArticolController;
 use App\Http\Controllers\Front\PachetController;
-
+use App\Http\Controllers\Front\LogareController;
+use App\Http\Controllers\Front\InregistrareController;
+use App\Http\Controllers\Front\ParolaUitataController;
 
 use App\Http\Controllers\Admin\TablouAdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -22,6 +24,7 @@ use App\Http\Controllers\Admin\AdminPaginaAcasaController;
 use App\Http\Controllers\Admin\AdminPaginaBlogController;
 use App\Http\Controllers\Admin\AdminPaginaCategoriiController;
 use App\Http\Controllers\Admin\AdminPaginaPacheteController;
+use App\Http\Controllers\Admin\AdminPaginaDiverseController;
 
 
 
@@ -36,7 +39,18 @@ Route::get('articol/{slug}', [ArticolController::class,'adresa'])->name('articol
 
 Route::get('pachete', [PachetController::class,'index'])->name('pachete');
 
+Route::get('login', [LogareController::class,'index'])->name('login');
 
+Route::get('inregistrare', [InregistrareController::class,'index'])->name('inregistrare');
+
+Route::get('parola-uitata', [ParolaUitataController::class,'index'])->name('parola_uitata');
+
+
+
+
+Route::post('trimitere-inregistrare-companie', [InregistrareController::class,'trimitere_inregistrare_companie'])->name('trimitere_inregistrare_companie');
+
+Route::get('verificare-inregistrare-companie/{token}/{email}', [InregistrareController::class,'verificare_inregistrare_companie'])->name('verificare_inregistrare_companie');
 
 
 
@@ -94,6 +108,12 @@ Route::middleware(['admin:admin'])->group(function()
 
     Route::get('/admin/pagina-pachete',[AdminPaginaPacheteController::class,'index'])->name('admin_pagina_pachete');
     Route::post('/admin/pagina-pachete/modificare',[AdminPaginaPacheteController::class,'modificare'])->name('admin_pagina_pachete_modificare');
+
+
+    Route::get('/admin/pagina-diverse',[AdminPaginaDiverseController::class,'index'])->name('admin_pagina_diverse');
+    Route::post('/admin/pagina-diverse/modificare',[AdminPaginaDiverseController::class,'modificare'])->name('admin_pagina_diverse_modificare');
+
+    
 
 
 
